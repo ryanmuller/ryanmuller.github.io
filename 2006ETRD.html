@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>2006ETRD</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.mathpix.com/fonts/cmu.css"/>
+    <style>
+  html,body {
+    width: 100%;
+    height: 100%;
+  }
+  *, *::before,*::after {
+    box-sizing: border-box;
+  }
+  @-ms-viewport {
+    width: device-width;
+  }
+  body {
+    margin: 0;
+    color: #1E2029;
+    font-size: 14px;
+    line-height: normal;
+  }
+  hr {
+    box-sizing: content-box;
+    height: 0;
+    overflow: visible;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    color: rgba(0, 0, 0, 0.85);
+    font-weight: 500;
+  }
+  p {
+    margin-top: 0;
+    margin-bottom: 1em;
+  }
+  ol, ul, dl {
+    margin-top: 0;
+    margin-bottom: 1em;
+  }
+  ol ol, ul ul, ol ul, ul ol {
+    margin-bottom: 0;
+  }
+  dt {
+    font-weight: 500;
+  }
+  dd {
+    margin-bottom: 0.5em;
+    margin-left: 0;
+  }
+  blockquote {
+    margin: 0 0 1em;
+  }
+  dfn {
+    font-style: italic;
+  }
+  b, strong {
+    font-weight: bolder;
+  }
+  small {
+    font-size: 80%;
+  }
+  sub, sup {
+    position: relative;
+    font-size: 75%;
+    line-height: 0;
+    vertical-align: baseline;
+  }
+  sub {
+    bottom: -0.25em;
+  }
+  sup {
+    top: -0.5em;
+  }
+  a {
+    color: #0B93ff;
+    text-decoration: none;
+    background-color: transparent;
+    outline: none;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+  a:hover {
+    color: #33aaff;
+  }
+  a:active {
+    color: #0070d9;
+  }
+  a:active, a:hover {
+    text-decoration: none;
+    outline: 0;
+  }
+  a[disabled] {
+    color: rgba(0, 0, 0, 0.25)
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+  pre, code, kbd, samp {
+    font-size: 1em;
+  }
+  pre {
+    margin-top: 0;
+    margin-bottom: 1em;
+    overflow: auto;
+  }
+  figure {
+    margin: 0 0 1em;
+  }
+  img {
+    vertical-align: middle;
+    border-style: none;
+  }
+  svg:not(:root) {
+    overflow: hidden;
+  }
+  table {
+    border-collapse: collapse;
+  }
+  caption {
+    padding-top: 0.75em;
+    padding-bottom: 0.3em;
+    color: rgba(0, 0, 0, 0.45)
+    text-align: left;
+    caption-side: bottom;
+  }
+  th {
+    text-align: inherit;
+  }
+
+mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"] > svg a {
+  fill: blue;
+  stroke: blue;
+}
+
+mjx-assistive-mml {
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 1px 0px 0px 0px !important;
+  border: 0px !important;
+  display: block !important;
+  width: auto !important;
+  overflow: hidden !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+mjx-assistive-mml[display="block"] {
+  width: 100% !important;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+    #setText > div {
+        justify-content: inherit;
+        margin-top: 0;
+        margin-bottom: 1em;
+        
+        
+    }
+    
+    
+    
+    #setText div:last-child {
+        margin-bottom: 0 !important;
+    }
+
+    #setText > br, #preview-content br {
+        line-height: 1.2;
+    }
+
+    #preview-content > div {
+        margin-top: 0;
+        margin-bottom: 1em;
+        
+    }
+
+    #preview-content table {
+      margin-bottom: 1em;
+    }
+
+    #setText table {
+      margin-bottom: 1em;
+    }
+
+    mjx-container {
+      text-indent: 0;
+      overflow-y: visible !important;
+      padding-top: 1px;
+      padding-bottom: 1px;
+      
+      
+    }
+    
+    
+    
+    .math-inline mjx-container {
+        display: inline-block !important;
+        page-break-inside: avoid;
+    }
+    .math-block {
+        align-items: center;
+        min-width: min-content;
+        page-break-after: auto;
+        page-break-inside: avoid;
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+    .math-block p {
+        flex-shrink: 1;
+    }
+    .math-block mjx-container {
+        margin: 0 !important;
+    }
+    .math-error {
+        background-color: yellow;
+        color: red;
+    }
+
+    #preview-content svg, #setText svg { min-width: initial !important;}
+
+    #preview-content img, #setText img {
+        max-width: 100%;
+    }
+    
+    #preview-content blockquote,  #setText blockquote {
+        page-break-inside: avoid;
+        color: #666;
+        margin: 0 0 1em 0;
+        padding-left: 3em;
+        border-left: .5em solid #eee;
+    }
+
+    #preview-content pre, #setText pre {
+        border: 1px solid #ccc;
+        page-break-inside: avoid;
+        padding: 0.5em;
+        background: #f8f8fa;
+    }
+    .empty {
+        text-align: center;
+        font-size: 18px;
+        padding: 50px 0 !important;
+    }
+
+    #setText table, #preview-content table {
+        display: table; 
+        overflow: auto;
+        max-width: 100%;
+        border-collapse: collapse;
+        page-break-inside: avoid;
+    }
+      
+    #setText table th, #preview-content table th {
+        text-align: center;
+        font-weight: bold;
+    }
+    
+    #setText table td, #preview-content table td,
+    #setText table th, #preview-content table th {
+        border: 1px solid #dfe2e5;
+        padding: 6px 13px;
+    }
+      
+    #setText table tr, #preview-content table tr {
+        background-color: #fff;
+        border-top: 1px solid #c6cbd1;
+    }
+    
+    #setText table tr:nth-child(2n), #preview-content table tr:nth-child(2n) {
+        background-color: #f6f8fa;
+    }
+
+    
+    #setText .main-title, #setText .author, #preview-content .main-title, #preview-content .author  {
+        text-align: center;
+        margin: 0 auto;
+    }
+    
+    #preview-content .main-title, #setText .main-title {
+        line-height: 1.2;
+        margin-bottom: 1em;
+    }
+
+    #preview-content .author, #setText .author  {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    #preview-content .author p, #setText .author p {
+        min-width: 30%;
+        max-width: 50%;
+        padding: 0 7px;
+    }
+
+    #preview-content .author > p > span, #setText .author > p > span {
+        display: block;
+        text-align: center;
+    }
+
+    #preview-content .section-title, #setText .section-title {
+        margin-top: 1.5em;
+    }
+
+    #preview-content .abstract, #setText .abstract {
+        text-align: justify;
+        margin-bottom: 1em;
+    }
+
+    #preview-content .abstract p, #setText .abstract p {
+        margin-bottom: 0;
+    }
+
+    @media print {
+
+      #preview {
+        font-size: 10pt!important;
+      }
+
+      svg {
+        shape-rendering: crispEdges;
+      }
+
+      .math-block svg, math-inline svg {
+        margin-top: 1px;
+      }
+
+      #preview-content img, #setText img {
+        display: block;
+      }
+      
+      #preview-content .figure_img img, #setText .figure_img img {
+        display: inline;
+      }
+
+      .preview-right {
+        word-break: break-word;
+      }
+
+      #preview-content h1, #setText h1 {
+        page-break-inside: avoid;
+        position: relative;
+        border: 2px solid transparent;
+      }
+  
+      #preview-content h1::after, #setText h1::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-bottom: -100px;
+        position: relative;
+      }
+  
+      #preview-content h2, #setText h2 {
+        page-break-inside: avoid;
+        position: relative;
+        border: 2px solid transparent;
+      }
+  
+      #preview-content h2::after, #setText h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-bottom: -100px;
+        position: relative;
+      }
+  
+      #preview-content h3, #setText h3 {
+        page-break-inside: avoid;
+        position: relative;
+        border: 2px solid transparent;
+      }
+  
+      #preview-content h3::after, #setText h3::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-bottom: -100px;
+        position: relative;
+      }
+  
+      #preview-content h4, #setText h4 {
+        page-break-inside: avoid;
+        position: relative;
+        border: 2px solid transparent;
+      }
+  
+      #preview-content h4::after, #setText h4::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-bottom: -100px;
+        position: relative;
+      }
+  
+      #preview-content h5, #setText h5 {
+        page-break-inside: avoid;
+        position: relative;
+        border: 2px solid transparent;
+      }
+  
+      #preview-content h5::after, #setText h5::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-bottom: -100px;
+        position: relative;
+      }
+  
+      #preview-content h6, #setText h6 {
+        page-break-inside: avoid;
+        position: relative;
+        border: 2px solid transparent;
+      }
+  
+      #preview-content h6::after, #setText h6::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-bottom: -100px;
+        position: relative;
+      }
+    }
+    #preview-content sup, #setText sup {
+      top: -.5em;
+      position: relative;
+      font-size: 75%;
+      line-height: 0;
+      vertical-align: baseline;
+    }
+    
+    #preview-content .text-url, #setText .text-url {
+      color: #0B93ff;
+      cursor: text;
+      pointer-events: none;
+    }
+    
+    #preview-content .text-url a:hover, #setText .text-url a:hover {
+      color: #0B93ff;
+    }
+
+    #preview-content code, #setText code {
+      font-family: Inconsolata;
+      font-size: inherit;
+      display: initial;
+      background: #f8f8fa;
+    }
+    #preview-content pre code, #setText pre code {
+      font-size: inherit;
+      display: block;
+      color: #333;
+      overflow-x: auto;
+      font-size: 15px;
+    }
+
+    .hljs-comment,
+    .hljs-quote {
+      color: #998;
+      font-style: italic;
+    }
+
+    .hljs-command {
+      color: #005cc5;
+    }
+
+    .hljs-keyword,
+    .hljs-selector-tag,
+    .hljs-subst {
+      color: #d73a49;
+      font-weight: bold;
+    }
+
+    .hljs-number,
+    .hljs-literal,
+    .hljs-variable,
+    .hljs-template-variable,
+    .hljs-tag .hljs-attr {
+      color: #005cc5;
+    }
+
+    .hljs-string,
+    .hljs-doctag {
+      color: #24292e;
+    }
+
+    .hljs-title,
+    .hljs-section,
+    .hljs-selector-id {
+      color: #6f42c1;
+      font-weight: bold;
+    }
+
+    .hljs-subst {
+      font-weight: normal;
+    }
+
+    .hljs-type,
+    .hljs-class .hljs-title {
+      color: #458;
+      font-weight: bold;
+    }
+
+    .hljs-tag,
+    .hljs-name,
+    .hljs-attribute {
+      color: #000080;
+      font-weight: normal;
+    }
+
+    .hljs-regexp,
+    .hljs-link {
+      color: #009926;
+    }
+
+    .hljs-symbol,
+    .hljs-bullet {
+      color: #990073;
+    }
+
+    .hljs-built_in,
+    .hljs-builtin-name {
+      color: #24292e;
+    }
+
+    .hljs-meta {
+      color: #999;
+      font-weight: bold;
+    }
+
+    .hljs-meta-keyword {
+      color: #d73a49;
+    }
+
+    .hljs-meta-string {
+      color: #032f62;
+    }
+
+    .hljs-deletion {
+      background: #fdd;
+    }
+
+    .hljs-addition {
+      background: #dfd;
+    }
+
+    .hljs-emphasis {
+      font-style: italic;
+    }
+
+    .hljs-strong {
+      font-weight: bold;
+    }
+
+    .table_tabular table th,  .table_tabular table th {
+        border: none !important;
+        padding: 6px 13px;
+    }
+      
+    #tabular tr, #tabular tr {
+        border-top: none !important;
+        border-bottom: none !important;
+    }
+    #tabular td, #tabular td {
+        border-style: none !important;
+        background-color: #fff;
+        border-color: #000 !important;
+        word-break: keep-all;
+        padding: 0.1em 0.5em !important;
+    }
+    #tabular {
+        display: inline !important;
+    }
+    #tabular td > p {
+        margin-bottom: 0;
+        margin-top: 0;
+    }
+    #tabular td._empty {
+      height: 1.3em;
+    }
+    #tabular td .f {
+      opacity: 0;
+    }
+    
+    html[data-theme="dark"] #tabular tr, html[data-theme="dark"] #tabular td {
+      background-color: #202226;
+      border-color: #fff !important;
+    }  
+    .table_tabular {
+        overflow-x: auto;
+        padding: 0 2px 0.5em 2px;
+    }
+    .figure_img {
+       margin-bottom: 0.5em;
+       overflow-x: auto;
+    }
+
+  ol.enumerate, ul.itemize {
+    padding-inline-start: 40px;
+  }
+/* It's commented because counter not supporting to change value 
+  ol.enumerate.lower-alpha {
+    counter-reset: item ;
+    list-style-type: none !important;
+  }
+  .enumerate.lower-alpha > li {
+    position: relative;
+  }
+  .enumerate.lower-alpha > li:before { 
+    content: "("counter(item, lower-alpha)")"; 
+    counter-increment: item; 
+    position: absolute;
+    left: -47px;
+    width: 47px;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 7px;
+    flex-wrap: nowrap;
+    word-break: keep-all;
+  }
+  */
+  
+  .itemize > li {
+    position: relative;
+  }
+  .itemize > li > span.li_level { 
+    position: absolute;
+    right: 100%;
+    white-space: nowrap;
+    width: max-content;;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 10px;
+    box-sizing: border-box;
+  }
+
+  #preview {
+    font-family: 'CMU Serif', 'Georgia', Helvetica, Arial, sans-serif;
+    font-size: 17px;
+    visibility: visible;
+    word-break: break-word;
+    padding: 2.5em;
+    max-width: 800px;
+    margin: auto;
+    box-sizing: content-box;
+  }
+
+  #preview h1, #preview h2, #preview h3, #preview h4, #preview h5, #preview strong {
+    font-family: 'CMU Serif Bold', 'Georgia', Helvetica, Arial, sans-serif;
+  }
+
+  #preview  i, #preview  em {
+    font-family: 'CMU Serif Italic', 'Georgia', Helvetica, Arial, sans-serif;
+  }
+
+  .mmd-menu {
+    max-width: 320px;
+    position: absolute;
+    background-color: white;
+    color: black;
+    width: auto;
+    padding: 5px 0px;
+    border: 1px solid #E5E6EB;
+    margin: 0;
+    cursor: default;
+    font: menu;
+    text-align: left;
+    text-indent: 0;
+    text-transform: none;
+    line-height: normal;
+    letter-spacing: normal;
+    word-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    float: none;
+    z-index: 201;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    box-shadow: 0px 10px 20px #808080;
+    -webkit-box-shadow: 0px 10px 20px #808080;
+    -moz-box-shadow: 0px 10px 20px #808080;
+    -khtml-box-shadow: 0px 10px 20px #808080; 
+  }
+  
+  .mmd-menu:focus { outline: none; }
+  
+  .mmd-menu.mmd-menu-sm {
+    max-width: 100vw;
+    padding-bottom: 34px;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -khtml-border-radius: 0;
+  }
+
+  .mmd-menu-item-icon {
+    color: #1e2029;
+    margin-left: auto;
+    align-items: center;
+    display: flex;
+    flex-shrink: 0;
+    display: none; 
+  }
+
+  .mmd-menu-item {
+    padding-bottom: 8px;
+    padding-top: 8px;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    display: flex;
+    background: transparent; 
+    height: 52px;
+    max-height: 52px;
+  }
+  .mmd-menu-item:focus { outline: none; }
+
+  .mmd-menu-item.active {
+    background-color: #e1e0e5; 
+  }
+
+  .mmd-menu-item.active .mmd-menu-item-icon {
+    display: flex; 
+  }
+
+  .mmd-menu-item-container {
+    overflow: hidden; 
+  }
+
+  .mmd-menu-item-title {
+    color: #1e2029;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 14px;
+    line-height: 20px; 
+  }
+
+  .mmd-menu-item-value {
+    color: #7d829c;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 12px;
+    line-height: 16px; 
+  }
+  
+  html[data-theme="dark"] .mmd-menu-item-title {
+    color: #ebefe7;
+  } 
+  html[data-theme="dark"] .mmd-menu-item.active .mmd-menu-item-title {
+    color: #1e2029;
+  }
+  html[data-theme="dark"] .mmd-menu {
+    background-color: #33363a;
+  }
+  
+  .mmd-context-menu-overlay{
+    background: rgba(0, 0, 0, 0.56);
+  }
+  </style>
+</head>
+<body>
+  <div id="preview" class="preview scrollEditor">
+    <div id="container-ruller" />
+    <div id="preview-content">
+      <h1 type="title" class="main-title preview-paragraph-0 preview-line 0 1 2" id="a-social-cognitive-framework-for-pedagogical-agents-as-learning-companions" data_line_start="0" data_line_end="2" data_line="0,3" count_line="3">
+A Social-Cognitive Framework for Pedagogical Agents as Learning Companions</h1>
+<div class="preview-paragraph-4 preview-line 4 5 6" data_line_start="4" data_line_end="6" data_line="4,7" count_line="3"><div class="author">
+          <p><span>Yanghee Kim and Amy L. Baylor</span></p>
+        </div></div>
+<div class="preview-paragraph-8 preview-line 8" data_line_start="8" data_line_end="8" data_line="8,9" count_line="1">Teaching and learning are highly social activities. Seminal psychologists such as Vygotsky, Piaget, and Bandura have theorized that social interaction is a key mechanism in the process of learning and development. In particular, the benefits of peer interaction for learning and motivation in classrooms have been broadly demonstrated through empirical studies. Hence, it would be valuable if computer-based environments could support a mechanism for a peer interaction. Though no claim of peer equivalence is made, pedagogical agents as learning companions (PALs)_-animated digital characters functioning to simulate human-peer-like interaction-might provide an opportunity to simulate such social interaction in computer-based learning. In this article we ground the instructional potential of PALs in several social-cognitive theories, including distributed cognition, social interaction, and Bandura's social-cognitive theory. We discuss how specific concepts of the theories might support various instructional functions of PALs, acknowledging concepts that PALs cannot address. Based on the theoretical perspectives, we suggest key constituents for designing PALs that in human-peer interactions have proven significant. Finally, we review the current status of PAL research with respect to these constituents and suggest where further empirical research is necessary.</div>
+<div class="preview-paragraph-10 preview-line 10" data_line_start="10" data_line_end="10" data_line="10,11" count_line="1">Keywords: pedagogical agents, learning companions, social interaction, computer-based learning environment, advanced technology for learning</div>
+<div class="preview-paragraph-12 preview-line 12" data_line_start="12" data_line_end="12" data_line="12,13" count_line="1">Advances in computer and communication technology are providing opportunities to augment human cognition, interaction, and even social rela-</div>
+<div class="preview-paragraph-14 preview-line 14" data_line_start="14" data_line_end="14" data_line="14,15" count_line="1">ETR&amp;D, Vol. 54, No. 6, pp. 569-596, 2006</div>
+<div class="preview-paragraph-16 preview-line 16" data_line_start="16" data_line_end="16" data_line="16,17" count_line="1">(c) 2006 Association for Educational Communications and Technology. tions. In particular, pedagogical agents can be designed to simulate social interaction that may facilitate learners to engage in the learning task and consequently to enhance learning in computer-based environments. Pedagogical agents are animated life-like characters (Johnson, Richel, &amp; Lester, 2000) embedded in instructional applications. What makes pedagogical agents unique from conventional computer-based environments is their ability to simulate social interaction. In pedagogical-agent-based environments, a learner grasps instructional content while interacting with one or more pedagogical agents programmed to provide information and/or encouragement, to share menial tasks, or to collaborate with the learner. Some studies indicated the positive instructional impact of pedagogical agents on cognitive and motivational outcomes (Atkinson, 2002; Kim, 2004, 2005b; Moreno, Mayer, Spires, &amp; Lester, 2001). Figure 1 displays the motivator-expert combination of agents that jointly enhanced learning (Baylor &amp; Kim, 2003) and Nina, an agent that served as a social model to influence student attitudes toward engineering (Baylor &amp; Plant, 2005).</div>
+<div class="preview-paragraph-18 preview-line 18" data_line_start="18" data_line_end="18" data_line="18,19" count_line="1">Figure <span class="math-inline "><mathml style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mn>1</mn>
+  <mi>&#x25FB;</mi>
+</math></mathml><mathmlword style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mn>1</mn>
+  <mi>◻</mi>
+</math></mathmlword><asciimath style="display: none;">1◻</asciimath><latex style="display: none">1 \square</latex><mjx-container class="MathJax" jax="SVG" role="presentation" style="position: relative"><svg style="vertical-align: 0" xmlns="http://www.w3.org/2000/svg" width="2.891ex" height="1.559ex" role="img" focusable="false" viewBox="0 -689 1278 689" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mn"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></g><g data-mml-node="mi" transform="translate(500, 0)"><path data-c="25FB" d="M71 0Q59 4 55 16V346L56 676Q64 686 70 689H709Q719 681 722 674V15Q719 10 709 1L390 0H71ZM682 40V649H95V40H682Z"></path></g></g></g></svg><mjx-assistive-mml role="presentation" unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>1</mn><mi>◻</mi></math></mjx-assistive-mml></mjx-container></span> Nina and Motivator-Expert agents.</div>
+<div class="preview-paragraph-20 preview-line 20" data_line_start="20" data_line_end="20" data_line="20,21" count_line="1"><figure style="text-align: center"><img src="https://cdn.mathpix.com/cropped/2022_12_24_3a4354da8e534db8168ag-02.jpg?height=794&amp;width=512&amp;top_left_y=1161&amp;top_left_x=208" alt="" data-align="center"></figure></div>
+<div class="preview-paragraph-22 preview-line 22" data_line_start="22" data_line_end="22" data_line="22,23" count_line="1">SOGIALMODEL</div>
+<div class="preview-paragraph-24 preview-line 24" data_line_start="24" data_line_end="24" data_line="24,25" count_line="1"><figure style="text-align: center"><img src="https://cdn.mathpix.com/cropped/2022_12_24_3a4354da8e534db8168ag-02.jpg?height=875&amp;width=464&amp;top_left_y=1160&amp;top_left_x=840" alt="" data-align="center"></figure></div>
+<div class="preview-paragraph-26 preview-line 26" data_line_start="26" data_line_end="26" data_line="26,27" count_line="1">Pedagogical agents may help overcome some constraints of and expand functionalities of conventional computer-based environments. Traditionally, computer-based learning environments (e.g., intelligent tutoring systems) have been tailored to meet a student's individual needs, supporting each learner independently when the environments were well designed (Aimeur &amp; Frasson, 1996; Anderson, Corbett, Koedinger, &amp; Pelletier, 1995; Gertner &amp; VanLehn, 2000; Graesser, VanLehn, Rose, Jordan, &amp; Harter, 2001). However, those learning environments typically failed to provide situated social interaction, which is regarded as a significant influence on both learning and motivation (Lave &amp; Wenger, 2001; Palincsar &amp; Brown, 1984; Powell, Aeby, &amp; Carpenter-Aeby, 2003; Vygotsky, Cole, John-Steiner, Scribner, &amp; Souberman, 1978; Wertsch, Minick, &amp; Arns, 1984). With the advances of technology, pedagogical agents can be designed to support the social-cognitive aspect of learning in computer-based environments, playing well-defined instructional roles, following specified social conventions, and even responding to learners with apparent empathy (Hays-Roth &amp; Doyle, 1998). As Reeves and Nass (1996) concluded from more than 10 years of studies, people may apply the same social rules and expectations to computers as they do to humans in the real world. Thus, the simulated social presence of pedagogical agents in computing environments may provide learners with a sense of companionship and so make working in the computer-based environment relevant and/or meaningful (Biswas, Schwartz, &amp; Bransford, 2001).</div>
+<div class="preview-paragraph-28 preview-line 28" data_line_start="28" data_line_end="28" data_line="28,29" count_line="1">In general, it is recommended that a pedagogical agent should have a human-like persona to better simulate social contexts and to promote learneragent interaction (Erickson, 1997; Koda &amp; Maes, 1996; Laurel, 1990; Lester et al., 1997; Mulken, Andre, &amp; Muller, 1998; Takeuchi &amp; Naito, 1995; Walker, Sproull, &amp; Subramani, 1994). Likewise, pedagogical agents as simulated beings are frequently designed to represent different human instructional roles, such as expert (Johnson et al., 2000), tutor (Graesser, Moreno, &amp; Marineau, 2003), mentor (Baylor &amp; Kim, 2005), and learning companion (Chan &amp; Baskin, 1990; Dillenbourg &amp; Self, 1992; Goodman, Soller, Linton, &amp; Gaimari, 1998; Hietala &amp; Niemirepo, 1998a; Kim, 2003b; Uresti, 2000). For example, the agents, Steve and Adele, developed by Johnson and colleagues (2000), represent experts for naval engineering and medical diagnosis. These agents observe learner performance to provide adaptive feedback and demonstrate expertise in the domain. Similarly, AutoTutor (Graesser et al., 2003) is designed to engage learners in a dialogue to highlight their misconceptions and to encourage deeper reasoning. Baylor and Kim (2005) effectively simulated agents as an expert, a motivator, and a mentor serving distinct instructional functions: the expert provided the learner with relevant information in a professional manner; the motivator provided verbal persuasion and encour- agement, emphasizing affective affiliation with the learner; and the mentor incorporated both qualities to simulate an ideal instructor. In contrast to those agent roles, pedagogical agents as learning companions (PALs) adopt a peer metaphor, where the agent's function is to learn with the learner and act as a simulated peer. The following section discusses the potential benefits of employing the peer metaphor for designing pedagogical agents.</div>
+<h2 type="section" class="section-title preview-paragraph-30 preview-line 30" id="pals" data_line_start="30" data_line_end="30" data_line="30,31" count_line="1">
+<span class="section-number">1. </span>PALS</h2>
+<div class="preview-paragraph-32 preview-line 32" data_line_start="32" data_line_end="32" data_line="32,33" count_line="1">The value of human-peer interaction for learning and motivation has been emphasized at least since Bell and Lancaster initiated the systematic implementation of peer-mediated learning in the late 18th century (Chiplin-Williams, 1997). A number of peer-mediated interventions implemented in smallor large-scale studies demonstrate empirical evidence that peer partners are often more effective than adult partners for learning and motivation in various subject areas and across age groups (Griffin &amp; Griffin, 1998; King, 1998; Rowell, 2002; Topping et al., 1997; Yarrow &amp; Topping, 2001).</div>
+<div class="preview-paragraph-34 preview-line 34" data_line_start="34" data_line_end="34" data_line="34,35" count_line="1">The benefit of peer interaction is also supported by theories of social cognition and learning. According to Bandura (1997), a great deal of psychological modeling occurs when learners observe behaviors of their everyday associates. When learners are exposed differentially to skilled human peers or to adults performing the same cognitive skills, they derive a stronger sense of personal efficacy from the peers. Further, social interaction with equally able peers fosters cognitive restructuring and promotes cognitive growth (Piaget, 1995), in that intellectual development, thinking, and affect are closely tied with the cooperation of equal partners (Matusov &amp; Hayes, 2000) and peer interaction can provide a free and open forum to facilitate a more active and productive exchange of ideas (Driscoll, 2000). Clearly, interactions with actual peers are the ideal. However, human-peer-based interventions are not always feasible or successful in implementation, for logistical and political reasons, for example, matching optimal peers, coordinating schedules, and avoiding off-task distractions (Kim, 2004; King, 1998). Though they are clearly not equivalent to human peers, PALs-computerized virtual peers-may be able to simulate peer interaction in computer-based environments, as demonstrated in some studies (Biswas et al., 2001; Brophy, Biswas, Katzlberger, Bransford, &amp; Schwartz, 1999; Ryokai, Vaucelle, &amp; Cassell, 2003). Figure 2 shows examples of such PALs used in previous studies (Kim, 2004, 2005b): male and female Chris for college students and Riya for elementary school</div>
+<div class="preview-paragraph-36 preview-line 36" data_line_start="36" data_line_end="36" data_line="36,37" count_line="1">girls. Although the current technology cannot now-and likely will neverduplicate all aspects of human peer interaction in PAL-learner interaction, it is Figure <span class="math-inline "><mathml style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mn>2</mn>
+  <mi>&#x25FB;</mi>
+</math></mathml><mathmlword style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mn>2</mn>
+  <mi>◻</mi>
+</math></mathmlword><asciimath style="display: none;">2◻</asciimath><latex style="display: none">2 \square</latex><mjx-container class="MathJax" jax="SVG" role="presentation" style="position: relative"><svg style="vertical-align: 0" xmlns="http://www.w3.org/2000/svg" width="2.891ex" height="1.559ex" role="img" focusable="false" viewBox="0 -689 1278 689" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mn"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></g><g data-mml-node="mi" transform="translate(500, 0)"><path data-c="25FB" d="M71 0Q59 4 55 16V346L56 676Q64 686 70 689H709Q719 681 722 674V15Q719 10 709 1L390 0H71ZM682 40V649H95V40H682Z"></path></g></g></g></svg><mjx-assistive-mml role="presentation" unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>2</mn><mi>◻</mi></math></mjx-assistive-mml></mjx-container></span> Examples of pedagogical agents as learning companions (PALs).</div>
+<div class="preview-paragraph-38 preview-line 38" data_line_start="38" data_line_end="38" data_line="38,39" count_line="1"><figure style="text-align: center"><img src="https://cdn.mathpix.com/cropped/2022_12_24_3a4354da8e534db8168ag-05.jpg?height=494&amp;width=1150&amp;top_left_y=285&amp;top_left_x=172" alt="" data-align="center"></figure></div>
+<div class="preview-paragraph-40 preview-line 40" data_line_start="40" data_line_end="40" data_line="40,41" count_line="1">worth noting that the learners in the studies reacted socially to the PALs and perceived the PALs as being more functional and more intelligent than they actually were.</div>
+<div class="preview-paragraph-42 preview-line 42" data_line_start="42" data_line_end="42" data_line="42,43" count_line="1">From a researcher's point of view, PALs can also be used as a methodological tool to study human-peer interaction because instructional designers can easily manipulate PAL characteristics and functions to serve instructional goals at times when human peers are not available. That approach is not new in the fields of social psychology and communication. Researchers in those areas have already begun to employ virtual environments with digital characters to study social interaction in the real world (Bailenson &amp; Yee, in press; Blascovich et al., 2002). They use computer capabilities to archive detailed records of all verbal and nonverbal behavior of users and to regulate the frequency, thoroughness, and intensity of the behavior of the virtual characters. Similarly, the flexibility in manipulating PAL characteristics may allow instructional designers and educational researchers to use the PAL as a mechanism for theory development. For instance, to support learning in context, PALs could be designed as peer tutors or peer tutees with varying levels of competency (Chan &amp; Chou, 1997; Kim, 2003a). The gender or ethnicity of PALs can be matched with that of learner to facilitate collaboration, resulting in enhanced modeling effects (Baylor &amp; Kim, 2004; Cooper &amp; Weaver, 2003). Or the number of PALs can be adjusted to optimize collaboration (Hietala &amp; Niemirepo, 1998b; White, Shimoda, &amp; Fredericksen, 2000).</div>
+<div class="preview-paragraph-44 preview-line 44" data_line_start="44" data_line_end="44" data_line="44,45" count_line="1">Although the popularity of PAL applications in computing environments has been increasing both in academia and in business, there is limited empirical research regarding their efficacy. Furthermore, the theoretical foundation for the application and design of PALs has not yet been built. Hence, the remainder of this article will ground the instructional application of PALs in a social-cognitive framework, will discuss critical constituents for designing PALs, and will review the current status of findings from PAL research with respect to these constituents.</div>
+<h2 type="section" class="section-title preview-paragraph-46 preview-line 46" id="a-social-cognitive-framework" data_line_start="46" data_line_end="46" data_line="46,47" count_line="1">
+<span class="section-number">2. </span>A SOCIAL-COGNITIVE FRAMEWORK</h2>
+<div class="preview-paragraph-48 preview-line 48" data_line_start="48" data_line_end="48" data_line="48,49" count_line="1">Social-cognitive theories emphasize that teaching and learning are highly social activities and that interactions with teachers, peers, and instructional materials influence the cognitive and affective development of learners. When individuals perform intellectual activities, they dynamically interact with other participants, tools, and contexts, which could support improved performance and/or frame individual cognition and intellect. Therefore, interventions failing to address the social-cognitive dimension of learning and intelligence might not accomplish their goals (Perkins, 2001). It is warranted, then, that computer-based environments should be designed to afford this social-cognitive dimension. This section examines how social-cognitive perspectives might serve as a theoretical framework for and a guide to the optimal design of PALs. Three social-cognitive theories are reviewed here: (a) distributed cognition, (b) social interaction as addressed in the work of Piaget and Vygotsky, and (c) Bandura's social-cognitive theory. Given the three theoretical perspectives, the varying instructional functions of PALs are suggested in light of each.</div>
+<h2 type="section" class="section-title preview-paragraph-50 preview-line 50" id="distributed-cognition" data_line_start="50" data_line_end="50" data_line="50,51" count_line="1">
+<span class="section-number">3. </span>Distributed Cognition</h2>
+<div class="preview-paragraph-52 preview-line 52" data_line_start="52" data_line_end="52" data_line="52,53" count_line="1">Human cognition is distributed among individuals and across tools and symbols in a society (Hewitt &amp; Scardamalia, 1998; King, 1998; Pea, 2001; Perkins, 2001; Salomon, 1988, 1989, 1990, 2001; Salomon &amp; Almog, 1998). Traditionally, it is presumed that cognition exists inside an individual's mind and that the cognitive process occurs internally. Recently, however, a number of researchers have suggested that the human mind rarely works in solo; instead, it is shaped in social contexts while the individual is communicating within physical and social surroundings. In their daily surroundings it is not difficult to see that such artifacts as letters on a keyboard, a shopping list, graphs and diagrams, and calculators help individuals better perform cognitive activities and expand their cognitive capabilities. One's cognition also evolves through discourse with others. In effective conversation, one makes a statement based on the previous utterance of one's interlocutor.</div>
+<div class="preview-paragraph-54 preview-line 54" data_line_start="54" data_line_end="54" data_line="54,55" count_line="1">According to this line of thought, PALs could be designed to share learners' cognition and flexibly function as artifacts (cognitive tools) or collaborating partners (social tools). PALs as cognitive tools could scaffold learner perfor- mance, where PALs were equipped with knowledge and skills that learners would not have, or could perform simple and mechanical tasks to preserve the cognitive capabilities of the learner for higher mental activities. PALs could learn with the learner and/or take turns generating ideas. The presence of PALs on the screen and their responsiveness to the learner's behavior could also provide social contexts (PALs as social tools), in which learners could build social relations with the PALs (Ruttkay &amp; Pelachaud, 2004; Suzuki, Takechi, Ishii, &amp; Okada, 2003). In either or both ways, PALs could play a role of coworking partners, building intellectual partnership for enhanced learning in computer-based environments.</div>
+<div class="preview-paragraph-56 preview-line 56" data_line_start="56" data_line_end="56" data_line="56,57" count_line="1">Researchers in distributed cognition, however, vary in their interpretations-some focusing more on individuals and others on contexts. According to Perkins (2001), individuals and their surroundings are compound systems of thinking and learning (person-plus). But there is still higher-order knowledge, in individuals' minds, that cannot be distributed. Thus, for Perkins, there is an asymmetry in distributed cognition and, possibly, in the relationship between a learner and a PAL. In this perspective, a learner could be expected to play a more active role in performing learning tasks than would a PAL. However, others, for example, Lave and Wenger (2001), argued that cognition spreads over minds, artifacts, social processes, and cultural factors, comprising an interdependent and inseparable system of cognition (sociocultural cognition). Learning and thinking take place during communication with others in a social context. The dynamic nature of the cognitive process is emphasized. In this perspective, a PAL could be viewed as creating a more interactive social environment and making learning part of a social process (Biswas et al., 2001). The perspective one takes determines the composition of learner-PAL relationships. That is, the perspective centering on person-plus argues for an intervention emphasizing the learner's actions and responsibility. A PAL could be activat</div>
+<div class="preview-paragraph-58 preview-line 58" data_line_start="58" data_line_end="58" data_line="58,59" count_line="1">Lastly, Salomon (1990) argued for two types of cognitive effects that children could attain in computer-mediated learning. Effects of technology are the cognitive skills resulting from the use of technology. PALs can be equipped with information and designed to demonstrate skills so that a learner can master the information and those skills at the end of the lesson. On the other hand, working at computers, learners employ unique mental operations that they could not carry out otherwise. Effects with technology are cognitive changes derived from working with computer software itself. Similarly, interaction with a PAL could have a unique impact on the learner's cognition, subsequently producing a unique intellectual partnership between them. Table 1 illustrates the key concepts of distributed cognition and the functions of PALs suggested by the concepts. Table <span class="math-inline "><mathml style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mn>1</mn>
+  <mi>&#x25FB;</mi>
+</math></mathml><mathmlword style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mn>1</mn>
+  <mi>◻</mi>
+</math></mathmlword><asciimath style="display: none;">1◻</asciimath><latex style="display: none">1 \square</latex><mjx-container class="MathJax" jax="SVG" role="presentation" style="position: relative"><svg style="vertical-align: 0" xmlns="http://www.w3.org/2000/svg" width="2.891ex" height="1.559ex" role="img" focusable="false" viewBox="0 -689 1278 689" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mn"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></g><g data-mml-node="mi" transform="translate(500, 0)"><path data-c="25FB" d="M71 0Q59 4 55 16V346L56 676Q64 686 70 689H709Q719 681 722 674V15Q719 10 709 1L390 0H71ZM682 40V649H95V40H682Z"></path></g></g></g></svg><mjx-assistive-mml role="presentation" unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>1</mn><mi>◻</mi></math></mjx-assistive-mml></mjx-container></span> Concepts of distributed cognition and functions of pedagogical agents as learning companions (PALs).</div>
+<div class="preview-paragraph-60 preview-line 60" data_line_start="60" data_line_end="60" data_line="60,61" count_line="1"><figure style="text-align: center"><img src="https://cdn.mathpix.com/cropped/2022_12_24_3a4354da8e534db8168ag-08.jpg?height=393&amp;width=1144&amp;top_left_y=322&amp;top_left_x=175" alt="" data-align="center"></figure></div>
+<h2 type="section" class="section-title preview-paragraph-62 preview-line 62" id="social-interaction" data_line_start="62" data_line_end="62" data_line="62,63" count_line="1">
+<span class="section-number">4. </span>Social Interaction</h2>
+<div class="preview-paragraph-64 preview-line 64" data_line_start="64" data_line_end="64" data_line="64,65" count_line="1">Learning is a social process. Intellectual development is achieved when learners are involved in learning activities in which they interact with others (Vygotsky et al., 1978). Learners come to understand phenomena through negotiating meanings with people in the environment, and they achieve goals through interacting, both explicitly and implicitly, with the instructor, peers, materials, and atmosphere embedded in the context. Unlike traditional computer-based learning, which seemingly was limited to knowledge and skill acquisition, PALs as simulated peers could simulate a type of social interaction, making computer-based learning more meaningful. The theoretical concepts illustrated below stress the importance of social interaction for intellectual development, from which we draw implications for designing PALs that are educationally effective and appealing.</div>
+<h2 type="section" class="section-title preview-paragraph-66 preview-line 66" id="cognitive-conflict-and-equal-power-relations" data_line_start="66" data_line_end="66" data_line="66,67" count_line="1">
+<span class="section-number">5. </span>Cognitive Conflict and Equal Power Relations</h2>
+<div class="preview-paragraph-68 preview-line 68" data_line_start="68" data_line_end="68" data_line="68,69" count_line="1">Neo-Piagetian psychologists have argued that Piaget's theory is &quot;fundamentally social&quot; (Bickhard, 2004; Carpendale &amp; Muller, 2004). In Piaget's theory, cooperation and free discussion play an essential role in acquiring and constructing knowledge because they establish the most favorable conditions for counteracting an individual's egocentrism. In particular, Piaget acknowledged the value of peer interaction in terms of equal power relations and cognitive conflicts (Tudge &amp; Winterhoff, 1993). He argued that high-level development in thinking and affect is not possible without the cooperation of equal partners (Matusov &amp; Hayes, 2000). This is because equal power relations among peers allow learners to actively take different perspectives. By examining the perspectives of peers, learners can progress to and reflect on their own ideas and coordinate actions and perspectives to resolve contradictions among the different perspectives, which Piaget referred to as sociocognitive conflict. Clearly, PAL-learner interaction is equivalent towith human-peer interaction. Even so, PALs designed not necessarily to command advanced knowledge but to bring forth different perspectives could serve to instigate learners' cognitive conflict in computer-based environments. This kind of use of equally or less competent peers has been subject to experimentation in both classrooms and tutoring systems, where students learned by teaching their peers or the system (Chan, 1996; Gartner, Kohler, &amp; Riessman, 1971; Goodlad &amp; Hirst, 1989).</div>
+<h2 type="section" class="section-title preview-paragraph-70 preview-line 70" id="the-zone-of-proximal-development-and-scaffolding" data_line_start="70" data_line_end="70" data_line="70,71" count_line="1">
+<span class="section-number">6. </span>The Zone of Proximal Development and Scaffolding</h2>
+<div class="preview-paragraph-72 preview-line 72" data_line_start="72" data_line_end="72" data_line="72,73" count_line="1">Vygotsky's (Vygotsky et al., 1978) concept of the zone of proximal development (ZPD) is at the center of learning and developmental processes. ZPD, the distance between a learner's actual development and his or her potential development assisted by others, defines developmental functions that have not yet matured but are in the process of maturation. In collaboration with more capable others, learners can grow intellectually beyond the current limit of their capabilities. Along this line, a PAL might be designed to be in a higher intellectual stage than that of the learner, to provide a scaffolding to advance the learner's knowledge. Effectively designed PALs could simulate the five characteristics of scaffolding suggested by Greenfield (1984): (a) serving to provide supports; (b) functioning as tools by sharing learning tasks; (c) extending the cognitive ranges of learners; (d) allowing the learners to accomplish tasks not possible otherwise; and (e) being used selectively to aid the learners when needed.</div>
+<h2 type="section" class="section-title preview-paragraph-74 preview-line 74" id="empathetic-relations" data_line_start="74" data_line_end="74" data_line="74,75" count_line="1">
+<span class="section-number">7. </span>Empathetic Relations</h2>
+<div class="preview-paragraph-76 preview-line 76" data_line_start="76" data_line_end="76" data_line="76,77" count_line="1">Affective experience is a natural process of learning (Damasio, 1994; Forgas, 2001). When interacting with environments, a learner may experience a variety of emotional states, such as interest, curiosity, excitement, confusion, frustration, and discouragement (Kort, Reilly, &amp; Picard, 2001), all of which might influence learning and motivation. For instance, Bower and Forgas (2001) found that emotions and moods had an impact on social memories and their reconstruction: when learners' moods in learning tasks were matched with their moods in retrieval, the amount of retrieved information was significantly increased (mood congruency). Ellis, Ottaway, Varner, Becker, and Moore (1997) showed that the affective states of college students influenced their text comprehension. Meyer and Turner (2002) reported that students of a negatively affective instructor experienced negative affect and handicapped themselves significantly more than did students of a positively affective instructor.</div>
+<div class="preview-paragraph-78 preview-line 78" data_line_start="78" data_line_end="78" data_line="78,79" count_line="1">Given the implications from the classroom-based emotion research, a PAL could be designed to address a learner's emotional states and subsequently build empathetic relations with the learner (Dautenhahn, Bond, Canamero, &amp; Edmonds, 2002). More specifically, a PAL could express its own emotions and respond to learners' emotions in order to elicit a learner's positive emotions and to diminish negative emotions in learning contexts (Picard, 1997). Also, an important mechanism of emotional development of children through adolescence is socialization by peers (Asher, Parker, &amp; Walker, 1996). Friends are likely to disclose to each other the emotional understandings and experiences they may hide from others (e.g., adults), helping each other acquire emotional competencies. Simulating a human peer, a PAL can be equipped with a variety of emotional expressions and reactions designed to help a learner's emotional development (Denham &amp; Kochanoff, 2002). The inclusion of affect has been shown to make the PAL more believable and natural (Bates, 1994) and, subsequently, may help establish social bonds between the learner and the PAL. Table 2 summarizes the key concepts of social interaction and different functions of PALs suggested by the concepts.</div>
+<h2 type="section" class="section-title preview-paragraph-80 preview-line 80" id="social-cognitive-theory" data_line_start="80" data_line_end="80" data_line="80,81" count_line="1">
+<span class="section-number">8. </span>Social-Cognitive Theory</h2>
+<div class="preview-paragraph-82 preview-line 82" data_line_start="82" data_line_end="82" data_line="82,83" count_line="1">Social cognitive theory (Bandura, 1986, 1989, 1999, 2001, 2002) uses the concept of human agency to explain human functioning in the world. (Agency or being an agent in the theory means that people intentionally make things happen by their action. Hence, agent should be distinguished from its use in pedagogical agents or PALs.) Social cognitive theory recognizes three modes of human</div>
+<h2 type="section" class="section-title preview-paragraph-84 preview-line 84" id="table-%242-%5Csquare%24-concepts-of-social-interaction-and-functions-of-pedagogical" data_line_start="84" data_line_end="84" data_line="84,85" count_line="1">
+<span class="section-number">9. </span>Table <span class="math-inline "><mathml style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mn>2</mn>
+  <mi>&#x25FB;</mi>
+</math></mathml><mathmlword style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mn>2</mn>
+  <mi>◻</mi>
+</math></mathmlword><asciimath style="display: none;">2◻</asciimath><latex style="display: none">2 \square</latex><mjx-container class="MathJax" jax="SVG" role="presentation" style="position: relative"><svg style="vertical-align: 0" xmlns="http://www.w3.org/2000/svg" width="2.891ex" height="1.559ex" role="img" focusable="false" viewBox="0 -689 1278 689" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mn"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></g><g data-mml-node="mi" transform="translate(500, 0)"><path data-c="25FB" d="M71 0Q59 4 55 16V346L56 676Q64 686 70 689H709Q719 681 722 674V15Q719 10 709 1L390 0H71ZM682 40V649H95V40H682Z"></path></g></g></g></svg><mjx-assistive-mml role="presentation" unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>2</mn><mi>◻</mi></math></mjx-assistive-mml></mjx-container></span> Concepts of social interaction and functions of pedagogical</h2>
+ agents as learning companions (PALs).<div class="table_tabular  preview-paragraph-86 preview-line 86 87 88 89 90" style="text-align: center" data_line_start="86" data_line_end="90" data_line="86,91" count_line="5">
+<div class="inline-tabular"><table id="tabular">
+<tbody>
+<tr style="border-top: none !important; border-bottom: none !important;">
+<td style="text-align: left; border-left: none !important; border-right: none !important; border-bottom-style: solid !important; border-bottom-width: 1px !important; border-top-style: solid !important; border-top-width: 1px !important; width: auto; vertical-align: middle; ">Concepts</td>
+<td style="text-align: left; border-bottom-style: solid !important; border-bottom-width: 1px !important; border-top-style: solid !important; border-top-width: 1px !important; width: auto; vertical-align: middle; ">Functions</td>
+</tr>
+<tr style="border-top: none !important; border-bottom: none !important;">
+<td style="text-align: left; border-left: none !important; border-right: none !important; border-bottom-style: solid !important; border-bottom-width: 1px !important; border-top: none !important; width: auto; vertical-align: middle; ">Cognitive conflict Equal power relations</td>
+<td style="text-align: left; border-bottom-style: solid !important; border-bottom-width: 1px !important; border-top: none !important; width: auto; vertical-align: middle; ">Co-learning virtual peers Bring new ideas to provoke cognitive conflict. Learn contents along with the learner. Share equal power relations to facilitate interaction.</td>
+</tr>
+<tr style="border-top: none !important; border-bottom: none !important;">
+<td style="text-align: left; border-left: none !important; border-right: none !important; border-bottom: none !important; border-top: none !important; width: auto; vertical-align: middle; ">ZPD</td>
+<td style="text-align: left; border-bottom: none !important; border-top: none !important; width: auto; vertical-align: middle; ">Advanced virtual peers Scaffolding Provide information to advance a learner's knowledge. Provide scaffolding to extend a learner's cognitive range.</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+<div class="preview-paragraph-92 preview-line 92" data_line_start="92" data_line_end="92" data_line="92,93" count_line="1">Empathetic relations Affective virtual peers</div>
+<div class="preview-paragraph-94 preview-line 94" data_line_start="94" data_line_end="94" data_line="94,95" count_line="1">Express emotions to be natural and believable.</div>
+<div class="preview-paragraph-96 preview-line 96" data_line_start="96" data_line_end="96" data_line="96,97" count_line="1">Respond with empathy to a learner's emotions. agency: (a) personal, (b) proxy, and (c) collective. These modes can be related to learning concepts frequently referred toin educational research: personal agency to learner control; proxy agency to social modeling; and collective agency to collaboration.</div>
+<h2 type="section" class="section-title preview-paragraph-98 preview-line 98" id="personal-agency%3A-learner-control" data_line_start="98" data_line_end="98" data_line="98,99" count_line="1">
+<span class="section-number">10. </span>Personal Agency: Learner Control</h2>
+<div class="preview-paragraph-100 preview-line 100" data_line_start="100" data_line_end="100" data_line="100,101" count_line="1">The concept of personal agency emphasizes learners' control over and selfregulation of their learning tasks. According to Bandura (2001), the essential capacity of humanness is to exercise control over the nature and quality of one's life. Through the exercise of personal agency, people can enhance their efficacy beliefs. With their own intention, learners may want to plan, select, motivate, regulate, and evaluate cognitive activities. Personal agency could also be consistently applied to computing environments. As in conventional computer-based environments indicating the positive motivational impact of learner control (Large, 1996), learners may increase self-efficacy beliefs when they initiate interaction and make decisions with less direction or control by PALs. To this end a PAL could be designed as a responsive partner, one that does not direct but rather responds to the learner's requests. This way the learner could exercise personal agency and, consequently, increase self-efficacy beliefs in the task. Of course, this presumed benefit of learner control appears to work with learner characteristics in traditional computer-based learning as well (Arnone, Grabowski, &amp; Rynd, 1994; Large, 1996; Ross, Morrison, &amp; O'dell, 1989); thus, a designer should include such learner characteristics as competency, age, learning styles, and so forth in determining the optimal design of PAL-learner interaction.</div>
+<h2 type="section" class="section-title preview-paragraph-102 preview-line 102" id="proxy-agency%3A-social-modeling" data_line_start="102" data_line_end="102" data_line="102,103" count_line="1">
+<span class="section-number">11. </span>Proxy Agency: Social Modeling</h2>
+<div class="preview-paragraph-104 preview-line 104" data_line_start="104" data_line_end="104" data_line="104,105" count_line="1">Proxy agency is socially mediated agency, which enables people to get resources or expertise of others to accomplish what they desire. People's appraisals of their own efficacy are influenced through vicarious experience mediated through social models (Bandura, 1997). Learners actively search for competent models and take advantage of time, efforts, and resources of social models that will transmit the knowledge, skills, and strategies they seek. Recently, human-computer interaction research has indicated the potential of virtual characters (e.g., pedagogical agents) functioning as social models. Learners have seemed to consider the characters to be social entities. For instance, college students applied politeness norms (Mayer, Johnson, Shaw, &amp; Sandhu, 2005), notions of self and other, and gender stereotypes while interacting with computers (Reeves &amp; Nass, 1996). Thus, a PAL that successfully performs the tasks may serve as a social model for enhanced motivation and learning in computer-based environments. Also, attribute similarity between learners and social models significantly influences modeling effects in traditional classrooms (Bandura, 1997; Schunk, 1987), so it seems plausible that the attributes or personal characteristics of a PAL might have an impact on learners in computing environments (Kim, 2005a).</div>
+<h2 type="section" class="section-title preview-paragraph-106 preview-line 106" id="collective-agency%3A-collaboration" data_line_start="106" data_line_end="106" data_line="106,107" count_line="1">
+<span class="section-number">12. </span>Collective Agency: Collaboration</h2>
+<div class="preview-paragraph-108 preview-line 108" data_line_start="108" data_line_end="108" data_line="108,109" count_line="1">Collective agency is exercised through group action. Individuals do not live in isolation but rather are interdependent in a variety of social contexts. In their everyday lives, people typically achieve goals through collective efforts with others. People have to pool their knowledge, skills, and resources; provide mutual support; and work together to secure what they cannot accomplish on their own (Bandura, 2002). Collaborative learning may take its place with the concept of collective agency. Supporting collaboration through various mechanisms has been claimed in computer-based environments (Dillenbourg, Mendelsohn, &amp; Schneider, 1994). Toward that goal, PALs could be designed to promote the exercise of collective agency. The number of PALs can be adjusted to meet the instructional needs of the moment. In a multiple-PAL environment, each PAL equipped with various domain-specific skills could share tasks by their expertise and thus collectively help a learner to achieve goals; also, the inclusion of multiple PALs could enhance the social richness of the environment. Table 3 summarizes the PAL functions with the concepts of social cognitive theory.</div>
+<div class="preview-paragraph-110 preview-line 110" data_line_start="110" data_line_end="110" data_line="110,111" count_line="1">Table <span class="math-inline "><mathml style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mn>3</mn>
+  <mi>&#x25FB;</mi>
+</math></mathml><mathmlword style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mn>3</mn>
+  <mi>◻</mi>
+</math></mathmlword><asciimath style="display: none;">3◻</asciimath><latex style="display: none">3 \square</latex><mjx-container class="MathJax" jax="SVG" role="presentation" style="position: relative"><svg style="vertical-align: -0.05ex" xmlns="http://www.w3.org/2000/svg" width="2.891ex" height="1.609ex" role="img" focusable="false" viewBox="0 -689 1278 711" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mn"><path data-c="33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"></path></g><g data-mml-node="mi" transform="translate(500, 0)"><path data-c="25FB" d="M71 0Q59 4 55 16V346L56 676Q64 686 70 689H709Q719 681 722 674V15Q719 10 709 1L390 0H71ZM682 40V649H95V40H682Z"></path></g></g></g></svg><mjx-assistive-mml role="presentation" unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>3</mn><mi>◻</mi></math></mjx-assistive-mml></mjx-container></span> Concepts of social cognitive theory and the roles of pedagogical agents as learning companions (PALs).</div>
+<div class="table_tabular  preview-paragraph-112 preview-line 112 113 114 115 116 117 118" style="text-align: center" data_line_start="112" data_line_end="118" data_line="112,119" count_line="7">
+<div class="inline-tabular"><table id="tabular">
+<tbody>
+<tr style="border-top: none !important; border-bottom: none !important;">
+<td style="text-align: left; border-left: none !important; border-right: none !important; border-bottom-style: solid !important; border-bottom-width: 1px !important; border-top-style: solid !important; border-top-width: 1px !important; width: auto; vertical-align: middle; ">Concepts</td>
+<td style="text-align: left; border-bottom-style: solid !important; border-bottom-width: 1px !important; border-top-style: solid !important; border-top-width: 1px !important; width: auto; vertical-align: middle; ">Roles</td>
+</tr>
+<tr style="border-top: none !important; border-bottom: none !important;">
+<td style="text-align: left; border-left: none !important; border-right: none !important; border-bottom: none !important; border-top: none !important; width: auto; vertical-align: middle; " class="_empty"></td>
+<td style="text-align: left; border-bottom: none !important; border-top: none !important; width: auto; vertical-align: middle; " class="_empty"></td>
+</tr>
+<tr style="border-top: none !important; border-bottom: none !important;">
+<td style="text-align: left; border-left: none !important; border-right: none !important; border-bottom: none !important; border-top: none !important; width: auto; vertical-align: middle; ">Personal agency:</td>
+<td style="text-align: left; border-bottom: none !important; border-top: none !important; width: auto; vertical-align: middle; ">Responsive partners</td>
+</tr>
+<tr style="border-top: none !important; border-bottom: none !important;">
+<td style="text-align: left; border-left: none !important; border-right: none !important; border-bottom: none !important; border-top: none !important; width: auto; vertical-align: middle; ">Learner control</td>
+<td style="text-align: left; border-bottom: none !important; border-top: none !important; width: auto; vertical-align: middle; ">Allow learners' initiation and control over tasks.</td>
+</tr>
+<tr style="border-top: none !important; border-bottom: none !important;">
+<td style="text-align: left; border-left: none !important; border-right: none !important; border-bottom: none !important; border-top: none !important; width: auto; vertical-align: middle; " class="_empty"></td>
+<td style="text-align: left; border-bottom: none !important; border-top: none !important; width: auto; vertical-align: middle; ">Respond to learners' direction and/or requests.</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+<div class="preview-paragraph-120 preview-line 120" data_line_start="120" data_line_end="120" data_line="120,121" count_line="1">Proxy agency:</div>
+<div class="preview-paragraph-122 preview-line 122" data_line_start="122" data_line_end="122" data_line="122,123" count_line="1">Social modeling Peer models</div>
+<div class="preview-paragraph-124 preview-line 124" data_line_start="124" data_line_end="124" data_line="124,125" count_line="1">Transmit knowledge and skills.</div>
+<div class="preview-paragraph-126 preview-line 126" data_line_start="126" data_line_end="126" data_line="126,127" count_line="1">Increase modeling effects by sharing similar attributes with the learner. Collective agency:</div>
+<div class="preview-paragraph-128 preview-line 128" data_line_start="128" data_line_end="128" data_line="128,129" count_line="1">Collaboration Multiple collaborators</div>
+<div class="preview-paragraph-130 preview-line 130" data_line_start="130" data_line_end="130" data_line="130,131" count_line="1">Pool specific knowledge and skills Create dynamic social environments</div>
+<h2 type="section" class="section-title preview-paragraph-132 preview-line 132" id="summary" data_line_start="132" data_line_end="132" data_line="132,133" count_line="1">
+<span class="section-number">13. </span>Summary</h2>
+<div class="preview-paragraph-134 preview-line 134" data_line_start="134" data_line_end="134" data_line="134,135" count_line="1">Overall, this review of the seminal concepts from social cognitive theories is intended to provide a theoretical framework for designing the optimal functionalities of PALs. To summarize, distributed cognition may support intellectual partnership between a learner and a PAL. The concepts of social interaction could emphasize the intellectual and empathetic transactions between them. Social cognitive theory suggests multiple constructs of PALs, such as gender, ethnicity, and multiplicity (more than one PAL), which could render PALs as desirable social models. Each of these theories and concepts suggest a full spectrum of permutations in designing desirable characteristics of PALs. It should be acknowledged, of course, that the fruitful applications of PALs can evolve only with the advancement of agent technology and will be ensured by the empirical evidence of instructional impacts accumulated with time. In the following section, the design constituents of a PAL are discussed along with the research findings to date.</div>
+<h2 type="section" class="section-title preview-paragraph-136 preview-line 136" id="constituents-of-pals" data_line_start="136" data_line_end="136" data_line="136,137" count_line="1">
+<span class="section-number">14. </span>CONSTITUENTS OF PALS</h2>
+<div class="preview-paragraph-138 preview-line 138" data_line_start="138" data_line_end="138" data_line="138,139" count_line="1">Based on the review of the social-cognitive perspectives, seven design constituents of instructional PALs are proposed: (a) competency, (b) interaction type, (c) gender, (d) affect, (e) ethnicity, (f) multiplicity, and (g) feedback. Of these constituents, distributed cognition suggests PAL competency, interaction type, multiplicity, and feedback as relevant; the concepts of social interaction suggest PAL competency, interaction type, affect, and feedback; and the concepts of Bandura's social cognitive theory suggest PAL competency, interaction type, gender, affect, ethnicity, and multiplicity. Figure 3 presents the graphical representation of the constituents and the supporting concepts. The seven constituents are intended not as definitive but as suggestive for subsequent research on PALs. Detailed discussions of each constituent and any related research follow.</div>
+<h2 type="section" class="section-title preview-paragraph-140 preview-line 140" id="competency" data_line_start="140" data_line_end="140" data_line="140,141" count_line="1">
+<span class="section-number">15. </span>Competency</h2>
+<div class="preview-paragraph-142 preview-line 142" data_line_start="142" data_line_end="142" data_line="142,143" count_line="1">PALs can be designed to achieve different levels of competency depending on the theoretical perspective. A PAL could be designed to demonstrate knowledge and skills maximizing the effect of technology (Salomon, 1990) or to advance the learner's knowledge in the zone of proximal development. Likewise, the concept of proxy agency (social modeling) supports PAL competency that is high, but not too high, to serve as a desirable social model for learning. As Bandura (2001) warned, a highly competent model could some- Figure <span class="math-inline "><mathml style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mn>3</mn>
+  <mi>&#x25FB;</mi>
+</math></mathml><mathmlword style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mn>3</mn>
+  <mi>◻</mi>
+</math></mathmlword><asciimath style="display: none;">3◻</asciimath><latex style="display: none">3 \square</latex><mjx-container class="MathJax" jax="SVG" role="presentation" style="position: relative"><svg style="vertical-align: -0.05ex" xmlns="http://www.w3.org/2000/svg" width="2.891ex" height="1.609ex" role="img" focusable="false" viewBox="0 -689 1278 711" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mn"><path data-c="33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"></path></g><g data-mml-node="mi" transform="translate(500, 0)"><path data-c="25FB" d="M71 0Q59 4 55 16V346L56 676Q64 686 70 689H709Q719 681 722 674V15Q719 10 709 1L390 0H71ZM682 40V649H95V40H682Z"></path></g></g></g></svg><mjx-assistive-mml role="presentation" unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>3</mn><mi>◻</mi></math></mjx-assistive-mml></mjx-container></span> Constituents of pedagogical agents as learning companions</div>
+<div class="preview-paragraph-144 preview-line 144" data_line_start="144" data_line_end="144" data_line="144,145" count_line="1"><figure style="text-align: center"><img src="https://cdn.mathpix.com/cropped/2022_12_24_3a4354da8e534db8168ag-14.jpg?height=519&amp;width=908&amp;top_left_y=334&amp;top_left_x=293" alt="" data-align="center"></figure></div>
+<div class="preview-paragraph-146 preview-line 146" data_line_start="146" data_line_end="146" data_line="146,147" count_line="1">times impede the cultivation of personal competencies because the learner might unduly rely on the model's competency. Also, from a Piagetian perspective, a PAL designed to have low-to-moderate ability could simulate an equal partner to instigate the learner's cognitive conflict.</div>
+<div class="preview-paragraph-148 preview-line 148" data_line_start="148" data_line_end="148" data_line="148,149" count_line="1">Among the constituents, PAL competency has gained attention frequently in research on both learning companions (Hietala &amp; Niemirepo, 1998a; Kim &amp; Baylor, 2006) and intelligent systems without anthropomorphism (Chan &amp; Chou, 1997; Palthepu, Greer, &amp; McCalla, 1991; Ur &amp; VanLehn, 1995; Uresti, 2000; Uresti &amp; Boulay, 2004). For instance, Kim and Baylor (2006) examined the desirable levels of PAL competency for college students learning introductory instructional design. The study showed that highly competent PALs increased both male and female student applications of acquired knowledge whereas low competent PALs increased student self-efficacy beliefs in the domain. In the study, PAL interaction was not intelligent but pre-scripted, which could indicate that the PAL-learner interaction was somewhat limited. Similarly, Hietala and Niemirepo (1998a) examined how intelligent pedagogical agents called EduAgents, strong or weak in the domain of math, facilitated or frustrated male and female 6th graders. They found that when the task was demanding, strong students (high IQ) more frequently asked for the strong agents' suggestions, whereas weak students (low IQ) asked more for weak agents' suggestions. This difference was not shown when the task was easy. Given the technological or methodological limitations of the studies, those findings may be too premature to generalize and should be interpreted as preliminary. It is also noted, however, that learners' showing increased self-efficacy after working with weak agents has been replicated consistently in other studies (Baylor &amp; Kim, 2004, 2005). The educational use of this observation is worth exploring. Subsequent research is warranted to confirm the findings of the studies and to identify whether the optimal levels of PAL competency would interact with learner competency. Also, it would be desirable, as in any other educational interventions, for the long-term-based evidence to be established.</div>
+<div class="preview-paragraph-150 preview-line 150" data_line_start="150" data_line_end="150" data_line="150,151" count_line="1">Interaction Type</div>
+<div class="preview-paragraph-152 preview-line 152" data_line_start="152" data_line_end="152" data_line="152,153" count_line="1">The type of interaction between a PAL and a learner can be examined from two angles: (a) the control of interaction and (b) the content of interaction. Regarding interaction control, person-plus cognition (Perkins, 2001) suggested that learners should be active initiators in their cognitive activities. Similarly, the concept of personal agency (learner control), which emphasizes the value of self-monitoring, self-examination, and self-reflection, supports a learner's voluntary initiation of interactions with a PAL. In contrast, in light of sociocultural cognition (Lave &amp; Wenger, 2001), a PAL could simulate an active partner initiating interactions to promote the sense of social context. Kim and Baylor (2006) examined the effects of PAL interaction type (proactive vs. responsive) with 72 male and female college students learning instructional planning. The results indicated that students who worked with a PAL that proactively provided information achieved higher recall than students who worked with a PAL that responded only to a learner's requests. A detailed look revealed that students in the responsive PAL condition used the PAL's information less than might be desired. The study also showed that the proactive PAL tended to have a more positive impact on academically strong students whereas the responsive PAL tended to have a more positive impact on academically weak students.</div>
+<div class="preview-paragraph-154 preview-line 154" data_line_start="154" data_line_end="154" data_line="154,155" count_line="1">Regarding the content of interaction, a PAL can utilize a variety of discourse functions, such as suggestion, argument, confirmation, and questioning to scaffold learners in the zone of proximal development. Goodman and his colleagues (1998) suggested a learning triangle that illustrates the types of interaction exchanges between a learner and a partner: clarify, critique, explain, question, evaluate, articulate, reinforce, and justify. How to delineate these exchanges in PAL-learner interactions effectively needs to be determined. Related to the content of interaction, Craig, Gholson, Ventura, Graesser, and Group (2000) examined the effect of learning companion dialogue versus monologue with 48 college students in a domain of computer literacy. Results showed that students who overheard the dialogue in which a virtual tutee asked a virtual tutor questions wrote significantly more propositions in free recall and asked significantly more questions in the transfer task than did students who overheard a monologue. Also, students who overheard the dialogue showed deeper-level reasoning. Research on the content of PALlearner interaction seems wide open and could require multidisciplinary efforts. Instructional designers may be guided by the implications from classroom research, social psychology, and communication theories as well as human-computer interaction. Further, the design of PAL-learner interaction could be a function of technological advancement. That is, the naturalness of PAL-learner interaction appears to be critical for efficacy.</div>
+<h2 type="section" class="section-title preview-paragraph-156 preview-line 156" id="gender" data_line_start="156" data_line_end="156" data_line="156,157" count_line="1">
+<span class="section-number">16. </span>Gender</h2>
+<div class="preview-paragraph-158 preview-line 158" data_line_start="158" data_line_end="158" data_line="158,159" count_line="1">Issues of gender difference, of importance in cognitive and interaction styles, are especially salient in educational computing, a salience often attributed to male-oriented software (Cooper &amp; Weaver, 2003). Littleton, Light, Joiner, Messer, and Barnes (1998) reasoned that one of the difficulties girls have with learning from instructional software could be that characters (warrior-like in general) in those programs are not appealing to girls. This lack of identification with the characters may cause the girls to experience greater computer anxiety, lower interest, and poorer performance. PALs with friendly demeanors could help to reduce such anxiety and to increase motivation in computer-based learning environments. In addition, according to Bandura (1997), similarities of personal characteristics between a social model and a learner (attribute similarity) often are predictive of the learner's efficacy beliefs and influence the success of social modeling. This principle may be applied to design PALs in computing environments, given the consistency between human-computer interaction and human-to-human interaction (Reeves &amp; Nass, 1996).</div>
+<div class="preview-paragraph-160 preview-line 160" data_line_start="160" data_line_end="160" data_line="160,161" count_line="1">Interestingly, the gender of PAL—of all the variables treated here-tends best to reflect human relationships in the real world. Kim and colleagues examined in several studies the effects of PAL gender on college students' social judgments, motivation, and learning. Both male and female college students perceived the persona of a male PAL more positively than that of a female PAL (Kim &amp; Baylor, 2005a); recalled more after they worked with a male PAL than with a female PAL (Kim &amp; Baylor, 2005b); and showed higher motivation toward and more favorable perceptions of male instructor agents over female agents (Baylor &amp; Kim, 2003, 2004). Those agents, differing only in gender, were morphed from one image and equipped with identical scripts, gestures, and emotions. Likewise, the study conducted by Moreno and colleagues (2002) showed that male and female undergraduates applied gender stereotypes to animated tutor agents and that their stereotypic expectations affected learning. Stereotypic expectations of males and females in human relationships (Carli, 2001) seem to be consistently applied to PAL-learner relationships. However, given that gender awareness may differ across developmental stages, the application of the stereotypic bias to PAL-learner relations may vary according to learner age levels. Nonetheless, the remedial solutions to overcome the gender-related bias applied to computing environments will be worth pursuing. The motivation for overcoming this bias would be social, not instructional.</div>
+<h2 type="section" class="section-title preview-paragraph-162 preview-line 162" id="affect" data_line_start="162" data_line_end="162" data_line="162,163" count_line="1">
+<span class="section-number">17. </span>Affect</h2>
+<div class="preview-paragraph-164 preview-line 164" data_line_start="164" data_line_end="164" data_line="164,165" count_line="1">Given the integral nature of affect and cognition (Damasio, 1994), affective interaction between users and computers has recently been of particular interest in the fields of human-computer interaction and educational computing. For instance, when a program deliberately frustrated users playing games, the users persisted longer in the program than did the users in the control group (Scheirer, Fernandez, Klein, &amp; Picard, 2002). College students perceived pedagogical agents as more interesting and engaging when the agents expressed affect (Elliott, Rickel, &amp; Lester, 1999; Okonkwo, 2003). As Saarni (2001) argued, emotional development of individuals is often attributed to immediate contexts and relationships. It sounds plausible that a PAL designed to express positive emotions about the task might be used to stimulate a learner's positive affect (Picard, 1997).</div>
+<div class="preview-paragraph-166 preview-line 166" data_line_start="166" data_line_end="166" data_line="166,167" count_line="1">In general, PAL affect is defined in terms of PAL capabilities of expressing their own affect and recognizing and responding to a learner's affect (Hudlicka, 2003; Picard, 1997). For affect recognition, researchers in the MIT Media Lab have developed systems to recognize a learner's affect, using hardware technology such as a pressure-sensitive mouse, a BlueTooth <span class="math-inline "><mathml style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mi>&#xAE;</mi>
+</math></mathml><mathmlword style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mi>®</mi>
+</math></mathmlword><asciimath style="display: none;">®</asciimath><latex style="display: none">\circledR</latex><mjx-container class="MathJax" jax="SVG" role="presentation" style="position: relative"><svg style="vertical-align: -0.396ex" xmlns="http://www.w3.org/2000/svg" width="2.143ex" height="2ex" role="img" focusable="false" viewBox="0 -709 947 884" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="AE" d="M915 266Q915 140 852 38T689 -120T474 -175Q312 -175 188 -71T38 190Q32 220 32 266V287Q32 345 57 416T129 545Q192 624 282 666T464 709Q513 709 522 708Q599 698 665 666T776 590T853 493T900 387T915 287V266ZM875 285Q875 339 853 399T789 517T676 616T519 668Q510 669 465 669Q380 669 299 630T155 514T77 336Q72 312 72 285V266V256Q72 123 163 11Q290 -135 474 -135Q614 -135 727 -46Q875 81 875 266V285ZM276 457Q275 458 274 460T272 463T270 465T267 467T264 469T258 471T252 472T243 473T232 474T218 474H204V514H335Q477 514 499 510Q560 502 610 467T661 375Q661 362 658 350T648 327T635 308T618 292T601 280T583 269T568 262T554 256L547 253Q548 252 556 247T570 237T586 223T602 202T614 174Q616 169 626 123T638 72Q652 23 683 23Q715 23 720 68Q721 78 724 81T740 84T756 82T760 70Q760 47 747 25T715 -7Q700 -14 673 -14Q672 -14 662 -14T643 -12T619 -7T593 2T568 16T547 37T534 67Q531 80 531 97Q531 103 531 116T532 136Q532 218 472 236Q466 238 413 239H360V148L361 58Q366 47 375 44T418 40H432V0H424Q409 3 318 3T212 0H204V40H218Q242 40 253 42T268 47T276 58V457ZM376 473Q365 471 363 464T360 430V366V276H416Q421 276 434 276T453 276T469 277T486 279T501 282T517 287T529 294T542 305Q561 324 561 375Q561 424 545 444T482 472Q478 473 427 474Q415 474 403 474T384 474L376 473Z"></path></g></g></g></svg><mjx-assistive-mml role="presentation" unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>®</mi></math></mjx-assistive-mml></mjx-container></span> wireless skin conductivity sensor, a TekScan® pressure sensor on a chair, a stereo head-tracking system, and Blue Eyes <span class="math-inline "><mathml style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mi>&#xAE;</mi>
+</math></mathml><mathmlword style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mi>®</mi>
+</math></mathmlword><asciimath style="display: none;">®</asciimath><latex style="display: none">\circledR</latex><mjx-container class="MathJax" jax="SVG" role="presentation" style="position: relative"><svg style="vertical-align: -0.396ex" xmlns="http://www.w3.org/2000/svg" width="2.143ex" height="2ex" role="img" focusable="false" viewBox="0 -709 947 884" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="AE" d="M915 266Q915 140 852 38T689 -120T474 -175Q312 -175 188 -71T38 190Q32 220 32 266V287Q32 345 57 416T129 545Q192 624 282 666T464 709Q513 709 522 708Q599 698 665 666T776 590T853 493T900 387T915 287V266ZM875 285Q875 339 853 399T789 517T676 616T519 668Q510 669 465 669Q380 669 299 630T155 514T77 336Q72 312 72 285V266V256Q72 123 163 11Q290 -135 474 -135Q614 -135 727 -46Q875 81 875 266V285ZM276 457Q275 458 274 460T272 463T270 465T267 467T264 469T258 471T252 472T243 473T232 474T218 474H204V514H335Q477 514 499 510Q560 502 610 467T661 375Q661 362 658 350T648 327T635 308T618 292T601 280T583 269T568 262T554 256L547 253Q548 252 556 247T570 237T586 223T602 202T614 174Q616 169 626 123T638 72Q652 23 683 23Q715 23 720 68Q721 78 724 81T740 84T756 82T760 70Q760 47 747 25T715 -7Q700 -14 673 -14Q672 -14 662 -14T643 -12T619 -7T593 2T568 16T547 37T534 67Q531 80 531 97Q531 103 531 116T532 136Q532 218 472 236Q466 238 413 239H360V148L361 58Q366 47 375 44T418 40H432V0H424Q409 3 318 3T212 0H204V40H218Q242 40 253 42T268 47T276 58V457ZM376 473Q365 471 363 464T360 430V366V276H416Q421 276 434 276T453 276T469 277T486 279T501 282T517 287T529 294T542 305Q561 324 561 375Q561 424 545 444T482 472Q478 473 427 474Q415 474 403 474T384 474L376 473Z"></path></g></g></g></svg><mjx-assistive-mml role="presentation" unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>®</mi></math></mjx-assistive-mml></mjx-container></span> infrared-sensitive camera (Burleson, Picard, Perlin, &amp; Lippincott, 2004). It is reported that these technologies demonstrate approximately <span class="math-inline "><mathml style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mn>80</mn>
+  <mi mathvariant="normal">%</mi>
+</math></mathml><mathmlword style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mn>80</mn>
+  <mi mathvariant="normal">%</mi>
+</math></mathmlword><asciimath style="display: none;">80%</asciimath><latex style="display: none">80 \%</latex><mjx-container class="MathJax" jax="SVG" role="presentation" style="position: relative"><svg style="vertical-align: -0.127ex" xmlns="http://www.w3.org/2000/svg" width="4.147ex" height="1.824ex" role="img" focusable="false" viewBox="0 -750 1833 806" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mn"><path data-c="38" d="M70 417T70 494T124 618T248 666Q319 666 374 624T429 515Q429 485 418 459T392 417T361 389T335 371T324 363L338 354Q352 344 366 334T382 323Q457 264 457 174Q457 95 399 37T249 -22Q159 -22 101 29T43 155Q43 263 172 335L154 348Q133 361 127 368Q70 417 70 494ZM286 386L292 390Q298 394 301 396T311 403T323 413T334 425T345 438T355 454T364 471T369 491T371 513Q371 556 342 586T275 624Q268 625 242 625Q201 625 165 599T128 534Q128 511 141 492T167 463T217 431Q224 426 228 424L286 386ZM250 21Q308 21 350 55T392 137Q392 154 387 169T375 194T353 216T330 234T301 253T274 270Q260 279 244 289T218 306L210 311Q204 311 181 294T133 239T107 157Q107 98 150 60T250 21Z"></path><path data-c="30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z" transform="translate(500, 0)"></path></g><g data-mml-node="mi" transform="translate(1000, 0)"><path data-c="25" d="M465 605Q428 605 394 614T340 632T319 641Q332 608 332 548Q332 458 293 403T202 347Q145 347 101 402T56 548Q56 637 101 693T202 750Q241 750 272 719Q359 642 464 642Q580 642 650 732Q662 748 668 749Q670 750 673 750Q682 750 688 743T693 726Q178 -47 170 -52Q166 -56 160 -56Q147 -56 142 -45Q137 -36 142 -27Q143 -24 363 304Q469 462 525 546T581 630Q528 605 465 605ZM207 385Q235 385 263 427T292 548Q292 617 267 664T200 712Q193 712 186 709T167 698T147 668T134 615Q132 595 132 548V527Q132 436 165 403Q183 385 203 385H207ZM500 146Q500 234 544 290T647 347Q699 347 737 292T776 146T737 0T646 -56Q590 -56 545 0T500 146ZM651 -18Q679 -18 707 24T736 146Q736 215 711 262T644 309Q637 309 630 306T611 295T591 265T578 212Q577 200 577 146V124Q577 -18 647 -18H651Z"></path></g></g></g></svg><mjx-assistive-mml role="presentation" unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>80</mn><mi mathvariant="normal">%</mi></math></mjx-assistive-mml></mjx-container></span> accuracy in detecting discrete emotions, such as happy versus sad or angry versus calm. At present, capturing users' complex emotions seems challenging. Although the capability of responding to a learner's affect awaits the necessary technology, affective expression has already been nearby. Using software tools, designers can build realistic 3-D images with subtle emotional expressions without much difficulty.</div>
+<div class="preview-paragraph-168 preview-line 168" data_line_start="168" data_line_end="168" data_line="168,169" count_line="1">Each aspect of the PAL affective capabilities requires different technologies and resources to varying degrees; thus, their efficacy can be examined separately prior to the integrative efficacy. Kim (2004) examined the impact of PAL affective expressions and responses separately in two controlled experiments. For affective expression, based on the findings from human emotion research, she examined whether the positive or negative moods of a PAL would differently influence a learner's affective and cognitive characteristics. The participants were 142 male and female college students learning introductory instructional designing. The results showed that students who worked with a PAL that expressed a positive mood perceived the PAL as significantly more facilitating to learning, more engaging, and more intelligent than did students working with a PAL that expressed a negative mood. The students with the positive PAL also rated their motivation to keep working with the PAL significantly higher than did those with the negative PAL. Figure 4 presents male and female PALs, both named Chris, in the positive- and negative-affect conditions. In another experiment examining the impact of affective response, learners were asked to express their emotional states by clicking an emoticon presented on the screen; a PAL responded verbally with empathy or did not respond at all. Students showed significantly more interest and higher selfefficacy in the task when the PAL empathetically responded to their affect than when the PAL did not. In general, the positive impact of empathetic agents on learner motivation is steadily supported, but such an impact on learning is not reported frequently.</div>
+<h2 type="section" class="section-title preview-paragraph-170 preview-line 170" id="ethnicity" data_line_start="170" data_line_end="170" data_line="170,171" count_line="1">
+<span class="section-number">18. </span>Ethnicity</h2>
+<div class="preview-paragraph-172 preview-line 172" data_line_start="172" data_line_end="172" data_line="172,173" count_line="1">With respect to the concept of attribute similarity (Bandura, 1997), models of the same ethnicity seem to be viewed as more credible and to instill stronger efficacy beliefs and behavioral intentions than models of other ethnicities. In a computer-mediated communication, college students who had similar-ethnicity partners presented more persuasive arguments and also elicited more conformity to the partners' opinions and perceived their partners as more attractive and trustworthy than those who had different-ethnicity partners (Lee &amp; Nass, 1998). Given the implications, PAL ethnicity can be manipulated to match or mismatch with learner ethnicity to serve instructional purposes.</div>
+<div class="preview-paragraph-174 preview-line 174" data_line_start="174" data_line_end="174" data_line="174,175" count_line="1">Research focusing on learner-PAL ethnicity is rare, but some studies examined the ethnicity of pedagogical agents in general. Baylor and Kim (2004) found that college students (Caucasian and African-American) who worked with agents of the same ethnicity as their own perceived the agents as more credible, more engaging, and more affable than did students who worked with agents of different ethnicity. This tendency appeared more strongly among African-American students than among Caucasian students. In contrast, the ethnicity of pedagogical agents did not influence students' stereotypic expectations and learning in a study conducted by Moreno and colleagues (2002). The implication of these studies for PALs may or may not be consistent, given the distinctive role of PALs as simulated peers. Figure <span class="math-inline "><mathml style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mn>4</mn>
+  <mi>&#x25FB;</mi>
+</math></mathml><mathmlword style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mn>4</mn>
+  <mi>◻</mi>
+</math></mathmlword><asciimath style="display: none;">4◻</asciimath><latex style="display: none">4 \square</latex><mjx-container class="MathJax" jax="SVG" role="presentation" style="position: relative"><svg style="vertical-align: 0" xmlns="http://www.w3.org/2000/svg" width="2.891ex" height="1.559ex" role="img" focusable="false" viewBox="0 -689 1278 689" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mn"><path data-c="34" d="M462 0Q444 3 333 3Q217 3 199 0H190V46H221Q241 46 248 46T265 48T279 53T286 61Q287 63 287 115V165H28V211L179 442Q332 674 334 675Q336 677 355 677H373L379 671V211H471V165H379V114Q379 73 379 66T385 54Q393 47 442 46H471V0H462ZM293 211V545L74 212L183 211H293Z"></path></g><g data-mml-node="mi" transform="translate(500, 0)"><path data-c="25FB" d="M71 0Q59 4 55 16V346L56 676Q64 686 70 689H709Q719 681 722 674V15Q719 10 709 1L390 0H71ZM682 40V649H95V40H682Z"></path></g></g></g></svg><mjx-assistive-mml role="presentation" unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>4</mn><mi>◻</mi></math></mjx-assistive-mml></mjx-container></span> Chris in positive and negative affect.</div>
+<div class="preview-paragraph-176 preview-line 176" data_line_start="176" data_line_end="176" data_line="176,177" count_line="1"><figure style="text-align: center"><img src="https://cdn.mathpix.com/cropped/2022_12_24_3a4354da8e534db8168ag-19.jpg?height=347&amp;width=564&amp;top_left_y=301&amp;top_left_x=175" alt="" data-align="center"></figure></div>
+<div class="preview-paragraph-178 preview-line 178" data_line_start="178" data_line_end="178" data_line="178,179" count_line="1">Chris in the positive mood.</div>
+<div class="preview-paragraph-180 preview-line 180" data_line_start="180" data_line_end="180" data_line="180,181" count_line="1"><figure style="text-align: center"><img src="https://cdn.mathpix.com/cropped/2022_12_24_3a4354da8e534db8168ag-19.jpg?height=351&amp;width=551&amp;top_left_y=299&amp;top_left_x=753" alt="" data-align="center"></figure></div>
+<div class="preview-paragraph-182 preview-line 182" data_line_start="182" data_line_end="182" data_line="182,183" count_line="1">Chris in the negative mood.</div>
+<h2 type="section" class="section-title preview-paragraph-184 preview-line 184" id="multiplicity" data_line_start="184" data_line_end="184" data_line="184,185" count_line="1">
+<span class="section-number">19. </span>Multiplicity</h2>
+<div class="preview-paragraph-186 preview-line 186" data_line_start="186" data_line_end="186" data_line="186,187" count_line="1">When learners are exposed to multiple social models, they may produce stronger beliefs in their ability to learn (Bandura, 1997). Bandura argued that diversified models of widely different characteristics are superior to a single model. To apply this principle, a PAL-based environment may include multiple PALs with varying perspectives or domain-specific skills. For instance, in a computer-based inquiry learning environment, SCI-WISE, White and colleagues (2000) provided young learners at the elementary level with multiple peer-like advisers, such as a planner, an inventor, and a collaborator, so as to facilitate collaborative inquiry and reflective learning. Hietala and Niemirepo (1998a, 1998b) also implemented two male and two female learning companions with varying competencies to facilitate collaboration with 6th graders learning math. The learners were able to choose a learning companion to work with, and their selections were closely related to the learners' academic competencies.</div>
+<div class="preview-paragraph-188 preview-line 188" data_line_start="188" data_line_end="188" data_line="188,189" count_line="1">For the enhanced efficacy of multiple PALs in an environment, there are some issues that should be examined in research: the optimal size of a PAL social group, the roles of PALs (e.g., peer tutee, tutor, trouble-maker, or helper), effective ways to coordinate multiple PALs to keep from confusion or even distraction, and the strategies to manage or control the behaviors of a PAL in accord with one another.</div>
+<h2 type="section" class="section-title preview-paragraph-190 preview-line 190" id="feedback" data_line_start="190" data_line_end="190" data_line="190,191" count_line="1">
+<span class="section-number">20. </span>Feedback</h2>
+<div class="preview-paragraph-192 preview-line 192" data_line_start="192" data_line_end="192" data_line="192,193" count_line="1">Learners in the zone of proximal development may benefit from the effective use of feedback as a scaffolding strategy. The provision of clear informative feedback to a learner's performance facilitates cognitive growth in peer collab- oration (Tudge, Winterhoff, &amp; Hogan, 1996). Also, verbally persuading learners that they can master skills encourages them to exert greater efforts and sustain them (Bandura, 1997). Schunk and Lilly (1984) showed that the different types of performance feedback had differential effects on learner self-efficacy.</div>
+<div class="preview-paragraph-194 preview-line 194" data_line_start="194" data_line_end="194" data_line="194,195" count_line="1">In computer-based environments, learners often lack skills in the effective use of help messages (Aleven, Stahl, Schworm, Fischer, &amp; Wallace, 2003), so PAL feedback should be designed to ensure their effectiveness. In general, PAL feedback relating to PAL interaction type has been least studied among the suggested design constituents. To design PAL feedback effectively, multiple factors could be considered simultaneously, such as feedback type (informative vs. motivational), scope (general vs. context specific), timing (immediate vs. delayed), learner characteristics (e.g., metacognitive skills, motivational levels, and learning styles), and learning goals and contexts.</div>
+<div class="preview-paragraph-196 preview-line 196" data_line_start="196" data_line_end="196" data_line="196,197" count_line="1">In summary, the social-cognitive framework for PAL design led to drawing the seven design constituents of PALs. Readers will notice that the extent of understanding of and the technology for each constituent differ. Some constituents have been investigated more frequently and can be more easily implemented than other constituents. Also, suggestions for the optimal design of a constituent are sometimes contradictory, necessitating subsequent research to gradually resolve the differences. Table 4 summarizes the discussions of the PAL constituents.</div>
+<h2 type="section" class="section-title preview-paragraph-198 preview-line 198" id="conclusion" data_line_start="198" data_line_end="198" data_line="198,199" count_line="1">
+<span class="section-number">21. </span>CONCLUSION</h2>
+<div class="preview-paragraph-200 preview-line 200" data_line_start="200" data_line_end="200" data_line="200,201" count_line="1">As stated earlier, this article is not an argument for replacing human peers with PALs. Rather, we attempted to base the instructional application and design of PALs in a social-cognitive framework so as to address social-cognitive dimensions of learning in computing environments. The ideal form of instruction could well be human tutoring (Bloom, 1984), where a learner can benefit from individualized cognitive guidance through dynamic social interaction. But given the challenges of providing such an ideal environment, computer-based learning should aspire to simulate that environment. Some computer-based tutoring systems have reported success in providing individualized cognitive guidance to a learner (Koedinger &amp; Anderson, 1997), but their impact has always been-as is to be expected-much weaker than that of human tutoring. What has been missing in these computer-based systems? Perhaps learners miss empathetic social encouragements and caring. Given the findings from human-computer interaction, PALs simulating human instructional roles may prove a useful tool for creating social environments in computer-based learning. Although researchers understand the limitation of</div>
+<div class="preview-paragraph-202 preview-line 202" data_line_start="202" data_line_end="202" data_line="202,203" count_line="1"><figure style="text-align: center"><img src="https://cdn.mathpix.com/cropped/2022_12_24_3a4354da8e534db8168ag-21.jpg?height=1826&amp;width=1131&amp;top_left_y=221&amp;top_left_x=186" alt="" data-align="center"></figure></div>
+<div class="preview-paragraph-204 preview-line 204" data_line_start="204" data_line_end="204" data_line="204,205" count_line="1">current technology, the use of PALs may help in shaping a new paradigm in computer-based learning, as implied by a decade ago.</div>
+<div class="preview-paragraph-206 preview-line 206" data_line_start="206" data_line_end="206" data_line="206,207" count_line="1">To provide concrete guidance for researchers interested in PAL, we suggested seven design constituents of PALs drawn from social-cognitive perspectives. Yet these constituents are not comprehensive; the review of literature is rather modest. More important, it should be noted that research on PAL constituents has been very limited and that the studies reviewed in this article may sometimes bring more questions than answers. PALs is an emerging technology and may keep evolving with technological advancement and subsequent research. The findings from the research might produce more constituents and lead to increased sophistication of PAL design.</div>
+<div class="preview-paragraph-208 preview-line 208" data_line_start="208" data_line_end="208" data_line="208,209" count_line="1">In spite of the potential usability of PAL-based environments, this article ends with some cautions. First, the naturalness of PAL behavior may be crucial to fostering social relations with learners. The current status of PAL technology is rather limited in creating desirable naturalness. In that regard, second, PALs may require intelligence (e.g., dynamic interaction and adaptive feedback) to substantiate their instructional potential. Currently, technology cannot fully feature intelligent PALs. Third, even without artificial intelligence, to design and develop PALs is technologically demanding. Although there are some ready-made agents available (e.g., Microsoft Agent® characters), it is usually necessary for researchers to develop their own PALs according to specific research variables. Fourth, research on PALs is inevitably multidisciplinary and may involve researchers in instructional design, cognitive psychology, human-computer interaction, artificial intelligence, social psychology, and communication. Although this can be advantageous in promoting more ecologically valid research, it can be a challenge to coordinate collaborative efforts among such diverse fields. The efforts are worth making.</div>
+<div class="preview-paragraph-210 preview-line 210" data_line_start="210" data_line_end="210" data_line="210,211" count_line="1">Yanghee Kim [yanghee.kim@usu.edu] is Assistant Professor in the Department of Instructional Technology at Utah State University, Logan, and the Director of the Center for Research on Engaging Advanced Technology for Education (CREATE) [<a href="http://www.create.usu.edu" target="_blank" rel="noopener" style="display: inline-block">http://www.create.usu.edu</a>].</div>
+<div class="preview-paragraph-212 preview-line 212" data_line_start="212" data_line_end="212" data_line="212,213" count_line="1">Amy L. Baylor is Associate Professor in the Department of Educational Psychology and Learning Systems at Florida State University and Director of the Center for Research of Innovative Technologies for Learning (RITL) [http:/ /ritl.fsu.edu].</div>
+<h2 type="section" class="section-title preview-paragraph-214 preview-line 214" id="references" data_line_start="214" data_line_end="214" data_line="214,215" count_line="1">
+<span class="section-number">22. </span>REFERENCES</h2>
+<div class="preview-paragraph-216 preview-line 216" data_line_start="216" data_line_end="216" data_line="216,217" count_line="1">Aimeur, E., &amp; Frasson, C. (1996). Analyzing a new learning strategy according to different knowledge levels. Computers &amp; Education, 27(2), 115-127. Aleven, V., Stahl, E., Schworm, S., Fischer, F., &amp; Wallace, R. (2003). Help seeking and help design in interactive learning environments. Review of Educational Research, 73(3), 277-320.</div>
+<div class="preview-paragraph-218 preview-line 218" data_line_start="218" data_line_end="218" data_line="218,219" count_line="1">Anderson, J. R., Corbett, A. T., Koedinger, K. R., &amp; Pelletier, K. (1995). Cognitive tutors: Lessons learned. The Journal of the Learning Science, 4(2), 167-207.</div>
+<div class="preview-paragraph-220 preview-line 220" data_line_start="220" data_line_end="220" data_line="220,221" count_line="1">Arnone, M. P., Grabowski, B. L., &amp; Rynd, C. P. (1994). Curiosity as a personality variable influencing learning in a learner controlled lesson with and without advisement. Educational Technology Research and Development, 42(1), 5-20.</div>
+<div class="preview-paragraph-222 preview-line 222" data_line_start="222" data_line_end="222" data_line="222,223" count_line="1">Asher, S. R., Parker, J. G., &amp; Walker, D. L. (1996). Distinguishing friendship from acceptance: Implications for intervention and assessment. In W. M. Bukowski, A. Newcomb &amp; W. W. Hartup (Eds.), The company they keep: Friendship in childhood and adolescence (pp. 366-406). Cambridge, UK: Cambridge University Press.</div>
+<div class="preview-paragraph-224 preview-line 224" data_line_start="224" data_line_end="224" data_line="224,225" count_line="1">Atkinson, R. K. (2002). Optimizing learning from examples using animated pedagogical agents. Journal of Educational Psychology, 94(2), 416-427.</div>
+<div class="preview-paragraph-226 preview-line 226" data_line_start="226" data_line_end="226" data_line="226,227" count_line="1">Bailenson, J. N., &amp; Yee, N. (in press). Digital chameleons: Automatic assimilation of nonverbal gestures in immersive virtual environments. Psychological Science.</div>
+<div class="preview-paragraph-228 preview-line 228" data_line_start="228" data_line_end="228" data_line="228,229" count_line="1">Bandura, A. (1986). Socialfoundations of thought and action: A social-cognitive theory. Englewood Cliffs, NJ: Prentice Hall.</div>
+<div class="preview-paragraph-230 preview-line 230" data_line_start="230" data_line_end="230" data_line="230,231" count_line="1">Bandura, A. (1989). Human agency in social cognitive theory. American Psychologist, 44(9), 1175-1184.</div>
+<div class="preview-paragraph-232 preview-line 232" data_line_start="232" data_line_end="232" data_line="232,233" count_line="1">Bandura, A. (1997). Self-efficacy: The exercise of control. New York: W. H. Freeman.</div>
+<div class="preview-paragraph-234 preview-line 234" data_line_start="234" data_line_end="234" data_line="234,235" count_line="1">Bandura, A. (1999). Social cognitive theory of gender development and differentiation. Psychological Review, 106(4), 676-713.</div>
+<div class="preview-paragraph-236 preview-line 236" data_line_start="236" data_line_end="236" data_line="236,237" count_line="1">Bandura, A. (2001). Social cognitive theory: An agentic perspective. Annual Review of Psychology, 52, 1-26.</div>
+<div class="preview-paragraph-238 preview-line 238" data_line_start="238" data_line_end="238" data_line="238,239" count_line="1">Bandura, A. (2002). Social cognitive theory in cultural context. Applied Psychology: An International Review, 51(2), 269-290.</div>
+<div class="preview-paragraph-240 preview-line 240" data_line_start="240" data_line_end="240" data_line="240,241" count_line="1">Bates, J. (1994). The role of emotion in believable agents. Communications of the ACM, 37(7), 122-125.</div>
+<div class="preview-paragraph-242 preview-line 242" data_line_start="242" data_line_end="242" data_line="242,243" count_line="1">Baylor, A. L., &amp; Kim, Y. (2003). Validating pedagogical agent roles: Expert, motivator, and mentor. Paper presented at the International Conference of Ed-Media, Honolulu, Hawaii.</div>
+<div class="preview-paragraph-244 preview-line 244" data_line_start="244" data_line_end="244" data_line="244,245" count_line="1">Baylor, A. L., &amp; Kim, Y. (2004). Pedagogical agent design: The impact of agent realism, gender, ethnicity, and instructional role. Paper presented at the Intelligent Tutoring Systems, Maceió, Alagoas, Brazil.</div>
+<div class="preview-paragraph-246 preview-line 246" data_line_start="246" data_line_end="246" data_line="246,247" count_line="1">Baylor, A. L., &amp; Kim, Y. (2005). Simulating instructional roles through pedagogical agents. International Journal of Artificial Intelligence in Education, 15, 95-115.</div>
+<div class="preview-paragraph-248 preview-line 248" data_line_start="248" data_line_end="248" data_line="248,249" count_line="1">Baylor, A. L., &amp; Plant, A. (2005). Pedagogical agents as social models for engineering: The influence of agent appearance on female choice. Unpublished manuscript.</div>
+<div class="preview-paragraph-250 preview-line 250" data_line_start="250" data_line_end="250" data_line="250,251" count_line="1">Bickhard, M. H. (2004). The social ontology of persons. In J. I. M. Carpendale &amp; U. Muller (Eds.), Social interaction and the development of knowledge. Mahwah, NJ: Lawrence Erlbaum Associates.</div>
+<div class="preview-paragraph-252 preview-line 252" data_line_start="252" data_line_end="252" data_line="252,253" count_line="1">Biswas, G., Schwartz, D., &amp; Bransford, J. (2001). Technology support for complex problem solving: From sad environments to AI. In K. D. Forbus &amp; P. J. Feltovich (Eds.), Smart machines in education (pp. 71-97). Cambridge, MA: The MIT Press.</div>
+<div class="preview-paragraph-254 preview-line 254" data_line_start="254" data_line_end="254" data_line="254,255" count_line="1">Blascovich, J., Loomis, J., Beall, A., Swinth, K., Hoyt, C., &amp; Bailenson, J. N. (2002). Immersive virtual environment technology as a methodological tool for social psychology. Psychological Inquiry, 13, 103-124.</div>
+<div class="preview-paragraph-256 preview-line 256" data_line_start="256" data_line_end="256" data_line="256,257" count_line="1">Bloom, B. (1984). The 2 sigma problem: The search for methods of group instruction as effective as one-to-one tutoring. Educational Researcher, 13(4), 4-16. Bower, G. H., &amp; Forgas, J. P. (2001). Mood and social memory. In J. P. Forgas (Ed.), Handbook of affect and social cognition. Mahwah, NJ: Lawrence Erlbaum Associates, Inc. Brophy, S., Biswas, G., Katzlberger, T., Bransford, J., &amp; Schwartz, D. (1999). Teachable agents: Combining insights from learning theory and computer science. Paper presented at the AI-ED 99, LeMans, France.</div>
+<div class="preview-paragraph-258 preview-line 258" data_line_start="258" data_line_end="258" data_line="258,259" count_line="1">Burleson, W., Picard, R. W., Perlin, K., &amp; Lippincott, J. (2004). A platform for affective agent research. Paper presented at the Workshop on Empathetic Agents, International Conference on Autonomous Agents and Multiagent Systems, Columbia University, New York, NY.</div>
+<div class="preview-paragraph-260 preview-line 260" data_line_start="260" data_line_end="260" data_line="260,261" count_line="1">Carli, L. L. (2001). Gender and social influence. Journal of Social Issues, 57(4), 725-741.</div>
+<div class="preview-paragraph-262 preview-line 262" data_line_start="262" data_line_end="262" data_line="262,263" count_line="1">Carpendale, J. I. M., &amp; Muller, U. (Eds.). (2004). Social interaction and the development of knowledge. Mahwah, NJ: Lawrence Erlbaum Associates.</div>
+<div class="preview-paragraph-264 preview-line 264" data_line_start="264" data_line_end="264" data_line="264,265" count_line="1">Chan, T. W. (1996). Learning companion systems, social learning systems, and the global social learning club. Journal of Artificial Intelligence in Education, 7(2), 125-159.</div>
+<div class="preview-paragraph-266 preview-line 266" data_line_start="266" data_line_end="266" data_line="266,267" count_line="1">Chan, T. W., &amp; Baskin, A. B. (1990). Learning companion systems. In C. Frasson &amp; G. Gauthier (Eds.), Intelligent tutoring systems at the crossroads of artificial intelligence and education. (pp. 7-33): NJ: Ablex Publishing Corporation.</div>
+<div class="preview-paragraph-268 preview-line 268" data_line_start="268" data_line_end="268" data_line="268,269" count_line="1">Chan, T. W., &amp; Chou, C. Y. (1997). Exploring the design of computer supports for reciprocal tutoring systems. International Journal of Artificial Iintelligence in Education, 8, 129.</div>
+<div class="preview-paragraph-270 preview-line 270" data_line_start="270" data_line_end="270" data_line="270,271" count_line="1">Chiplin-Williams, G. J. (1997). Effects of peer-mediated versus adult-mediated intervention on learning community and domestic skills. Unpublished dissertation. Florida State University, Tallahassee, FL.</div>
+<div class="preview-paragraph-272 preview-line 272" data_line_start="272" data_line_end="272" data_line="272,273" count_line="1">Cooper, J., &amp; Weaver, K. D. (2003). Gender and computers: Understanding the digital divide. Mahwah, NJ: Lawrence Erlbaum Associates.</div>
+<div class="preview-paragraph-274 preview-line 274" data_line_start="274" data_line_end="274" data_line="274,275" count_line="1">Craig, S. D., Gholson, B., Ventura, M., Graesser, A. C., &amp; Group, T. R. (2000). Listening in on dialogues and monologues in a virtual tutoring session: Learning and questioning. International Journal of Artificial Intelligence in Education, 11, 242-253.</div>
+<div class="preview-paragraph-276 preview-line 276" data_line_start="276" data_line_end="276" data_line="276,277" count_line="1">Damasio, A. (1994). Descartes' error: Emotion, reason, and the human brain. New York: Putnam.</div>
+<div class="preview-paragraph-278 preview-line 278" data_line_start="278" data_line_end="278" data_line="278,279" count_line="1">Dautenhahn, K., Bond, A. H., Canamero, L., &amp; Edmonds, B. (Eds.). (2002). Socially intelligent agents: Creating relationships with computers and robots. Norwell, MA: Kluwer Academic Publishers.</div>
+<div class="preview-paragraph-280 preview-line 280" data_line_start="280" data_line_end="280" data_line="280,281" count_line="1">Denham, S. A., &amp; Kochanoff, A. (2002). &quot;Why is she crying?&quot; Children's understanding of emotion from preschool to preadolescence. In The wisdom in feeling (pp. 239-270). New York: The Guilford Press.</div>
+<div class="preview-paragraph-282 preview-line 282" data_line_start="282" data_line_end="282" data_line="282,283" count_line="1">Dillenbourg, P., Mendelsohn, P., &amp; Schneider, D. (1994). The distribution of pedagogical roles in a multiagent learning environment. In R. Lewis &amp; P. Mendelsohn (Eds.), Lessons from learning (pp. 199-216): Elsevier.</div>
+<div class="preview-paragraph-284 preview-line 284" data_line_start="284" data_line_end="284" data_line="284,285" count_line="1">Dillenbourg, P., &amp; Self, J. (1992). People power: A human-computer collaborative learning system. In G. G. C. Frasson, &amp; G. McCalla (Ed.), The 2nd international conference of intelligent tutoring systems, lecture notes in computer science (Vol. 608, pp. 651-660). Berlin: Springer-Verlag.</div>
+<div class="preview-paragraph-286 preview-line 286" data_line_start="286" data_line_end="286" data_line="286,287" count_line="1">Driscoll, M. P. (2000). Psychology of learning for instruction. Boston, MA: Allyn &amp; Bacon.</div>
+<div class="preview-paragraph-288 preview-line 288" data_line_start="288" data_line_end="288" data_line="288,289" count_line="1">Elliott, C., Rickel, J. W., &amp; Lester, J. C. (1999). Lifelike pedagogical agents and affective computing: An exploratory synthesis. In M. W. M. Veloso (Ed.), Lecture notes in artificial intelligence (Vol. 1600, pp. 195-212). Berlin: Springer-Verlag.</div>
+<div class="preview-paragraph-290 preview-line 290" data_line_start="290" data_line_end="290" data_line="290,291" count_line="1">Ellis, H. C., Ottaway, S. A., Varner, L. J., Becker, A. S., &amp; Moore, B. A. (1997). Emotion, motivation, and text comprehension: The detection of contradictions in passages. Journal of Educational Psychology, 126(2), 131-146. Erickson, T. (1997). Designing agents as if people mattered. In J. M. Bradshaw (Ed.), Software agents (pp. 79-96). Menlo Park, CA: MIT Press.</div>
+<div class="preview-paragraph-292 preview-line 292" data_line_start="292" data_line_end="292" data_line="292,293" count_line="1">Forgas, J. P. (Ed.). (2001). Handbook of affect and social cognition. Mahwah, NJ: Lawrence Erlbaum Associates, Inc.</div>
+<div class="preview-paragraph-294 preview-line 294" data_line_start="294" data_line_end="294" data_line="294,295" count_line="1">Gartner, A., Kohler, M., &amp; Riessman, F. (1971). Children teach children: Learning by teaching. New York and London: Harper and Row.</div>
+<div class="preview-paragraph-296 preview-line 296" data_line_start="296" data_line_end="296" data_line="296,297" count_line="1">Gertner, A. S., &amp; VanLehn, K. (2000). Andes: A coached problem solving environment for physics. Paper presented at the ITS 2000, Montreal, Canada.</div>
+<div class="preview-paragraph-298 preview-line 298" data_line_start="298" data_line_end="298" data_line="298,299" count_line="1">Goodlad, S., &amp; Hirst, B. (1989). Peer tutoring: A guide to learning by teaching. London: Kogan Page.</div>
+<div class="preview-paragraph-300 preview-line 300" data_line_start="300" data_line_end="300" data_line="300,301" count_line="1">Goodman, B., Soller, A., Linton, F., &amp; Gaimari, R. (1998). Encouraging student reflection and articulation using a learning companion. Paper presented at the 8th International Conference on Artificial Intelligence in Education, Kobe, Japan.</div>
+<div class="preview-paragraph-302 preview-line 302" data_line_start="302" data_line_end="302" data_line="302,303" count_line="1">Graesser, A. C., Moreno, K. N., &amp; Marineau, J. C. (2003). Autotutor improves deep learning of computer literacy: Is it the dialogue or the talking head? Paper presented at the The International Conference of Artificial Intelligence in Education, Sydney, Australia.</div>
+<div class="preview-paragraph-304 preview-line 304" data_line_start="304" data_line_end="304" data_line="304,305" count_line="1">Graesser, A. C., VanLehn, K., Rose, C., Jordan, P., &amp; Harter, D. (2001). Intelligent tutoring systems with conversational dialogue. AI Magazine, 22, 39-51.</div>
+<div class="preview-paragraph-306 preview-line 306" data_line_start="306" data_line_end="306" data_line="306,307" count_line="1">Greenfield, P. M. (1984). A theory of the teacher in the learning activities of everyday life. In B. Rogoff &amp; J. Lave (Eds.), Everyday cognition. Cambridge, MA: Harvard University Press.</div>
+<div class="preview-paragraph-308 preview-line 308" data_line_start="308" data_line_end="308" data_line="308,309" count_line="1">Griffin, M. M., &amp; Griffin, B. W. (1998). An investigation of the effects of reciprocal peer tutoring on achievement, self-efficacy, and test anxiety. Contemporary Educational Psychology, 23(3), 298-311.</div>
+<div class="preview-paragraph-310 preview-line 310" data_line_start="310" data_line_end="310" data_line="310,311" count_line="1">Hays-Roth, B., &amp; Doyle, P. (1998). Animate characters. Autonomous Agents and MultiAgent Systems, 1, 195-230.</div>
+<div class="preview-paragraph-312 preview-line 312" data_line_start="312" data_line_end="312" data_line="312,313" count_line="1">Hewitt, I., &amp; Scardamalia, M. (1998). Design principles for distributed knowledge building processes. Educational Psychology Review, 10(1), 75-96.</div>
+<div class="preview-paragraph-314 preview-line 314" data_line_start="314" data_line_end="314" data_line="314,315" count_line="1">Hietala, P., &amp; Niemirepo, T. (1998a). The competence of learning companion agents. International Journal of Artificial Intelligence in Education, 9, 178-192.</div>
+<div class="preview-paragraph-316 preview-line 316" data_line_start="316" data_line_end="316" data_line="316,317" count_line="1">Hietala, P., &amp; Niemirepo, T. (1998b). Multiple artificial teachers: How do learners cope with a multi-agent learning environment? Paper presented at the Workshop Proceedings on Current Trends and Applications of Artificial Intelligence in Education at the 4th World Congress on Expert Systems, Mexico City, Mexico.</div>
+<div class="preview-paragraph-318 preview-line 318" data_line_start="318" data_line_end="318" data_line="318,319" count_line="1">Hudlicka, E. (2003). To feel or not to feel: The role of affect in human-computer interaction. International Journal of Human-Computer Interaction, 59, 1-32.</div>
+<div class="preview-paragraph-320 preview-line 320" data_line_start="320" data_line_end="320" data_line="320,321" count_line="1">Johnson, W. L., Rickel, J. W., &amp; Lester, J. C. (2000). Animated pedagogical agents: Faceto-face interaction in interactive learning environments. International Journal of Artificial Intelligence in Education, 11, 47-78.</div>
+<div class="preview-paragraph-322 preview-line 322" data_line_start="322" data_line_end="322" data_line="322,323" count_line="1">Kearsley, G. (1993). Intelligent agents and instructional systems: Implications of a new paradigm. Journal of Artificial Intelligence and Education, 4(4), 295-304.</div>
+<div class="preview-paragraph-324 preview-line 324" data_line_start="324" data_line_end="324" data_line="324,325" count_line="1">Kim, Y. (2003a). The effects of competency and type of interaction of agent learning companion on agent value, motivation, and learning. Paper presented at the Ed-Media, Honolulu, Hawaii.</div>
+<div class="preview-paragraph-326 preview-line 326" data_line_start="326" data_line_end="326" data_line="326,327" count_line="1">Kim, Y. (2003b). Pedagogical agent as learning companion: Its constituents and implications. Paper presented at the E-Learn, the Annual Conference of Association for the Advancement of computing in Education, Phoenix, AZ.</div>
+<div class="preview-paragraph-328 preview-line 328" data_line_start="328" data_line_end="328" data_line="328,329" count_line="1">Kim, Y. (2004). Pedagogical agents as learning companions: The effects of agent affect and gender on learning, interest, self-efficacy, and agent persona. Florida State University, Tallahassee, FL. Kim, Y. (2005a). Learning companions as change agents: Improving girls' self-efficacy beliefs in learning math: NSF #051503.</div>
+<div class="preview-paragraph-330 preview-line 330" data_line_start="330" data_line_end="330" data_line="330,331" count_line="1">Kim, Y. (2005b). Pedagogical agents as learning companions: Building social relations with learners. Paper presented at the 12th International Conference on Artificial Intelligence in Education, Amsterdam, The Netherlands.</div>
+<div class="preview-paragraph-332 preview-line 332" data_line_start="332" data_line_end="332" data_line="332,333" count_line="1">Kim, Y., &amp; Baylor, A. L. (2005a). The impact of affective expression and gender of a learning companion. Paper presented at the Annual Conference in American Educational Research Association, Montreal, Canada.</div>
+<div class="preview-paragraph-334 preview-line 334" data_line_start="334" data_line_end="334" data_line="334,335" count_line="1">Kim, Y., &amp; Baylor, A. L. (2005b). Pedagogical agents as learning companions: Building empathetic relationships with learners. Paper presented at the Annual Conference in American Educational Research Association, Montreal, Canada.</div>
+<div class="preview-paragraph-336 preview-line 336" data_line_start="336" data_line_end="336" data_line="336,337" count_line="1">Kim, Y., &amp; Baylor, A. L. (2006). Pedagogical agents as learning companions: The role of agent competency and type of interaction. Educational Technology Research &amp; Development, 54(03).</div>
+<div class="preview-paragraph-338 preview-line 338" data_line_start="338" data_line_end="338" data_line="338,339" count_line="1">King, A. (1998). Transactive peer tutoring: Distributing cognition and metacognition. Educational Psychology Review, 10(1), 57-74.</div>
+<div class="preview-paragraph-340 preview-line 340" data_line_start="340" data_line_end="340" data_line="340,341" count_line="1">Koda, T., &amp; Maes, P. (1996). Agents with faces: The effect of personification. Paper presented at the 5th IEEE International Workshop on Robot and Human Communication, Tsukuba, Japan.</div>
+<div class="preview-paragraph-342 preview-line 342" data_line_start="342" data_line_end="342" data_line="342,343" count_line="1">Koedinger, K. R., &amp; Anderson, J. R. (1997). Intelligent tutoring goes to school in the big city. International Journal of Artificial Iintelligence in Education, 8, 30-43.</div>
+<div class="preview-paragraph-344 preview-line 344" data_line_start="344" data_line_end="344" data_line="344,345" count_line="1">Kort, B., Reilly, R., &amp; Picard, R. W. (2001). An affective model of interplay between emotions and learning: Reengineering educational pedagogy-building a learning companion. Paper presented at the IEEE International Conference on Advanced Learning Technologies.</div>
+<div class="preview-paragraph-346 preview-line 346" data_line_start="346" data_line_end="346" data_line="346,347" count_line="1">Large, A. (1996). Hypertext instructional programs and learner control: A research review. Education for Information, 14(2), 95-107.</div>
+<div class="preview-paragraph-348 preview-line 348" data_line_start="348" data_line_end="348" data_line="348,349" count_line="1">Laurel, B. (1990). Interface agents: Metaphors with character. In B. Laurel (Ed.), The art of human-computer interface design (pp. 355-365). Reading, MA: Addison-Wesley Publishing Company.</div>
+<div class="preview-paragraph-350 preview-line 350" data_line_start="350" data_line_end="350" data_line="350,351" count_line="1">Lave, J., &amp; Wenger, E. (2001). Situated learning: Legitimate peripheral participation. New York: Cambridge University Press.</div>
+<div class="preview-paragraph-352 preview-line 352" data_line_start="352" data_line_end="352" data_line="352,353" count_line="1">Lee, E., &amp; Nass, C. (1998). Does the ethnicity of a computer agent matter? An experimental comparison of human-computer interaction and computer-mediated communication. Paper presented at the WECC Conference, Lake Tahoe, CA.</div>
+<div class="preview-paragraph-354 preview-line 354" data_line_start="354" data_line_end="354" data_line="354,355" count_line="1">Lester, J. C., Converse, S. A., Kahler, S. E., Barlow, S. T., Stone, B. A., &amp; Bhoga, R. S. (1997). The persona effect: Affective impact of animated pedagogical agents. Paper presented at the <span class="math-inline "><mathml style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msup>
+    <mrow>
+      <mi mathvariant="normal">C</mi>
+      <mi mathvariant="normal">H</mi>
+      <mi mathvariant="normal">I</mi>
+    </mrow>
+    <mrow>
+      <mi data-mjx-alternate="1" mathvariant="normal">&#x2032;</mi>
+    </mrow>
+  </msup>
+  <mn>97</mn>
+</math></mathml><mathmlword style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msup>
+    <mrow>
+      <mi mathvariant="normal">C</mi>
+      <mi mathvariant="normal">H</mi>
+      <mi mathvariant="normal">I</mi>
+    </mrow>
+    <mrow>
+      <mi data-mjx-alternate="1" mathvariant="normal">′</mi>
+    </mrow>
+  </msup>
+  <mn>97</mn>
+</math></mathmlword><asciimath style="display: none;">CHI^(')97</asciimath><latex style="display: none">\mathrm{CHI}^{\prime} 97</latex><mjx-container class="MathJax" jax="SVG" role="presentation" style="position: relative"><svg style="vertical-align: -0.05ex" xmlns="http://www.w3.org/2000/svg" width="6.963ex" height="1.923ex" role="img" focusable="false" viewBox="0 -828 3077.5 850" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="msup"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="43" d="M56 342Q56 428 89 500T174 615T283 681T391 705Q394 705 400 705T408 704Q499 704 569 636L582 624L612 663Q639 700 643 704Q644 704 647 704T653 705H657Q660 705 666 699V419L660 413H626Q620 419 619 430Q610 512 571 572T476 651Q457 658 426 658Q322 658 252 588Q173 509 173 342Q173 221 211 151Q232 111 263 84T328 45T384 29T428 24Q517 24 571 93T626 244Q626 251 632 257H660L666 251V236Q661 133 590 56T403 -21Q262 -21 159 83T56 342Z"></path></g><g data-mml-node="mi" transform="translate(722, 0)"><path data-c="48" d="M128 622Q121 629 117 631T101 634T58 637H25V683H36Q57 680 180 680Q315 680 324 683H335V637H302Q262 636 251 634T233 622L232 500V378H517V622Q510 629 506 631T490 634T447 637H414V683H425Q446 680 569 680Q704 680 713 683H724V637H691Q651 636 640 634T622 622V61Q628 51 639 49T691 46H724V0H713Q692 3 569 3Q434 3 425 0H414V46H447Q489 47 498 49T517 61V332H232V197L233 61Q239 51 250 49T302 46H335V0H324Q303 3 180 3Q45 3 36 0H25V46H58Q100 47 109 49T128 61V622Z"></path></g><g data-mml-node="mi" transform="translate(1472, 0)"><path data-c="49" d="M328 0Q307 3 180 3T32 0H21V46H43Q92 46 106 49T126 60Q128 63 128 342Q128 620 126 623Q122 628 118 630T96 635T43 637H21V683H32Q53 680 180 680T328 683H339V637H317Q268 637 254 634T234 623Q232 620 232 342Q232 63 234 60Q238 55 242 53T264 48T317 46H339V0H328Z"></path></g></g><g data-mml-node="TeXAtom" transform="translate(1833, 432.1) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="2032" d="M79 43Q73 43 52 49T30 61Q30 68 85 293T146 528Q161 560 198 560Q218 560 240 545T262 501Q262 496 260 486Q259 479 173 263T84 45T79 43Z"></path></g></g></g><g data-mml-node="mn" transform="translate(2077.5, 0)"><path data-c="39" d="M352 287Q304 211 232 211Q154 211 104 270T44 396Q42 412 42 436V444Q42 537 111 606Q171 666 243 666Q245 666 249 666T257 665H261Q273 665 286 663T323 651T370 619T413 560Q456 472 456 334Q456 194 396 97Q361 41 312 10T208 -22Q147 -22 108 7T68 93T121 149Q143 149 158 135T173 96Q173 78 164 65T148 49T135 44L131 43Q131 41 138 37T164 27T206 22H212Q272 22 313 86Q352 142 352 280V287ZM244 248Q292 248 321 297T351 430Q351 508 343 542Q341 552 337 562T323 588T293 615T246 625Q208 625 181 598Q160 576 154 546T147 441Q147 358 152 329T172 282Q197 248 244 248Z"></path><path data-c="37" d="M55 458Q56 460 72 567L88 674Q88 676 108 676H128V672Q128 662 143 655T195 646T364 644H485V605L417 512Q408 500 387 472T360 435T339 403T319 367T305 330T292 284T284 230T278 162T275 80Q275 66 275 52T274 28V19Q270 2 255 -10T221 -22Q210 -22 200 -19T179 0T168 40Q168 198 265 368Q285 400 349 489L395 552H302Q128 552 119 546Q113 543 108 522T98 479L95 458V455H55V458Z" transform="translate(500, 0)"></path></g></g></g></svg><mjx-assistive-mml role="presentation" unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msup><mrow><mi mathvariant="normal">C</mi><mi mathvariant="normal">H</mi><mi mathvariant="normal">I</mi></mrow><mrow><mi data-mjx-alternate="1" mathvariant="normal">′</mi></mrow></msup><mn>97</mn></math></mjx-assistive-mml></mjx-container></span> Human Factors in Computing Systems., Atlanta, GA.</div>
+<div class="preview-paragraph-356 preview-line 356" data_line_start="356" data_line_end="356" data_line="356,357" count_line="1">Littleton, K., Light, P., Joiner, R., Messer, D., &amp; Barnes, P. (1998). Gender, task scenarios and children's computer-based problem solving. Educational Psycholooy, 18, 327-340.</div>
+<div class="preview-paragraph-358 preview-line 358" data_line_start="358" data_line_end="358" data_line="358,359" count_line="1">Matusov, E., &amp; Hayes, R. (2000). Sociocultural critique of Piaget and Vygotsky. New Ideas in Psychology, 18, 215-239.</div>
+<div class="preview-paragraph-360 preview-line 360" data_line_start="360" data_line_end="360" data_line="360,361" count_line="1">Mayer, R. E., Johnson, L., Shaw, E., &amp; Sandhu, S. (2005). Constructing computer-based tutors that are socially sensitive: Politeness in educational software. Paper presented at the Annual Conference of the American Educational Research Association, Montreal, Canada.</div>
+<div class="preview-paragraph-362 preview-line 362" data_line_start="362" data_line_end="362" data_line="362,363" count_line="1">Meyer, D. K., &amp; Turner, J. C. (2002). Discovering emotion in classroom motivation research. Educational Psychologist, 37(2), 107-114.</div>
+<div class="preview-paragraph-364 preview-line 364" data_line_start="364" data_line_end="364" data_line="364,365" count_line="1">Moreno, K. N., Person, N. K., Adcock, A. B., Eck, R. N. V., Jackson, G. T., &amp; Marineau, J. C. (2002). Etiquette and efficacy in animated pedagogical agents: The role of stereotypes. Paper presented at the AAAI Symposium on Personalized Agents, Cape Cod, MA. Moreno, R., Mayer, R. E., Spires, H. A., &amp; Lester, J. C. (2001). The case for social agency in computer-based teaching: Do students learn more deeply when they interact with animated pedagogical agents? Cognition and Instruction, 19(2), 177-213.</div>
+<div class="preview-paragraph-366 preview-line 366" data_line_start="366" data_line_end="366" data_line="366,367" count_line="1">Mulken, S. V., Andre, E., &amp; Muller, J. (1998). The persona effect: How substantial is it? Paper presented at the HCI-98, Berlin.</div>
+<div class="preview-paragraph-368 preview-line 368" data_line_start="368" data_line_end="368" data_line="368,369" count_line="1">Okonkwo, C. (2003). Affective pedagogical agents and user persuasion.</div>
+<div class="preview-paragraph-370 preview-line 370" data_line_start="370" data_line_end="370" data_line="370,371" count_line="1">Palincsar, A., &amp; Brown, A. (1984). Reciprocal teaching of comprehension-fostering and comprehension-monitoring activities. Cognition and Instruction, 1(2), 117-175.</div>
+<div class="preview-paragraph-372 preview-line 372" data_line_start="372" data_line_end="372" data_line="372,373" count_line="1">Palthepu, S., Greer, J., &amp; McCalla, G. (1991). Learning by teaching. Paper presented at the International Conference on the Learning Sciences.</div>
+<div class="preview-paragraph-374 preview-line 374" data_line_start="374" data_line_end="374" data_line="374,375" count_line="1">Pea, R. (2001). Practices of distributed intelligence and designs for education. In G. Salomon (Ed.), Distributed cognition: Psychological and educational considerations (pp. 4787). New York: Cambridge University Press.</div>
+<div class="preview-paragraph-376 preview-line 376" data_line_start="376" data_line_end="376" data_line="376,377" count_line="1">Perkins, D. N. (2001). Person-plus: A distributed view of thinking and learning. In G. Salomon (Ed.), Distributed cognition: Psychological and educational considerations (pp. 88110): Cambridge University Press.</div>
+<div class="preview-paragraph-378 preview-line 378" data_line_start="378" data_line_end="378" data_line="378,379" count_line="1">Piaget, L. (1995). Sociological studies (I. Smith, Trans. 2nd ed.). New York: Routledge. Picard, R. W. (1997). Affective computing. Cambridge, MA: The MIT Press.</div>
+<div class="preview-paragraph-380 preview-line 380" data_line_start="380" data_line_end="380" data_line="380,381" count_line="1">Powell, J. V., Aeby, V. G., &amp; Carpenter-Aeby, T. (2003). A comparison of student outcomes with and without teacher facilitated computer-based instruction. Computers <span class="math-inline "><mathml style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mrow>
+    <mi data-mjx-variant="-tex-calligraphic" mathvariant="script">E</mi>
+  </mrow>
+</math></mathml><mathmlword style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mrow>
+    <mi data-mjx-variant="-tex-calligraphic" mathvariant="script">E</mi>
+  </mrow>
+</math></mathmlword><asciimath style="display: none;">E</asciimath><latex style="display: none">\mathcal{E}</latex><mjx-container class="MathJax" jax="SVG" role="presentation" style="position: relative"><svg style="vertical-align: -0.05ex" xmlns="http://www.w3.org/2000/svg" width="1.276ex" height="1.645ex" role="img" focusable="false" viewBox="0 -705 564 727" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="45" d="M144 470Q144 556 240 630T451 705Q564 705 564 637Q564 611 540 573Q529 559 505 547T464 534Q448 534 448 545Q448 552 455 562Q463 577 463 591Q463 600 462 604T456 616T436 627T400 635Q396 635 390 635T380 636Q291 636 258 568Q245 544 245 516Q245 463 290 438T391 410Q415 410 415 398Q415 392 407 380T376 356T326 341Q288 340 260 327Q218 311 187 276T143 208T130 151Q130 113 156 88T211 55T268 47Q349 47 403 125Q415 144 439 157T483 171Q499 171 499 160Q499 148 475 120T413 59T315 3T197 -22Q124 -22 77 14T30 105Q30 126 39 154T66 216T122 288T209 354L223 362Q144 400 144 470Z"></path></g></g></g></g></svg><mjx-assistive-mml role="presentation" unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi data-mjx-variant="-tex-calligraphic" mathvariant="script">E</mi></mrow></math></mjx-assistive-mml></mjx-container></span> Education, 40, 183-191.</div>
+<div class="preview-paragraph-382 preview-line 382" data_line_start="382" data_line_end="382" data_line="382,383" count_line="1">Reeves, B., &amp; Nass, C. (1996). The media equation: How people treat computers, television, and new media like real people and places. Cambridge: Cambridge University Press.</div>
+<div class="preview-paragraph-384 preview-line 384" data_line_start="384" data_line_end="384" data_line="384,385" count_line="1">Ross, S. M., Morrison, G. R., &amp; O'dell, J. (1989). Uses and effects of learner control of intent and instructional support in computer-based instruction. Educational Technology Research and Development, 37(4), 29-39.</div>
+<div class="preview-paragraph-386 preview-line 386" data_line_start="386" data_line_end="386" data_line="386,387" count_line="1">Rowell, P. M. (2002). Peer interactions in shared technological activity: A study of participation. International Journal of Technology and Design Education, 12, 1-22.</div>
+<div class="preview-paragraph-388 preview-line 388" data_line_start="388" data_line_end="388" data_line="388,389" count_line="1">Ruttkay, Z., &amp; Pelachaud, C. (Eds.). (2004). From brows to trust: Evaluating embodied conversational agents: Springer.</div>
+<div class="preview-paragraph-390 preview-line 390" data_line_start="390" data_line_end="390" data_line="390,391" count_line="1">Ryokai, K., Vaucelle, C., &amp; Cassell, J. (2003). Virtual peers as partners in storytelling and literacy learning. Journal of Computer Assisted Learning, 19(2), 195-208.</div>
+<div class="preview-paragraph-392 preview-line 392" data_line_start="392" data_line_end="392" data_line="392,393" count_line="1">Saarni, C. (2001). Emotion communication and relationship context. International Journal of Behavioral Development, 25(4), 354-356.</div>
+<div class="preview-paragraph-394 preview-line 394" data_line_start="394" data_line_end="394" data_line="394,395" count_line="1">Salomon, G. (1988). AI in reverse: Computer tools that turn cognitive. Journal of Educational Computing Research, 4(2), 123-139.</div>
+<div class="preview-paragraph-396 preview-line 396" data_line_start="396" data_line_end="396" data_line="396,397" count_line="1">Salomon, G. (1989). The computer as a zone of proximal development: Internalizing reading-related metacognitions from a reading partner. Journal of Educational Psychology, 81(4), 620-627.</div>
+<div class="preview-paragraph-398 preview-line 398" data_line_start="398" data_line_end="398" data_line="398,399" count_line="1">Salomon, G. (1990). Cognitive effects with and of computer technology. Communication Research, 17(1), 26-44.</div>
+<div class="preview-paragraph-400 preview-line 400" data_line_start="400" data_line_end="400" data_line="400,401" count_line="1">Salomon, G. (2001). Distributed cognition: Psychological and educational considerations. New York: Cambridge University Press.</div>
+<div class="preview-paragraph-402 preview-line 402" data_line_start="402" data_line_end="402" data_line="402,403" count_line="1">Salomon, G., &amp; Almog, T. (1998). Educational psychology and technology: A matter of reciprocal relations. Teachers College Record, 100(2), 222-241.</div>
+<div class="preview-paragraph-404 preview-line 404" data_line_start="404" data_line_end="404" data_line="404,405" count_line="1">Scheirer, J., Fernandez, R., Klein, J., &amp; Picard, R. W. (2002). Frustrating the user on purpose: A step toward building an affective computer. Interacting with Computers, 14(2), 93-118.</div>
+<div class="preview-paragraph-406 preview-line 406" data_line_start="406" data_line_end="406" data_line="406,407" count_line="1">Schunk, D. H. (1987). Peer models and children's behavioral change. Review of Educational Research, 57(2), 149-174. Schunk, D. H., &amp; Lilly, M. W. (1984). Sex differences in self-efficacy and attributions: Influence of performance feedback. Journal of Early Adolescence, 4, 203-213.</div>
+<div class="preview-paragraph-408 preview-line 408" data_line_start="408" data_line_end="408" data_line="408,409" count_line="1">Suzuki, N., Takechi, Y., Ishii, K., &amp; Okada, M. (2003). Effects of echoic mimicry using hummed sounds on human/computer interaction. Speech Communication, 40, 559573.</div>
+<div class="preview-paragraph-410 preview-line 410" data_line_start="410" data_line_end="410" data_line="410,411" count_line="1">Takeuchi, A., &amp; Naito, T. (1995). Situated facial displays: Towards social interaction. Paper presented at the Conference of Human Factors in Computer System (CHI-95), Denver, CO.</div>
+<div class="preview-paragraph-412 preview-line 412" data_line_start="412" data_line_end="412" data_line="412,413" count_line="1">Topping, K., Hill, S., McKaig, A., Rogers, C., Rushi, N., &amp; Young, D. (1997). Paired reciprocal peer tutoring in undergraduate economics. Innovations in Education and Training International, 34(2), 96-113.</div>
+<div class="preview-paragraph-414 preview-line 414" data_line_start="414" data_line_end="414" data_line="414,415" count_line="1">Tudge, J. R. H., &amp; Winterhoff, P. A. (1993). Vygotsky, Piaget, and Bandura: Perspectives on the relations between the social world and cognitive development. Human Development, 36, 61-81.</div>
+<div class="preview-paragraph-416 preview-line 416" data_line_start="416" data_line_end="416" data_line="416,417" count_line="1">Tudge, J. R. H., Winterhoff, P. A., &amp; Hogan, D. M. (1996). The cognitive consequences of collaborative problem solving with and without feedback. Child Development, 67, 2892-2909.</div>
+<div class="preview-paragraph-418 preview-line 418" data_line_start="418" data_line_end="418" data_line="418,419" count_line="1">Ur, S., &amp; VanLehn, K. (1995). Steps: A simulated, tutorable physics student. Journal of Artificial Intelligence in Education, 6(4), 405-435.</div>
+<div class="preview-paragraph-420 preview-line 420" data_line_start="420" data_line_end="420" data_line="420,421" count_line="1">Uresti, R. J. (2000). Should I teach my computer peer? Some issues in teaching a learning companion. Paper presented at the Intelligent Tutoring Systems 2000, Montreal, Canada.</div>
+<div class="preview-paragraph-422 preview-line 422" data_line_start="422" data_line_end="422" data_line="422,423" count_line="1">Uresti, R. J., &amp; Boulay, B. D. (2004). Expertise, motivation and teaching in learning companion systems. International Journal of Artificial Intelligence in Education, 14, 193-231.</div>
+<div class="preview-paragraph-424 preview-line 424" data_line_start="424" data_line_end="424" data_line="424,425" count_line="1">Vygotsky, L. S., Cole, M., John-Steiner, V., Scribner, S., &amp; Souberman, E. (1978). Mind in society. Cambridge, MA: Harvard University Press.</div>
+<div class="preview-paragraph-426 preview-line 426" data_line_start="426" data_line_end="426" data_line="426,427" count_line="1">Walker, J. H., Sproull, L., &amp; Subramani, R. (1994). Using a human face in an interface. Paper presented at the Human Factors in Computing Systems, Boston, Massachusetts.</div>
+<div class="preview-paragraph-428 preview-line 428" data_line_start="428" data_line_end="428" data_line="428,429" count_line="1">Wertsch, J. V., Minick, N., &amp; Arns, F. J. (1984). The creation of context in joint problemsolving. In B. Rogoff &amp; J. Lave (Eds.), Everyday cognition (pp. 151-171). Bridgewater, NJ: Replica Books.</div>
+<div class="preview-paragraph-430 preview-line 430" data_line_start="430" data_line_end="430" data_line="430,431" count_line="1">White, B. Y., Shimoda, T. A., &amp; Frederiksen, J. R. (2000). Facilitating students' inquiry learning and metacognitive development through modifiable software advisers. In <span class="math-inline "><mathml style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mi>S</mi>
+</math></mathml><mathmlword style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mi>S</mi>
+</math></mathmlword><asciimath style="display: none;">S</asciimath><latex style="display: none">S</latex><mjx-container class="MathJax" jax="SVG" role="presentation" style="position: relative"><svg style="vertical-align: -0.05ex" xmlns="http://www.w3.org/2000/svg" width="1.459ex" height="1.645ex" role="img" focusable="false" viewBox="0 -705 645 727" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="53" d="M308 24Q367 24 416 76T466 197Q466 260 414 284Q308 311 278 321T236 341Q176 383 176 462Q176 523 208 573T273 648Q302 673 343 688T407 704H418H425Q521 704 564 640Q565 640 577 653T603 682T623 704Q624 704 627 704T632 705Q645 705 645 698T617 577T585 459T569 456Q549 456 549 465Q549 471 550 475Q550 478 551 494T553 520Q553 554 544 579T526 616T501 641Q465 662 419 662Q362 662 313 616T263 510Q263 480 278 458T319 427Q323 425 389 408T456 390Q490 379 522 342T554 242Q554 216 546 186Q541 164 528 137T492 78T426 18T332 -20Q320 -22 298 -22Q199 -22 144 33L134 44L106 13Q83 -14 78 -18T65 -22Q52 -22 52 -14Q52 -11 110 221Q112 227 130 227H143Q149 221 149 216Q149 214 148 207T144 186T142 153Q144 114 160 87T203 47T255 29T308 24Z"></path></g></g></g></svg><mjx-assistive-mml role="presentation" unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>S</mi></math></mjx-assistive-mml></mjx-container></span>. P. Lajoie (Ed.), Computers as cognitive tools: No more walls (Vol. 2, pp. 97-132). Mahwah, NJ: Lawrence Erlbaum.</div>
+<div class="preview-paragraph-432 preview-line 432" data_line_start="432" data_line_end="432" data_line="432,433" count_line="1">Yarrow, F., &amp; Topping, K. (2001). Collaborative writing: The effects of metacognitive prompting and structured peer interaction. British Journal of Educational Psychology, 71, 261-282.</div>
+
+    </div>
+  </div>
+</body>
+</html>
