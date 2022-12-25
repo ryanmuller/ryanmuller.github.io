@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Transformers generalize differently from information stored in context%0A  vs in weights</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.mathpix.com/fonts/cmu.css"/>
+    <style>
+  html,body {
+    width: 100%;
+    height: 100%;
+  }
+  *, *::before,*::after {
+    box-sizing: border-box;
+  }
+  @-ms-viewport {
+    width: device-width;
+  }
+  body {
+    margin: 0;
+    color: #1E2029;
+    font-size: 14px;
+    line-height: normal;
+  }
+  hr {
+    box-sizing: content-box;
+    height: 0;
+    overflow: visible;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    color: rgba(0, 0, 0, 0.85);
+    font-weight: 500;
+  }
+  p {
+    margin-top: 0;
+    margin-bottom: 1em;
+  }
+  ol, ul, dl {
+    margin-top: 0;
+    margin-bottom: 1em;
+  }
+  ol ol, ul ul, ol ul, ul ol {
+    margin-bottom: 0;
+  }
+  dt {
+    font-weight: 500;
+  }
+  dd {
+    margin-bottom: 0.5em;
+    margin-left: 0;
+  }
+  blockquote {
+    margin: 0 0 1em;
+  }
+  dfn {
+    font-style: italic;
+  }
+  b, strong {
+    font-weight: bolder;
+  }
+  small {
+    font-size: 80%;
+  }
+  sub, sup {
+    position: relative;
+    font-size: 75%;
+    line-height: 0;
+    vertical-align: baseline;
+  }
+  sub {
+    bottom: -0.25em;
+  }
+  sup {
+    top: -0.5em;
+  }
+  a {
+    color: #0B93ff;
+    text-decoration: none;
+    background-color: transparent;
+    outline: none;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+  a:hover {
+    color: #33aaff;
+  }
+  a:active {
+    color: #0070d9;
+  }
+  a:active, a:hover {
+    text-decoration: none;
+    outline: 0;
+  }
+  a[disabled] {
+    color: rgba(0, 0, 0, 0.25)
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+  pre, code, kbd, samp {
+    font-size: 1em;
+  }
+  pre {
+    margin-top: 0;
+    margin-bottom: 1em;
+    overflow: auto;
+  }
+  figure {
+    margin: 0 0 1em;
+  }
+  img {
+    vertical-align: middle;
+    border-style: none;
+  }
+  svg:not(:root) {
+    overflow: hidden;
+  }
+  table {
+    border-collapse: collapse;
+  }
+  caption {
+    padding-top: 0.75em;
+    padding-bottom: 0.3em;
+    color: rgba(0, 0, 0, 0.45)
+    text-align: left;
+    caption-side: bottom;
+  }
+  th {
+    text-align: inherit;
+  }
+
+mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"] > svg a {
+  fill: blue;
+  stroke: blue;
+}
+
+mjx-assistive-mml {
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 1px 0px 0px 0px !important;
+  border: 0px !important;
+  display: block !important;
+  width: auto !important;
+  overflow: hidden !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+mjx-assistive-mml[display="block"] {
+  width: 100% !important;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+    #setText > div {
+        justify-content: inherit;
+        margin-top: 0;
+        margin-bottom: 1em;
+        
+        
+    }
+    
+    
+    
+    #setText div:last-child {
+        margin-bottom: 0 !important;
+    }
+
+    #setText > br, #preview-content br {
+        line-height: 1.2;
+    }
+
+    #preview-content > div {
+        margin-top: 0;
+        margin-bottom: 1em;
+        
+    }
+
+    #preview-content table {
+      margin-bottom: 1em;
+    }
+
+    #setText table {
+      margin-bottom: 1em;
+    }
+
+    mjx-container {
+      text-indent: 0;
+      overflow-y: visible !important;
+      padding-top: 1px;
+      padding-bottom: 1px;
+      
+      
+    }
+    
+    
+    
+    .math-inline mjx-container {
+        display: inline-block !important;
+        page-break-inside: avoid;
+    }
+    .math-block {
+        align-items: center;
+        min-width: min-content;
+        page-break-after: auto;
+        page-break-inside: avoid;
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+    .math-block p {
+        flex-shrink: 1;
+    }
+    .math-block mjx-container {
+        margin: 0 !important;
+    }
+    .math-error {
+        background-color: yellow;
+        color: red;
+    }
+
+    #preview-content svg, #setText svg { min-width: initial !important;}
+
+    #preview-content img, #setText img {
+        max-width: 100%;
+    }
+    
+    #preview-content blockquote,  #setText blockquote {
+        page-break-inside: avoid;
+        color: #666;
+        margin: 0 0 1em 0;
+        padding-left: 3em;
+        border-left: .5em solid #eee;
+    }
+
+    #preview-content pre, #setText pre {
+        border: 1px solid #ccc;
+        page-break-inside: avoid;
+        padding: 0.5em;
+        background: #f8f8fa;
+    }
+    .empty {
+        text-align: center;
+        font-size: 18px;
+        padding: 50px 0 !important;
+    }
+
+    #setText table, #preview-content table {
+        display: table; 
+        overflow: auto;
+        max-width: 100%;
+        border-collapse: collapse;
+        page-break-inside: avoid;
+    }
+      
+    #setText table th, #preview-content table th {
+        text-align: center;
+        font-weight: bold;
+    }
+    
+    #setText table td, #preview-content table td,
+    #setText table th, #preview-content table th {
+        border: 1px solid #dfe2e5;
+        padding: 6px 13px;
+    }
+      
+    #setText table tr, #preview-content table tr {
+        background-color: #fff;
+        border-top: 1px solid #c6cbd1;
+    }
+    
+    #setText table tr:nth-child(2n), #preview-content table tr:nth-child(2n) {
+        background-color: #f6f8fa;
+    }
+
+    
+    #setText .main-title, #setText .author, #preview-content .main-title, #preview-content .author  {
+        text-align: center;
+        margin: 0 auto;
+    }
+    
+    #preview-content .main-title, #setText .main-title {
+        line-height: 1.2;
+        margin-bottom: 1em;
+    }
+
+    #preview-content .author, #setText .author  {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    #preview-content .author p, #setText .author p {
+        min-width: 30%;
+        max-width: 50%;
+        padding: 0 7px;
+    }
+
+    #preview-content .author > p > span, #setText .author > p > span {
+        display: block;
+        text-align: center;
+    }
+
+    #preview-content .section-title, #setText .section-title {
+        margin-top: 1.5em;
+    }
+
+    #preview-content .abstract, #setText .abstract {
+        text-align: justify;
+        margin-bottom: 1em;
+    }
+
+    #preview-content .abstract p, #setText .abstract p {
+        margin-bottom: 0;
+    }
+
+    @media print {
+
+      #preview {
+        font-size: 10pt!important;
+      }
+
+      svg {
+        shape-rendering: crispEdges;
+      }
+
+      .math-block svg, math-inline svg {
+        margin-top: 1px;
+      }
+
+      #preview-content img, #setText img {
+        display: block;
+      }
+      
+      #preview-content .figure_img img, #setText .figure_img img {
+        display: inline;
+      }
+
+      .preview-right {
+        word-break: break-word;
+      }
+
+      #preview-content h1, #setText h1 {
+        page-break-inside: avoid;
+        position: relative;
+        border: 2px solid transparent;
+      }
+  
+      #preview-content h1::after, #setText h1::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-bottom: -100px;
+        position: relative;
+      }
+  
+      #preview-content h2, #setText h2 {
+        page-break-inside: avoid;
+        position: relative;
+        border: 2px solid transparent;
+      }
+  
+      #preview-content h2::after, #setText h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-bottom: -100px;
+        position: relative;
+      }
+  
+      #preview-content h3, #setText h3 {
+        page-break-inside: avoid;
+        position: relative;
+        border: 2px solid transparent;
+      }
+  
+      #preview-content h3::after, #setText h3::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-bottom: -100px;
+        position: relative;
+      }
+  
+      #preview-content h4, #setText h4 {
+        page-break-inside: avoid;
+        position: relative;
+        border: 2px solid transparent;
+      }
+  
+      #preview-content h4::after, #setText h4::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-bottom: -100px;
+        position: relative;
+      }
+  
+      #preview-content h5, #setText h5 {
+        page-break-inside: avoid;
+        position: relative;
+        border: 2px solid transparent;
+      }
+  
+      #preview-content h5::after, #setText h5::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-bottom: -100px;
+        position: relative;
+      }
+  
+      #preview-content h6, #setText h6 {
+        page-break-inside: avoid;
+        position: relative;
+        border: 2px solid transparent;
+      }
+  
+      #preview-content h6::after, #setText h6::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-bottom: -100px;
+        position: relative;
+      }
+    }
+    #preview-content sup, #setText sup {
+      top: -.5em;
+      position: relative;
+      font-size: 75%;
+      line-height: 0;
+      vertical-align: baseline;
+    }
+    
+    #preview-content .text-url, #setText .text-url {
+      color: #0B93ff;
+      cursor: text;
+      pointer-events: none;
+    }
+    
+    #preview-content .text-url a:hover, #setText .text-url a:hover {
+      color: #0B93ff;
+    }
+
+    #preview-content code, #setText code {
+      font-family: Inconsolata;
+      font-size: inherit;
+      display: initial;
+      background: #f8f8fa;
+    }
+    #preview-content pre code, #setText pre code {
+      font-size: inherit;
+      display: block;
+      color: #333;
+      overflow-x: auto;
+      font-size: 15px;
+    }
+
+    .hljs-comment,
+    .hljs-quote {
+      color: #998;
+      font-style: italic;
+    }
+
+    .hljs-command {
+      color: #005cc5;
+    }
+
+    .hljs-keyword,
+    .hljs-selector-tag,
+    .hljs-subst {
+      color: #d73a49;
+      font-weight: bold;
+    }
+
+    .hljs-number,
+    .hljs-literal,
+    .hljs-variable,
+    .hljs-template-variable,
+    .hljs-tag .hljs-attr {
+      color: #005cc5;
+    }
+
+    .hljs-string,
+    .hljs-doctag {
+      color: #24292e;
+    }
+
+    .hljs-title,
+    .hljs-section,
+    .hljs-selector-id {
+      color: #6f42c1;
+      font-weight: bold;
+    }
+
+    .hljs-subst {
+      font-weight: normal;
+    }
+
+    .hljs-type,
+    .hljs-class .hljs-title {
+      color: #458;
+      font-weight: bold;
+    }
+
+    .hljs-tag,
+    .hljs-name,
+    .hljs-attribute {
+      color: #000080;
+      font-weight: normal;
+    }
+
+    .hljs-regexp,
+    .hljs-link {
+      color: #009926;
+    }
+
+    .hljs-symbol,
+    .hljs-bullet {
+      color: #990073;
+    }
+
+    .hljs-built_in,
+    .hljs-builtin-name {
+      color: #24292e;
+    }
+
+    .hljs-meta {
+      color: #999;
+      font-weight: bold;
+    }
+
+    .hljs-meta-keyword {
+      color: #d73a49;
+    }
+
+    .hljs-meta-string {
+      color: #032f62;
+    }
+
+    .hljs-deletion {
+      background: #fdd;
+    }
+
+    .hljs-addition {
+      background: #dfd;
+    }
+
+    .hljs-emphasis {
+      font-style: italic;
+    }
+
+    .hljs-strong {
+      font-weight: bold;
+    }
+
+    .table_tabular table th,  .table_tabular table th {
+        border: none !important;
+        padding: 6px 13px;
+    }
+      
+    #tabular tr, #tabular tr {
+        border-top: none !important;
+        border-bottom: none !important;
+    }
+    #tabular td, #tabular td {
+        border-style: none !important;
+        background-color: #fff;
+        border-color: #000 !important;
+        word-break: keep-all;
+        padding: 0.1em 0.5em !important;
+    }
+    #tabular {
+        display: inline !important;
+    }
+    #tabular td > p {
+        margin-bottom: 0;
+        margin-top: 0;
+    }
+    #tabular td._empty {
+      height: 1.3em;
+    }
+    #tabular td .f {
+      opacity: 0;
+    }
+    
+    html[data-theme="dark"] #tabular tr, html[data-theme="dark"] #tabular td {
+      background-color: #202226;
+      border-color: #fff !important;
+    }  
+    .table_tabular {
+        overflow-x: auto;
+        padding: 0 2px 0.5em 2px;
+    }
+    .figure_img {
+       margin-bottom: 0.5em;
+       overflow-x: auto;
+    }
+
+  ol.enumerate, ul.itemize {
+    padding-inline-start: 40px;
+  }
+/* It's commented because counter not supporting to change value 
+  ol.enumerate.lower-alpha {
+    counter-reset: item ;
+    list-style-type: none !important;
+  }
+  .enumerate.lower-alpha > li {
+    position: relative;
+  }
+  .enumerate.lower-alpha > li:before { 
+    content: "("counter(item, lower-alpha)")"; 
+    counter-increment: item; 
+    position: absolute;
+    left: -47px;
+    width: 47px;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 7px;
+    flex-wrap: nowrap;
+    word-break: keep-all;
+  }
+  */
+  
+  .itemize > li {
+    position: relative;
+  }
+  .itemize > li > span.li_level { 
+    position: absolute;
+    right: 100%;
+    white-space: nowrap;
+    width: max-content;;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 10px;
+    box-sizing: border-box;
+  }
+
+  #preview {
+    font-family: 'CMU Serif', 'Georgia', Helvetica, Arial, sans-serif;
+    font-size: 17px;
+    visibility: visible;
+    word-break: break-word;
+    padding: 2.5em;
+    max-width: 800px;
+    margin: auto;
+    box-sizing: content-box;
+  }
+
+  #preview h1, #preview h2, #preview h3, #preview h4, #preview h5, #preview strong {
+    font-family: 'CMU Serif Bold', 'Georgia', Helvetica, Arial, sans-serif;
+  }
+
+  #preview  i, #preview  em {
+    font-family: 'CMU Serif Italic', 'Georgia', Helvetica, Arial, sans-serif;
+  }
+
+  .mmd-menu {
+    max-width: 320px;
+    position: absolute;
+    background-color: white;
+    color: black;
+    width: auto;
+    padding: 5px 0px;
+    border: 1px solid #E5E6EB;
+    margin: 0;
+    cursor: default;
+    font: menu;
+    text-align: left;
+    text-indent: 0;
+    text-transform: none;
+    line-height: normal;
+    letter-spacing: normal;
+    word-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    float: none;
+    z-index: 201;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    box-shadow: 0px 10px 20px #808080;
+    -webkit-box-shadow: 0px 10px 20px #808080;
+    -moz-box-shadow: 0px 10px 20px #808080;
+    -khtml-box-shadow: 0px 10px 20px #808080; 
+  }
+  
+  .mmd-menu:focus { outline: none; }
+  
+  .mmd-menu.mmd-menu-sm {
+    max-width: 100vw;
+    padding-bottom: 34px;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -khtml-border-radius: 0;
+  }
+
+  .mmd-menu-item-icon {
+    color: #1e2029;
+    margin-left: auto;
+    align-items: center;
+    display: flex;
+    flex-shrink: 0;
+    display: none; 
+  }
+
+  .mmd-menu-item {
+    padding-bottom: 8px;
+    padding-top: 8px;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    display: flex;
+    background: transparent; 
+    height: 52px;
+    max-height: 52px;
+  }
+  .mmd-menu-item:focus { outline: none; }
+
+  .mmd-menu-item.active {
+    background-color: #e1e0e5; 
+  }
+
+  .mmd-menu-item.active .mmd-menu-item-icon {
+    display: flex; 
+  }
+
+  .mmd-menu-item-container {
+    overflow: hidden; 
+  }
+
+  .mmd-menu-item-title {
+    color: #1e2029;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 14px;
+    line-height: 20px; 
+  }
+
+  .mmd-menu-item-value {
+    color: #7d829c;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 12px;
+    line-height: 16px; 
+  }
+  
+  html[data-theme="dark"] .mmd-menu-item-title {
+    color: #ebefe7;
+  } 
+  html[data-theme="dark"] .mmd-menu-item.active .mmd-menu-item-title {
+    color: #1e2029;
+  }
+  html[data-theme="dark"] .mmd-menu {
+    background-color: #33363a;
+  }
+  
+  .mmd-context-menu-overlay{
+    background: rgba(0, 0, 0, 0.56);
+  }
+  </style>
+</head>
+<body>
+  <div id="preview" class="preview scrollEditor">
+    <div id="container-ruller" />
+    <div id="preview-content">
+      <h1 type="title" class="main-title preview-paragraph-0 preview-line 0 1 2" id="transformers-generalize-differently-from-information-stored-in-context-vs-weights" data_line_start="0" data_line_end="2" data_line="0,3" count_line="3">
+Transformers generalize differently from information stored in context vs weights</h1>
+<div class="preview-paragraph-4 preview-line 4 5 6" data_line_start="4" data_line_end="6" data_line="4,7" count_line="3"><div class="author">
+          <p><span>Stephanie C.Y. Chan* Ishita Dasgupta* Junkyung Kim Dharshan Kumaran</span><span>DeepMind <span class="math-inline "><mathml style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mstyle scriptlevel="0">
+    <mspace width="1em"></mspace>
+  </mstyle>
+</math></mathml><mathmlword style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mstyle scriptlevel="0">
+    <mspace width="1em"></mspace>
+  </mstyle>
+</math></mathmlword><asciimath style="display: none;">quad</asciimath><latex style="display: none">\quad</latex><mjx-container class="MathJax" jax="SVG" role="presentation" style="position: relative"><svg style="vertical-align: 0" xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="0" role="img" focusable="false" viewBox="0 0 1000 0" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mstyle"><g data-mml-node="mspace"></g></g></g></g></svg><mjx-assistive-mml role="presentation" unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mstyle scriptlevel="0"><mspace width="1em"></mspace></mstyle></math></mjx-assistive-mml></mjx-container></span> DeepMind <span class="math-inline "><mathml style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mstyle scriptlevel="0">
+    <mspace width="1em"></mspace>
+  </mstyle>
+</math></mathml><mathmlword style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mstyle scriptlevel="0">
+    <mspace width="1em"></mspace>
+  </mstyle>
+</math></mathmlword><asciimath style="display: none;">quad</asciimath><latex style="display: none">\quad</latex><mjx-container class="MathJax" jax="SVG" role="presentation" style="position: relative"><svg style="vertical-align: 0" xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="0" role="img" focusable="false" viewBox="0 0 1000 0" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mstyle"><g data-mml-node="mspace"></g></g></g></g></svg><mjx-assistive-mml role="presentation" unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mstyle scriptlevel="0"><mspace width="1em"></mspace></mstyle></math></mjx-assistive-mml></mjx-container></span> DeepMind <span class="math-inline "><mathml style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mstyle scriptlevel="0">
+    <mspace width="1em"></mspace>
+  </mstyle>
+</math></mathml><mathmlword style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mstyle scriptlevel="0">
+    <mspace width="1em"></mspace>
+  </mstyle>
+</math></mathmlword><asciimath style="display: none;">quad</asciimath><latex style="display: none">\quad</latex><mjx-container class="MathJax" jax="SVG" role="presentation" style="position: relative"><svg style="vertical-align: 0" xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="0" role="img" focusable="false" viewBox="0 0 1000 0" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mstyle"><g data-mml-node="mspace"></g></g></g></g></svg><mjx-assistive-mml role="presentation" unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mstyle scriptlevel="0"><mspace width="1em"></mspace></mstyle></math></mjx-assistive-mml></mjx-container></span> DeepMind</span><span>Andrew K. Lampinen</span><span>DeepMind</span><span>Felix Hill</span><span>DeepMind</span></p>
+        </div></div>
+<div class="abstract preview-paragraph-8 preview-line 8 9 10" style="width: 80%; margin: 0 auto; margin-bottom: 1em; font-size: .9em;" data_line_start="8" data_line_end="10" data_line="8,11" count_line="3">
+<h4 id="abstract_head" class="abstract_head" style="text-align: center;">
+Abstract</h4>
+<p style="text-indent: 1em;">Transformer models can use two fundamentally different kinds of information: information stored in weights during training, and information provided &quot;in-context&quot; at inference time. In this work, we show that transformers exhibit different inductive biases in how they represent and generalize from the information in these two sources. In particular, we characterize whether they generalize via parsimonious rules (rule-based generalization) or via direct comparison with observed examples (exemplar-based generalization). This is of important practical consequence, as it informs whether to encode information in weights or in context, depending on how we want models to use that information. In transformers trained on controlled stimuli, we find that generalization from weights is more rule-based whereas generalization from context is largely exemplar-based. In contrast, we find that in transformers pre-trained on natural language, in-context learning is significantly rule-based, with larger models showing more rule-basedness. We hypothesise that rule-based generalization from in-context information might be an emergent consequence of large-scale training on language, which has sparse rulelike structure. Using controlled stimuli, we verify that transformers pretrained on data containing sparse rule-like structure exhibit more rule-based generalization.</p>
+</div>
+<h2 type="section" class="section-title preview-paragraph-12 preview-line 12" id="introduction" data_line_start="12" data_line_end="12" data_line="12,13" count_line="1">
+<span class="section-number">1. </span>Introduction</h2>
+<div class="preview-paragraph-14 preview-line 14" data_line_start="14" data_line_end="14" data_line="14,15" count_line="1">Transformer-based architectures have an impressive ability to use both information stored in weights during training (&quot;in-weights learning&quot;), and information stored only in the inputs provided at inference time (without any gradient updates to the weights of the model; &quot;in-context learning&quot;) |Chan et al. 2022]. In-context learning on pretrained models enables learning efficiently from a few examples (&quot;few-shot learning&quot;) [Brown et al., 2020], or even efficiently compressing a large dataset (&quot;prompt tuning&quot;) |Li and Liang. 2021, Lester et al., 2021, Sun et al., 2022]. Given the evident current and future potential for this new learning paradigm, it is important and useful to understand its inductive biases, especially how it differs from in-weights learning.</div>
+<div class="preview-paragraph-16 preview-line 16" data_line_start="16" data_line_end="16" data_line="16,17" count_line="1">One way to understand inductive bias is by examining how models generalize to held-out data. In this work, we adapt the experimental paradigm in Dasgupta et al. [2022] that pose a classification task that distinguishes between two previously defined kinds of generalization behaviors (see 11. A &quot;rulebased&quot; decision is made on the basis of minimal features that support the category boundary [Ashby and Townsend, 1986], while an &quot;exemplar-based&quot; decision generalizes on the basis of similarity to examples from training data [Shepard and Chang, 1963], invoking many or all features available.</div>
+<div class="preview-paragraph-18 preview-line 18" data_line_start="18" data_line_end="18" data_line="18,19" count_line="1"><span class="math-inline "><mathml style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msup>
+    <mrow></mrow>
+    <mrow>
+      <mo>&#x2217;</mo>
+    </mrow>
+  </msup>
+</math></mathml><mathmlword style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msup>
+    <mrow></mrow>
+    <mrow>
+      <mo>∗</mo>
+    </mrow>
+  </msup>
+</math></mathmlword><asciimath style="display: none;">^(**)</asciimath><latex style="display: none">{ }^{*}</latex><mjx-container class="MathJax" jax="SVG" role="presentation" style="position: relative"><svg style="vertical-align: 0" xmlns="http://www.w3.org/2000/svg" width="0.913ex" height="1.565ex" role="img" focusable="false" viewBox="0 -691.8 403.6 691.8" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="msup"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"></g><g data-mml-node="TeXAtom" transform="translate(0, 363) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mo"><path data-c="2217" d="M229 286Q216 420 216 436Q216 454 240 464Q241 464 245 464T251 465Q263 464 273 456T283 436Q283 419 277 356T270 286L328 328Q384 369 389 372T399 375Q412 375 423 365T435 338Q435 325 425 315Q420 312 357 282T289 250L355 219L425 184Q434 175 434 161Q434 146 425 136T401 125Q393 125 383 131T328 171L270 213Q283 79 283 63Q283 53 276 44T250 35Q231 35 224 44T216 63Q216 80 222 143T229 213L171 171Q115 130 110 127Q106 124 100 124Q87 124 76 134T64 161Q64 166 64 169T67 175T72 181T81 188T94 195T113 204T138 215T170 230T210 250L74 315Q65 324 65 338Q65 353 74 363T98 374Q106 374 116 368T171 328L229 286Z"></path></g></g></g></g></g></svg><mjx-assistive-mml role="presentation" unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msup><mrow></mrow><mrow><mo>∗</mo></mrow></msup></math></mjx-assistive-mml></mjx-container></span> Equal contributions This distinction is particularly interesting when comparing in-weights vs in-context learning. Exemplarbased generalization (that uses all available features) is useful in a low-data regime where there is not enough information to form an abstract sparse rule [Feldman, 2020]. On the other hand, sparser rulebased generalization may help avoid sensitivity to spurious correlation when training with large, noisy, naturalistic datasets (that are commonly used to train in-weights learning).</div>
+<div class="preview-paragraph-20 preview-line 20" data_line_start="20" data_line_end="20" data_line="20,21" count_line="1">We find that transformers exhibit a striking difference in their generalization from in-context vs in-weights information. Transformers display a strong inductive bias towards exemplar-based generalization from incontext information. In contrast, transformers display a strong inductive bias towards rule-based generalization from in-weights information.</div>
+<div class="preview-paragraph-22 preview-line 22" data_line_start="22" data_line_end="22" data_line="22,23" count_line="1">However, when we pose a similar task to large transformer models pretrained on language, they exhibit stronger rule-based generalization from in-context information. One interpretation of these results is that the distribution of natural language is more compatible with rule-based generalization from context (rulebased generalization is in fact optimal in compositional domains like langauge [Arjovsky et al. 2019]), ( and such patterns might present strong enough learning pressure to overcome - and even reverse - transformers' inherent bias towards exemplar-based generalization from context.</div>
+<h2 type="section" class="section-title preview-paragraph-24 preview-line 24" id="experimental-design" data_line_start="24" data_line_end="24" data_line="24,25" count_line="1">
+<span class="section-number">2. </span>Experimental Design</h2>
+<div class="preview-paragraph-26 preview-line 26" data_line_start="26" data_line_end="26" data_line="26,27" count_line="1">We adapted the &quot;partial exposure&quot; paradigm from Dasgupta et al. [2022] where each stimulus has two features; only one of the features predicts the label. We evaluate how the model generalizes to a held-out combination (using sparse rules or similarity to exemplars), see Fig 1.</div>
+<div class="preview-paragraph-28 preview-line 28" data_line_start="28" data_line_end="28" data_line="28,29" count_line="1">First, we explored generalization in transformers trained on controlled synthetic data, where we can examine generalization from both in-weights and in-context information and directly compare them. Second, we repeat this experiment on pretrained language models and characterize their in-context generalization. Finally, we compare the patterns observed and invesigate factors that explain the differences observed.</div>
+<h2 type="section" class="section-title preview-paragraph-30 preview-line 30" id="results" data_line_start="30" data_line_end="30" data_line="30,31" count_line="1">
+<span class="section-number">3. </span>Results</h2>
+<h3 type="subsection" class="sub_section-title preview-paragraph-32 preview-line 32" id="trained-from-scratch-transformers" data_line_start="32" data_line_end="32" data_line="32,33" count_line="1">
+<span class="section-number">3.</span><span class="sub_section-number">1.</span> Trained-from-scratch transformers</h3>
+<div class="preview-paragraph-34 preview-line 34" data_line_start="34" data_line_end="34" data_line="34,35" count_line="1">For the trained-from-scratch transformers, we passed sequences of stimulus-label pairs as inputs to the transformer model [Vaswani et al. 2017]. The sequences consisted of two parts: a context (24 tokens; i.e. 12 stimulus-label pairs) and a query (stimulus). The model was trained to minimize a softmax cross-entropy loss on the prediction for the final (query) stimulus. Each stimulus consists of two subvectors concatenated together into a single token (Fig 4c) - these subvectors comprise the two features of the partial exposure paradigm. See Appendix Afor further details.</div>
+<div class="preview-paragraph-36 preview-line 36" data_line_start="36" data_line_end="36" data_line="36,37" count_line="1">Generalization from in-weights information is rule-based. To investigate generalization from in-weights information, we trained the model on partial exposure data, and evaluated on the held-out combination. During training, the label for each stimulus class was fixed, so that the stimulus-label mappings were stored in weights. The context tokens are uninformative for the query. After training, (a) From in-weights.</div>
+<div class="preview-paragraph-38 preview-line 38" data_line_start="38" data_line_end="38" data_line="38,39" count_line="1"><figure style="text-align: center"><img src="https://cdn.mathpix.com/cropped/2022_12_25_2a4e7d1ed70558495272g-3.jpg?height=238&amp;width=333&amp;top_left_y=342&amp;top_left_x=381" alt="" data-align="center"></figure></div>
+<div class="preview-paragraph-40 preview-line 40" data_line_start="40" data_line_end="40" data_line="40,41" count_line="1">(b) From in-context; fewshot training.</div>
+<div class="preview-paragraph-42 preview-line 42" data_line_start="42" data_line_end="42" data_line="42,43" count_line="1"><figure style="text-align: center"><img src="https://cdn.mathpix.com/cropped/2022_12_25_2a4e7d1ed70558495272g-3.jpg?height=236&amp;width=331&amp;top_left_y=343&amp;top_left_x=886" alt="" data-align="center"></figure></div>
+<div class="preview-paragraph-44 preview-line 44" data_line_start="44" data_line_end="44" data_line="44,45" count_line="1">(c) From in-context; rulebased training.</div>
+<div class="preview-paragraph-46 preview-line 46" data_line_start="46" data_line_end="46" data_line="46,47" count_line="1"><figure style="text-align: center"><img src="https://cdn.mathpix.com/cropped/2022_12_25_2a4e7d1ed70558495272g-3.jpg?height=230&amp;width=331&amp;top_left_y=346&amp;top_left_x=1404" alt="" data-align="center"></figure></div>
+<div class="preview-paragraph-48 preview-line 48" data_line_start="48" data_line_end="48" data_line="48,49" count_line="1">Figure 2: Generalization patterns of transformer models trained on synthetic data: frequency of various model outputs when presented with the held-out stimulus of the partial exposure paradigm (Fig 1). (a) Generalization from weights is completely rule-based. (b) In contrast, generalization from context is exemplar-based. (c) The exemplar-based bias in in-context learning can be overcome by pretraining the model on sequences that explicitly require rule-based generalization.</div>
+<div class="preview-paragraph-50 preview-line 50" data_line_start="50" data_line_end="50" data_line="50,51" count_line="1">we measured the model's biases by evaluating on the held-out class combination. See Appendix Fig 4d for details. When trained and evaluated in this way, transformers displayed fully rule-based generalization (Fig 2a, i.e. based on a sparse rule that only took the first feature into account.</div>
+<div class="preview-paragraph-52 preview-line 52" data_line_start="52" data_line_end="52" data_line="52,53" count_line="1">Generalization from in-context information is exemplar-based. To investigate generalization from in-context information, we first pretrained the model for few-shot in-context learning (see A.2 for more details), i.e. to refer to information provided in-context when making a query prediction. Importantly, pretraining for few-shot learning imparts no bias towards either rule-based or exemplarbased generalization, because either is an equally valid strategy for solving the few-shot problems. Then we evaluated the model on partial exposure sequences. See Appendix Fig <span class="math-inline "><mathml style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mn>4</mn>
+  <mrow>
+    <mtext> </mtext>
+    <mi mathvariant="normal">b</mi>
+  </mrow>
+</math></mathml><mathmlword style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mn>4</mn>
+  <mrow>
+    <mtext></mtext>
+    <mi mathvariant="normal">b</mi>
+  </mrow>
+</math></mathmlword><asciimath style="display: none;">4b</asciimath><latex style="display: none">4 \mathrm{~b}</latex><mjx-container class="MathJax" jax="SVG" role="presentation" style="position: relative"><svg style="vertical-align: -0.025ex" xmlns="http://www.w3.org/2000/svg" width="2.955ex" height="1.595ex" role="img" focusable="false" viewBox="0 -694 1306 705" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mn"><path data-c="34" d="M462 0Q444 3 333 3Q217 3 199 0H190V46H221Q241 46 248 46T265 48T279 53T286 61Q287 63 287 115V165H28V211L179 442Q332 674 334 675Q336 677 355 677H373L379 671V211H471V165H379V114Q379 73 379 66T385 54Q393 47 442 46H471V0H462ZM293 211V545L74 212L183 211H293Z"></path></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(500, 0)"><g data-mml-node="mtext"><path data-c="A0" d=""></path></g><g data-mml-node="mi" transform="translate(250, 0)"><path data-c="62" d="M307 -11Q234 -11 168 55L158 37Q156 34 153 28T147 17T143 10L138 1L118 0H98V298Q98 599 97 603Q94 622 83 628T38 637H20V660Q20 683 22 683L32 684Q42 685 61 686T98 688Q115 689 135 690T165 693T176 694H179V543Q179 391 180 391L183 394Q186 397 192 401T207 411T228 421T254 431T286 439T323 442Q401 442 461 379T522 216Q522 115 458 52T307 -11ZM182 98Q182 97 187 90T196 79T206 67T218 55T233 44T250 35T271 29T295 26Q330 26 363 46T412 113Q424 148 424 212Q424 287 412 323Q385 405 300 405Q270 405 239 390T188 347L182 339V98Z"></path></g></g></g></g></svg><mjx-assistive-mml role="presentation" unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>4</mn><mrow><mtext> </mtext><mi mathvariant="normal">b</mi></mrow></math></mjx-assistive-mml></mjx-container></span> for example sequences used for training and evaluation. When trained and evaluated in this way, transformers displayed totally exemplar-based generalization, in striking contrast to the rule-based generalization that was observed from weights. That is, when queried on the held-out combination BX, the models were equally likely to output the labels associated with either <span class="math-inline "><mathml style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mrow>
+    <mi mathvariant="normal">A</mi>
+    <mi mathvariant="normal">X</mi>
+  </mrow>
+</math></mathml><mathmlword style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mrow>
+    <mi mathvariant="normal">A</mi>
+    <mi mathvariant="normal">X</mi>
+  </mrow>
+</math></mathmlword><asciimath style="display: none;">AX</asciimath><latex style="display: none">\mathrm{AX}</latex><mjx-container class="MathJax" jax="SVG" role="presentation" style="position: relative"><svg style="vertical-align: 0" xmlns="http://www.w3.org/2000/svg" width="3.394ex" height="1.62ex" role="img" focusable="false" viewBox="0 -716 1500 716" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="41" d="M255 0Q240 3 140 3Q48 3 39 0H32V46H47Q119 49 139 88Q140 91 192 245T295 553T348 708Q351 716 366 716H376Q396 715 400 709Q402 707 508 390L617 67Q624 54 636 51T687 46H717V0H708Q699 3 581 3Q458 3 437 0H427V46H440Q510 46 510 64Q510 66 486 138L462 209H229L209 150Q189 91 189 85Q189 72 209 59T259 46H264V0H255ZM447 255L345 557L244 256Q244 255 345 255H447Z"></path></g><g data-mml-node="mi" transform="translate(750, 0)"><path data-c="58" d="M270 0Q252 3 141 3Q46 3 31 0H23V46H40Q129 50 161 88Q165 94 244 216T324 339Q324 341 235 480T143 622Q133 631 119 634T57 637H37V683H46Q64 680 172 680Q297 680 318 683H329V637H324Q307 637 286 632T263 621Q263 618 322 525T384 431Q385 431 437 511T489 593Q490 595 490 599Q490 611 477 622T436 637H428V683H437Q455 680 566 680Q661 680 676 683H684V637H667Q585 634 551 599Q548 596 478 491Q412 388 412 387Q412 385 514 225T620 62Q628 53 642 50T695 46H726V0H717Q699 3 591 3Q466 3 445 0H434V46H440Q454 46 476 51T499 64Q499 67 463 124T390 238L353 295L350 292Q348 290 343 283T331 265T312 236T286 195Q219 88 218 84Q218 70 234 59T272 46H280V0H270Z"></path></g></g></g></g></svg><mjx-assistive-mml role="presentation" unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi mathvariant="normal">A</mi><mi mathvariant="normal">X</mi></mrow></math></mjx-assistive-mml></mjx-container></span> and <span class="math-inline "><mathml style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mrow>
+    <mi mathvariant="normal">B</mi>
+    <mi mathvariant="normal">W</mi>
+  </mrow>
+</math></mathml><mathmlword style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mrow>
+    <mi mathvariant="normal">B</mi>
+    <mi mathvariant="normal">W</mi>
+  </mrow>
+</math></mathmlword><asciimath style="display: none;">BW</asciimath><latex style="display: none">\mathrm{BW}</latex><mjx-container class="MathJax" jax="SVG" role="presentation" style="position: relative"><svg style="vertical-align: -0.05ex" xmlns="http://www.w3.org/2000/svg" width="3.928ex" height="1.595ex" role="img" focusable="false" viewBox="0 -683 1736 705" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="42" d="M131 622Q124 629 120 631T104 634T61 637H28V683H229H267H346Q423 683 459 678T531 651Q574 627 599 590T624 512Q624 461 583 419T476 360L466 357Q539 348 595 302T651 187Q651 119 600 67T469 3Q456 1 242 0H28V46H61Q103 47 112 49T131 61V622ZM511 513Q511 560 485 594T416 636Q415 636 403 636T371 636T333 637Q266 637 251 636T232 628Q229 624 229 499V374H312L396 375L406 377Q410 378 417 380T442 393T474 417T499 456T511 513ZM537 188Q537 239 509 282T430 336L329 337H229V200V116Q229 57 234 52Q240 47 334 47H383Q425 47 443 53Q486 67 511 104T537 188Z"></path></g><g data-mml-node="mi" transform="translate(708, 0)"><path data-c="57" d="M792 683Q810 680 914 680Q991 680 1003 683H1009V637H996Q931 633 915 598Q912 591 863 438T766 135T716 -17Q711 -22 694 -22Q676 -22 673 -15Q671 -13 593 231L514 477L435 234Q416 174 391 92T358 -6T341 -22H331Q314 -21 310 -15Q309 -14 208 302T104 622Q98 632 87 633Q73 637 35 637H18V683H27Q69 681 154 681Q164 681 181 681T216 681T249 682T276 683H287H298V637H285Q213 637 213 620Q213 616 289 381L364 144L427 339Q490 535 492 546Q487 560 482 578T475 602T468 618T461 628T449 633T433 636T408 637H380V683H388Q397 680 508 680Q629 680 650 683H660V637H647Q576 637 576 619L727 146Q869 580 869 600Q869 605 863 612T839 627T794 637H783V683H792Z"></path></g></g></g></g></svg><mjx-assistive-mml role="presentation" unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi mathvariant="normal">B</mi><mi mathvariant="normal">W</mi></mrow></math></mjx-assistive-mml></mjx-container></span> (Fig <span class="math-inline "><mathml style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mn>2</mn>
+  <mrow>
+    <mtext> </mtext>
+    <mi mathvariant="normal">b</mi>
+  </mrow>
+</math></mathml><mathmlword style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mn>2</mn>
+  <mrow>
+    <mtext></mtext>
+    <mi mathvariant="normal">b</mi>
+  </mrow>
+</math></mathmlword><asciimath style="display: none;">2b</asciimath><latex style="display: none">2 \mathrm{~b}</latex><mjx-container class="MathJax" jax="SVG" role="presentation" style="position: relative"><svg style="vertical-align: -0.025ex" xmlns="http://www.w3.org/2000/svg" width="2.955ex" height="1.595ex" role="img" focusable="false" viewBox="0 -694 1306 705" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mn"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(500, 0)"><g data-mml-node="mtext"><path data-c="A0" d=""></path></g><g data-mml-node="mi" transform="translate(250, 0)"><path data-c="62" d="M307 -11Q234 -11 168 55L158 37Q156 34 153 28T147 17T143 10L138 1L118 0H98V298Q98 599 97 603Q94 622 83 628T38 637H20V660Q20 683 22 683L32 684Q42 685 61 686T98 688Q115 689 135 690T165 693T176 694H179V543Q179 391 180 391L183 394Q186 397 192 401T207 411T228 421T254 431T286 439T323 442Q401 442 461 379T522 216Q522 115 458 52T307 -11ZM182 98Q182 97 187 90T196 79T206 67T218 55T233 44T250 35T271 29T295 26Q330 26 363 46T412 113Q424 148 424 212Q424 287 412 323Q385 405 300 405Q270 405 239 390T188 347L182 339V98Z"></path></g></g></g></g></svg><mjx-assistive-mml role="presentation" unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>2</mn><mrow><mtext> </mtext><mi mathvariant="normal">b</mi></mrow></math></mjx-assistive-mml></mjx-container></span> ), indicating that they are comparing the query directly (and along all features) to examples that were shown in context.</div>
+<h3 type="subsection" class="sub_section-title preview-paragraph-54 preview-line 54" id="pretrained-language-models" data_line_start="54" data_line_end="54" data_line="54,55" count_line="1">
+<span class="section-number">3.</span><span class="sub_section-number">2.</span> Pretrained language models</h3>
+<div class="preview-paragraph-56 preview-line 56" data_line_start="56" data_line_end="56" data_line="56,57" count_line="1">Do these patterns hold when evaluating on pretrained language models, arguably the most-used transformer-based model at the moment? We used a large (70B parameters) pre-trained language model (LM) trained for autoregressive language prediction on large-scale web data |Hoffmann et al. 2022]. To investigate in-context generalization in this model, we use the same &quot;partial exposure&quot; experimental paradigm, but instead using shape and color words as the two features comprising the stimuli, and nonsense words for the labels (see Fig[5 for an example). We take the completion generated by the LM as the predicted query label.</div>
+<div class="preview-paragraph-58 preview-line 58" data_line_start="58" data_line_end="58" data_line="58,59" count_line="1">With the synthetic data, we could ensure no a priori bias towards any feature; we have no such guarantee here. We account for any possible bias toward generalizing along a specific feature with a control condition from [Dasgupta et al., 2022] where neither feature is more predictive in the training data, so the model must use pure exemplar-based generalization. Performance in this condition is now used as the baseline for pure exemplar-based generalization, and deviation from this baseline is the measure for rule-based generalization. See Appendix B for further details. We don't investigate in-weights generalization in these models, since that would require manipulation and control of the training data and large-scale re-training.</div>
+<div class="preview-paragraph-60 preview-line 60" data_line_start="60" data_line_end="60" data_line="60,61" count_line="1">In language models, generalization from in-context information is partially rule-based. First, in the control condition where the model is forced to use exemplar-based generalization, we find that the language model prefers generalizing along the color dimension rather than the shape dimension (Fig 3a. Since bias towards shape gives better classification performance on naturalistic visual stimuli [Landau et al., 1988, Geirhos et al. 2018], it is interesting that we see the opposite bias in a system trained on naturalistic text data; future work should look into possible explanations (e.g. the &quot;pragmatic&quot; nature of language; Degen et al. [2019]). The LM predominantly produces one of the two labels provided in context, but does sometimes produce an unseen word ('other' in Fig 3 ). The LM (a) Baseline feature bias.</div>
+<div class="preview-paragraph-62 preview-line 62" data_line_start="62" data_line_end="62" data_line="62,63" count_line="1"><figure style="text-align: center"><img src="https://cdn.mathpix.com/cropped/2022_12_25_2a4e7d1ed70558495272g-4.jpg?height=255&amp;width=333&amp;top_left_y=306&amp;top_left_x=381" alt="" data-align="center"></figure></div>
+<div class="preview-paragraph-64 preview-line 64" data_line_start="64" data_line_end="64" data_line="64,65" count_line="1">(b) Shape predictive.</div>
+<div class="preview-paragraph-66 preview-line 66" data_line_start="66" data_line_end="66" data_line="66,67" count_line="1"><figure style="text-align: center"><img src="https://cdn.mathpix.com/cropped/2022_12_25_2a4e7d1ed70558495272g-4.jpg?height=252&amp;width=331&amp;top_left_y=308&amp;top_left_x=729" alt="" data-align="center"></figure></div>
+<div class="preview-paragraph-68 preview-line 68" data_line_start="68" data_line_end="68" data_line="68,69" count_line="1">(c) Color predictive.</div>
+<div class="preview-paragraph-70 preview-line 70" data_line_start="70" data_line_end="70" data_line="70,71" count_line="1"><figure style="text-align: center"><img src="https://cdn.mathpix.com/cropped/2022_12_25_2a4e7d1ed70558495272g-4.jpg?height=252&amp;width=318&amp;top_left_y=308&amp;top_left_x=1077" alt="" data-align="center"></figure></div>
+<div class="preview-paragraph-72 preview-line 72" data_line_start="72" data_line_end="72" data_line="72,73" count_line="1">(d) Effect of model size.</div>
+<div class="preview-paragraph-74 preview-line 74" data_line_start="74" data_line_end="74" data_line="74,75" count_line="1"><figure style="text-align: center"><img src="https://cdn.mathpix.com/cropped/2022_12_25_2a4e7d1ed70558495272g-4.jpg?height=244&amp;width=334&amp;top_left_y=309&amp;top_left_x=1405" alt="" data-align="center"></figure></div>
+<div class="preview-paragraph-76 preview-line 76" data_line_start="76" data_line_end="76" data_line="76,77" count_line="1">Figure 3: Generalization from in-context information in a pretrained LM. We classify LM responses by whether it gives the label consistent with generalizing along color, shape, or neither. (a) Measuring feature-level bias with the Control condition; the model prefers to generalize along color. We use these results as baselines for the partial exposure conditions. (b) When a sparse rule-based decision boundary supports shape as predictive, the model classifies along shape more often than in the baseline control (dotted line). (b) Similarly when color is predictive, the model classifies along color more often than in the baseline control (dotted line). (d) Smaller LMs are less rule-based.</div>
+<div class="preview-paragraph-78 preview-line 78" data_line_start="78" data_line_end="78" data_line="78,79" count_line="1">produces an unseen word more frequently when the query is also unseen in-context (not reported), suggesting a mutual exclusivity bias [Gandhi and Lake, 2020], also worth future investigation.</div>
+<div class="preview-paragraph-80 preview-line 80" data_line_start="80" data_line_end="80" data_line="80,81" count_line="1">To measure the degree of rule-based generalization, we compared each partial exposure result to the respective control: for instance, we compared the probability of generalizing along color in the color predictive partial exposure evaluation condition (Fig 3c vs in the control condition. If a model uses pure exemplar-based generalization, there will be no difference in the classification pattern between the partial exposure and the control conditions. Alternatively, rule-based generalization predicts an increased sensitivity to the predictive feature dimension (either shape or color) compared to control. Here, we found evidence of rule-based generalization for both color and shape. This is still in contrast with the purely exemplar-based in-context generalization we saw in our synthetic experiment.</div>
+<div class="preview-paragraph-82 preview-line 82" data_line_start="82" data_line_end="82" data_line="82,83" count_line="1">Smaller models are less rule-based. We investigate this further by evaluating language models of different sizes. We measure 'rule-ness' as how much more likely the model is the generalize along the predictive feature (as supported by a sparse rule) in the partial exposure condition, compared to the corresponding (model-specific) control condition. This corresponds to the difference between the purple bar and dotted control in Figs 2 and 3 . We find that smaller models (1B and <span class="math-inline "><mathml style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mn>7</mn>
+  <mrow>
+    <mtext> </mtext>
+    <mi mathvariant="normal">B</mi>
+  </mrow>
+</math></mathml><mathmlword style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mn>7</mn>
+  <mrow>
+    <mtext></mtext>
+    <mi mathvariant="normal">B</mi>
+  </mrow>
+</math></mathmlword><asciimath style="display: none;">7B</asciimath><latex style="display: none">7 \mathrm{~B}</latex><mjx-container class="MathJax" jax="SVG" role="presentation" style="position: relative"><svg style="vertical-align: -0.05ex" xmlns="http://www.w3.org/2000/svg" width="3.299ex" height="1.595ex" role="img" focusable="false" viewBox="0 -683 1458 705" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mn"><path data-c="37" d="M55 458Q56 460 72 567L88 674Q88 676 108 676H128V672Q128 662 143 655T195 646T364 644H485V605L417 512Q408 500 387 472T360 435T339 403T319 367T305 330T292 284T284 230T278 162T275 80Q275 66 275 52T274 28V19Q270 2 255 -10T221 -22Q210 -22 200 -19T179 0T168 40Q168 198 265 368Q285 400 349 489L395 552H302Q128 552 119 546Q113 543 108 522T98 479L95 458V455H55V458Z"></path></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(500, 0)"><g data-mml-node="mtext"><path data-c="A0" d=""></path></g><g data-mml-node="mi" transform="translate(250, 0)"><path data-c="42" d="M131 622Q124 629 120 631T104 634T61 637H28V683H229H267H346Q423 683 459 678T531 651Q574 627 599 590T624 512Q624 461 583 419T476 360L466 357Q539 348 595 302T651 187Q651 119 600 67T469 3Q456 1 242 0H28V46H61Q103 47 112 49T131 61V622ZM511 513Q511 560 485 594T416 636Q415 636 403 636T371 636T333 637Q266 637 251 636T232 628Q229 624 229 499V374H312L396 375L406 377Q410 378 417 380T442 393T474 417T499 456T511 513ZM537 188Q537 239 509 282T430 336L329 337H229V200V116Q229 57 234 52Q240 47 334 47H383Q425 47 443 53Q486 67 511 104T537 188Z"></path></g></g></g></g></svg><mjx-assistive-mml role="presentation" unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>7</mn><mrow><mtext> </mtext><mi mathvariant="normal">B</mi></mrow></math></mjx-assistive-mml></mjx-container></span> parameters) are steadily less rule-based, with the <span class="math-inline "><mathml style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mn>1</mn>
+  <mrow>
+    <mtext> </mtext>
+    <mi mathvariant="normal">B</mi>
+  </mrow>
+</math></mathml><mathmlword style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mn>1</mn>
+  <mrow>
+    <mtext></mtext>
+    <mi mathvariant="normal">B</mi>
+  </mrow>
+</math></mathmlword><asciimath style="display: none;">1B</asciimath><latex style="display: none">1 \mathrm{~B}</latex><mjx-container class="MathJax" jax="SVG" role="presentation" style="position: relative"><svg style="vertical-align: 0" xmlns="http://www.w3.org/2000/svg" width="3.299ex" height="1.545ex" role="img" focusable="false" viewBox="0 -683 1458 683" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mn"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(500, 0)"><g data-mml-node="mtext"><path data-c="A0" d=""></path></g><g data-mml-node="mi" transform="translate(250, 0)"><path data-c="42" d="M131 622Q124 629 120 631T104 634T61 637H28V683H229H267H346Q423 683 459 678T531 651Q574 627 599 590T624 512Q624 461 583 419T476 360L466 357Q539 348 595 302T651 187Q651 119 600 67T469 3Q456 1 242 0H28V46H61Q103 47 112 49T131 61V622ZM511 513Q511 560 485 594T416 636Q415 636 403 636T371 636T333 637Q266 637 251 636T232 628Q229 624 229 499V374H312L396 375L406 377Q410 378 417 380T442 393T474 417T499 456T511 513ZM537 188Q537 239 509 282T430 336L329 337H229V200V116Q229 57 234 52Q240 47 334 47H383Q425 47 443 53Q486 67 511 104T537 188Z"></path></g></g></g></g></svg><mjx-assistive-mml role="presentation" unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>1</mn><mrow><mtext> </mtext><mi mathvariant="normal">B</mi></mrow></math></mjx-assistive-mml></mjx-container></span> model effectively performing exact exemplar-based generalization - similar to those trained from scratch (Fig <span class="math-inline "><mathml style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mn>3</mn>
+  <mrow>
+    <mtext> </mtext>
+    <mi mathvariant="normal">d</mi>
+  </mrow>
+</math></mathml><mathmlword style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mn>3</mn>
+  <mrow>
+    <mtext></mtext>
+    <mi mathvariant="normal">d</mi>
+  </mrow>
+</math></mathmlword><asciimath style="display: none;">3d</asciimath><latex style="display: none">3 \mathrm{~d}</latex><mjx-container class="MathJax" jax="SVG" role="presentation" style="position: relative"><svg style="vertical-align: -0.05ex" xmlns="http://www.w3.org/2000/svg" width="2.955ex" height="1.62ex" role="img" focusable="false" viewBox="0 -694 1306 716" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mn"><path data-c="33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"></path></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(500, 0)"><g data-mml-node="mtext"><path data-c="A0" d=""></path></g><g data-mml-node="mi" transform="translate(250, 0)"><path data-c="64" d="M376 495Q376 511 376 535T377 568Q377 613 367 624T316 637H298V660Q298 683 300 683L310 684Q320 685 339 686T376 688Q393 689 413 690T443 693T454 694H457V390Q457 84 458 81Q461 61 472 55T517 46H535V0Q533 0 459 -5T380 -11H373V44L365 37Q307 -11 235 -11Q158 -11 96 50T34 215Q34 315 97 378T244 442Q319 442 376 393V495ZM373 342Q328 405 260 405Q211 405 173 369Q146 341 139 305T131 211Q131 155 138 120T173 59Q203 26 251 26Q322 26 373 103V342Z"></path></g></g></g></g></svg><mjx-assistive-mml role="presentation" unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>3</mn><mrow><mtext> </mtext><mi mathvariant="normal">d</mi></mrow></math></mjx-assistive-mml></mjx-container></span>. further details in Appendix 6 .</div>
+<h3 type="subsection" class="sub_section-title preview-paragraph-84 preview-line 84" id="in-context-generalization-can-be-made-more-rule-based-with-pre-training." data_line_start="84" data_line_end="84" data_line="84,85" count_line="1">
+<span class="section-number">3.</span><span class="sub_section-number">3.</span> In-context generalization can be made more rule-based with pre-training.</h3>
+<div class="preview-paragraph-86 preview-line 86" data_line_start="86" data_line_end="86" data_line="86,87" count_line="1">We did not observe the same effect of scale in transformers that were trained from scratch on synthetic data - increasing number of layers, number of attention heads, and number of classes did not lead to more rule-basedness. This may be because we were not able to achieve the necessary scale with those experiments or due to synergistic effects between scale and the type of training data.</div>
+<div class="preview-paragraph-88 preview-line 88" data_line_start="88" data_line_end="88" data_line="88,89" count_line="1">To evaluate the role of training data, we evaluated in-context generalization on a transformer trained on synthetic stimuli where the query explicitly required rule-based classification (more details in Appendix A.4. With this training data, the transformer learns rule-based generalization to held-out sequences <span class="math-inline "><mathml style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mn>2</mn>
+  <mrow>
+    <mi mathvariant="normal">c</mi>
+  </mrow>
+</math></mathml><mathmlword style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mn>2</mn>
+  <mrow>
+    <mi mathvariant="normal">c</mi>
+  </mrow>
+</math></mathmlword><asciimath style="display: none;">2c</asciimath><latex style="display: none">2 \mathrm{c}</latex><mjx-container class="MathJax" jax="SVG" role="presentation" style="position: relative"><svg style="vertical-align: -0.025ex" xmlns="http://www.w3.org/2000/svg" width="2.136ex" height="1.532ex" role="img" focusable="false" viewBox="0 -666 944 677" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mn"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(500, 0)"><g data-mml-node="mi"><path data-c="63" d="M370 305T349 305T313 320T297 358Q297 381 312 396Q317 401 317 402T307 404Q281 408 258 408Q209 408 178 376Q131 329 131 219Q131 137 162 90Q203 29 272 29Q313 29 338 55T374 117Q376 125 379 127T395 129H409Q415 123 415 120Q415 116 411 104T395 71T366 33T318 2T249 -11Q163 -11 99 53T34 214Q34 318 99 383T250 448T370 421T404 357Q404 334 387 320Z"></path></g></g></g></g></svg><mjx-assistive-mml role="presentation" unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>2</mn><mrow><mi mathvariant="normal">c</mi></mrow></math></mjx-assistive-mml></mjx-container></span> Thus, while transformers exhibit inherent bias towards exemplar-based generalization from context, when trained on data that ecnourages rule-based generalization from context, they can learn to do so. This supports the interpretation that pretrained language model show rulebased generalization because natural language contains implicitly rule-based data, but crucially, this structure only seems to be picked up and used by larger models.</div>
+<h2 type="section" class="section-title preview-paragraph-90 preview-line 90" id="conclusions" data_line_start="90" data_line_end="90" data_line="90,91" count_line="1">
+<span class="section-number">4. </span>Conclusions</h2>
+<div class="preview-paragraph-92 preview-line 92" data_line_start="92" data_line_end="92" data_line="92,93" count_line="1">We found distinct patterns of generalization when transformers generalize from information stored in weights vs in context. When trained on synthetic data, generalization from in-weights information is completely rule-based, whereas generalization from in-context information is almost entirely exemplar-based. However, a pre-trained language model is surprisingly rule-based when generalizing from in-context information, and this is increasingly true for larger models. We find that it is indeed possible to induce rule-based generalization from in-context information by pretraining a transformer on an explicitly rule-based classification problem. Together, these findings support the possibility that natural language data (perhaps because of its combinatorial nature) provides a strong learning pressure towards rule-like generalization, which works in concert with model scale.</div>
+<h2 type="section" class="section-title preview-paragraph-94 preview-line 94" id="references" data_line_start="94" data_line_end="94" data_line="94,95" count_line="1">
+<span class="section-number">5. </span>References</h2>
+<div class="preview-paragraph-96 preview-line 96" data_line_start="96" data_line_end="96" data_line="96,97" count_line="1">Martin Arjovsky, Léon Bottou, Ishaan Gulrajani, and David Lopez-Paz. Invariant risk minimization. arXiv preprint arXiv: 1907.02893, 2019.</div>
+<div class="preview-paragraph-98 preview-line 98" data_line_start="98" data_line_end="98" data_line="98,99" count_line="1">F. Gregory Ashby and James T. Townsend. Varieties of perceptual independence. Psychological Review, 93:154-179, 1986. ISSN 1939-1471. doi: 10.1037/0033-295X.93.2.154. Place: US Publisher: American Psychological Association.</div>
+<div class="preview-paragraph-100 preview-line 100" data_line_start="100" data_line_end="100" data_line="100,101" count_line="1">Tom B. Brown, Benjamin Mann, Nick Ryder, Melanie Subbiah, Jared Kaplan, Prafulla Dhariwal, Arvind Neelakantan, Pranav Shyam, Girish Sastry, Amanda Askell, Sandhini Agarwal, Ariel Herbert-Voss, Gretchen Krueger, Tom Henighan, Rewon Child, Aditya Ramesh, Daniel M. Ziegler, Jeffrey Wu, Clemens Winter, Christopher Hesse, Mark Chen, Eric Sigler, Mateusz Litwin, Scott Gray, Benjamin Chess, Jack Clark, Christopher Berner, Sam McCandlish, Alec Radford, Ilya Sutskever, and Dario Amodei. Language Models are Few-Shot Learners. arXiv:2005.14165 [cs], July 2020. URL <a href="http://arxiv" target="_blank" rel="noopener" style="display: inline-block">http://arxiv</a> .org/abs/2005.14165. arXiv: 2005.14165.</div>
+<div class="preview-paragraph-102 preview-line 102" data_line_start="102" data_line_end="102" data_line="102,103" count_line="1">Stephanie C. Y. Chan, Adam Santoro, Andrew K. Lampinen, Jane X. Wang, Aaditya Singh, Pierre H. Richemond, Jay McClelland, and Felix Hill. Data Distributional Properties Drive Emergent In-Context Learning in Transformers, May 2022. URL/<a href="http://arxiv.org/abs/2205.05055" target="_blank" rel="noopener" style="display: inline-block">http://arxiv.org/abs/2205.05055</a> arXiv:2205.05055 [cs].</div>
+<div class="preview-paragraph-104 preview-line 104" data_line_start="104" data_line_end="104" data_line="104,105" count_line="1">Ishita Dasgupta, Erin Grant, and Tom Griffiths. Distinguishing rule and exemplar-based generalization in learning systems. In Proceedings of the 39th International Conference on Machine Learning, pages 4816-4830. PMLR, June 2022. URL <a href="https://proceedings.mlr.press/" target="_blank" rel="noopener" style="display: inline-block">https://proceedings.mlr.press/</a> v162/dasgupta22b.html. ISSN: 2640-3498.</div>
+<div class="preview-paragraph-106 preview-line 106" data_line_start="106" data_line_end="106" data_line="106,107" count_line="1">Judith Degen, Robert D. Hawkins, Caroline Graf, Elisa Kreiss, and Noah D. Goodman. When redundancy is useful: A Bayesian approach to 'overinformative' referring expressions, December 2019. URL <a href="http://arxiv" target="_blank" rel="noopener" style="display: inline-block">http://arxiv</a> .org/abs/1903.08237. arXiv:1903.08237 [cs].</div>
+<div class="preview-paragraph-108 preview-line 108" data_line_start="108" data_line_end="108" data_line="108,109" count_line="1">Vitaly Feldman. Does learning require memorization? a short tale about a long tail. In Proceedings of the 52nd Annual ACM SIGACT Symposium on Theory of Computing, pages 954-959, 2020.</div>
+<div class="preview-paragraph-110 preview-line 110" data_line_start="110" data_line_end="110" data_line="110,111" count_line="1">Kanishk Gandhi and Brenden M Lake. Mutual exclusivity as a challenge for deep neural networks. Advances in Neural Information Processing Systems, 33:14182-14192, 2020.</div>
+<div class="preview-paragraph-112 preview-line 112" data_line_start="112" data_line_end="112" data_line="112,113" count_line="1">Robert Geirhos, Patricia Rubisch, Claudio Michaelis, Matthias Bethge, Felix A Wichmann, and Wieland Brendel. Imagenet-trained cnns are biased towards texture; increasing shape bias improves accuracy and robustness. arXiv preprint arXiv:1811.12231, 2018.</div>
+<div class="preview-paragraph-114 preview-line 114" data_line_start="114" data_line_end="114" data_line="114,115" count_line="1">Jordan Hoffmann, Sebastian Borgeaud, Arthur Mensch, Elena Buchatskaya, Trevor Cai, Eliza Rutherford, Diego de Las Casas, Lisa Anne Hendricks, Johannes Welbl, Aidan Clark, Tom Hennigan, Eric Noland, Katie Millican, George van den Driessche, Bogdan Damoc, Aurelia Guy, Simon Osindero, Karen Simonyan, Erich Elsen, Jack W. Rae, Oriol Vinyals, and L. Sifre. Training compute-optimal large language models. ArXiv, abs/2203.15556, 2022.</div>
+<div class="preview-paragraph-116 preview-line 116" data_line_start="116" data_line_end="116" data_line="116,117" count_line="1">Barbara Landau, Linda B Smith, and Susan S Jones. The importance of shape in early lexical learning. Cognitive development, 3(3):299-321, 1988.</div>
+<div class="preview-paragraph-118 preview-line 118" data_line_start="118" data_line_end="118" data_line="118,119" count_line="1">Brian Lester, Rami Al-Rfou, and Noah Constant. The Power of Scale for Parameter-Efficient Prompt Tuning, September 2021. URL/<a href="http://arxiv.org/abs/2104.08691" target="_blank" rel="noopener" style="display: inline-block">http://arxiv.org/abs/2104.08691</a>. arXiv:2104.08691 [cs].</div>
+<div class="preview-paragraph-120 preview-line 120" data_line_start="120" data_line_end="120" data_line="120,121" count_line="1">Xiang Lisa Li and Percy Liang. Prefix-Tuning: Optimizing Continuous Prompts for Generation. arXiv:2101.00190 [cs], January 2021. URL <a href="http://arxiv.org/abs/2101.00190" target="_blank" rel="noopener" style="display: inline-block">http://arxiv.org/abs/2101.00190</a> arXiv: <span class="math-inline "><mathml style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mn>2101.00190</mn>
+</math></mathml><mathmlword style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mn>2101.00190</mn>
+</math></mathmlword><asciimath style="display: none;">2101.00190</asciimath><latex style="display: none">2101.00190</latex><mjx-container class="MathJax" jax="SVG" role="presentation" style="position: relative"><svg style="vertical-align: -0.05ex" xmlns="http://www.w3.org/2000/svg" width="10.81ex" height="1.557ex" role="img" focusable="false" viewBox="0 -666 4778 688" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mn"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z" transform="translate(500, 0)"></path><path data-c="30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z" transform="translate(1000, 0)"></path><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z" transform="translate(1500, 0)"></path><path data-c="2E" d="M78 60Q78 84 95 102T138 120Q162 120 180 104T199 61Q199 36 182 18T139 0T96 17T78 60Z" transform="translate(2000, 0)"></path><path data-c="30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z" transform="translate(2278, 0)"></path><path data-c="30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z" transform="translate(2778, 0)"></path><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z" transform="translate(3278, 0)"></path><path data-c="39" d="M352 287Q304 211 232 211Q154 211 104 270T44 396Q42 412 42 436V444Q42 537 111 606Q171 666 243 666Q245 666 249 666T257 665H261Q273 665 286 663T323 651T370 619T413 560Q456 472 456 334Q456 194 396 97Q361 41 312 10T208 -22Q147 -22 108 7T68 93T121 149Q143 149 158 135T173 96Q173 78 164 65T148 49T135 44L131 43Q131 41 138 37T164 27T206 22H212Q272 22 313 86Q352 142 352 280V287ZM244 248Q292 248 321 297T351 430Q351 508 343 542Q341 552 337 562T323 588T293 615T246 625Q208 625 181 598Q160 576 154 546T147 441Q147 358 152 329T172 282Q197 248 244 248Z" transform="translate(3778, 0)"></path><path data-c="30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z" transform="translate(4278, 0)"></path></g></g></g></svg><mjx-assistive-mml role="presentation" unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>2101.00190</mn></math></mjx-assistive-mml></mjx-container></span>. Roger N. Shepard and Jih-Jie Chang. Stimulus generalization in the learning of classifications. Journal of Experimental Psychology, 65:94-102, 1963. ISSN 0022-1015. doi: 10.1037/h0043732. Place: US Publisher: American Psychological Association.</div>
+<div class="preview-paragraph-122 preview-line 122" data_line_start="122" data_line_end="122" data_line="122,123" count_line="1">Tianxiang Sun, Yunfan Shao, Hong Qian, Xuanjing Huang, and Xipeng Qiu. Black-Box Tuning for Language-Model-as-a-Service. In Proceedings of the 39th International Conference on Machine Learning, pages 20841-20855. PMLR, June 2022. URL <a href="https://proceedings.mlr.press/" target="_blank" rel="noopener" style="display: inline-block">https://proceedings.mlr.press/</a> v162/sun22e.html. ISSN: 2640-3498.</div>
+<div class="preview-paragraph-124 preview-line 124" data_line_start="124" data_line_end="124" data_line="124,125" count_line="1">Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N Gomez, Lukasz Kaiser, and Illia Polosukhin. Attention is All you Need. arXiv:1706.03762 [cs], page 11, 2017.</div>
+<h2 type="section" class="section-title preview-paragraph-126 preview-line 126" id="a-experiment-details%3A-trained-from-scratch-transformers" data_line_start="126" data_line_end="126" data_line="126,127" count_line="1">
+<span class="section-number">6. </span>A Experiment details: Trained-from-scratch transformers</h2>
+<div class="preview-paragraph-128 preview-line 128" data_line_start="128" data_line_end="128" data_line="128,129" count_line="1">(a) Transformer inputs and outputs.</div>
+<div class="preview-paragraph-130 preview-line 130" data_line_start="130" data_line_end="130" data_line="130,131" count_line="1"><figure style="text-align: center"><img src="https://cdn.mathpix.com/cropped/2022_12_25_2a4e7d1ed70558495272g-6.jpg?height=327&amp;width=547&amp;top_left_y=899&amp;top_left_x=369" alt="" data-align="center"></figure></div>
+<div class="preview-paragraph-132 preview-line 132" data_line_start="132" data_line_end="132" data_line="132,133" count_line="1">(b) Example sequences: Evaluating generalization from context.</div>
+<div class="preview-paragraph-134 preview-line 134 135 136" data_line_start="134" data_line_end="136" data_line="134,137" count_line="3"><div class="author">
+          <p><span>Training: Few-shot learning</span><span>(\begin{array}{ccc}\mathrm{GH} \rightarrow 0 \quad \mathrm{SQ} \rightarrow 1 \quad \mathrm{RD} \rightarrow 2 &amp; &amp; \mathrm{SQ} \rightarrow ?</span><span>\text { context (repeat } 4 \mathrm{x} \text { and shuffle) } &amp; &amp; \text { query }\end{array})</span><span>Evaluation: Partial exposure</span><span>(\begin{array}{ccccc}\mathrm{AW} \rightarrow 0 &amp; \mathrm{AX} \rightarrow 0 \quad \mathrm{BW} \rightarrow 1 \quad \mathrm{BW} \rightarrow 1 \quad \mathrm{CY} \rightarrow 2 &amp; \mathrm{CZ} \rightarrow 2</span><span>\text { context (repeat } 2 \mathrm{x} \text { and shuffle) } &amp; \frac{\mathrm{BX} \rightarrow ?}{\text { query }}\end{array})</span></p>
+        </div></div>
+<div class="preview-paragraph-138 preview-line 138" data_line_start="138" data_line_end="138" data_line="138,139" count_line="1">(d) Example sequences: Evaluating generalization from weights. (c) Stimulus examples.</div>
+<div class="preview-paragraph-140 preview-line 140" data_line_start="140" data_line_end="140" data_line="140,141" count_line="1"><figure style="text-align: center"><img src="https://cdn.mathpix.com/cropped/2022_12_25_2a4e7d1ed70558495272g-6.jpg?height=333&amp;width=417&amp;top_left_y=1324&amp;top_left_x=369" alt="" data-align="center"></figure></div>
+<div class="preview-paragraph-142 preview-line 142" data_line_start="142" data_line_end="142" data_line="142,143" count_line="1">Training: Partial Exposure</div>
+<div class="preview-paragraph-144 preview-line 144" data_line_start="144" data_line_end="144" data_line="144,145" count_line="1"><figure style="text-align: center"><img src="https://cdn.mathpix.com/cropped/2022_12_25_2a4e7d1ed70558495272g-6.jpg?height=306&amp;width=423&amp;top_left_y=1370&amp;top_left_x=813" alt="" data-align="center"></figure></div>
+<div class="preview-paragraph-146 preview-line 146" data_line_start="146" data_line_end="146" data_line="146,147" count_line="1">Evaluation: The held-out combination</div>
+<div class="preview-paragraph-148 preview-line 148" data_line_start="148" data_line_end="148" data_line="148,149" count_line="1"><figure style="text-align: center"><img src="https://cdn.mathpix.com/cropped/2022_12_25_2a4e7d1ed70558495272g-6.jpg?height=73&amp;width=410&amp;top_left_y=1378&amp;top_left_x=1302" alt="" data-align="center"></figure></div>
+<div class="preview-paragraph-150 preview-line 150" data_line_start="150" data_line_end="150" data_line="150,151" count_line="1">Figure 4: (a) Sequences of alternating stimuli and labels are passed to a transformer. Each sequence consists of a &quot;context&quot; (12 stimulus-label pairs) and a &quot;query&quot; stimulus. The model is trained to minimize the loss on the query prediction. (b) To evaluate generalization from context, the model is first pretrained to perform in-context learning by training on few-shot sequences; stimulus classes and labels are randomly chosen for every sequence, so that the model must perform few-shot learning from context. Inductive biases are evaluated on &quot;partial exposure&quot; sequences, where one combination is held out for evaluation (&quot;BX&quot;). Consistent selection of the label associated with &quot;B&quot; indicates a rule-based bias, while equal selection of the labels associated with &quot;A&quot; and &quot;B&quot; indicates an exemplar-based bias (since &quot;BX&quot; is equally similar to &quot;AX&quot; and &quot;BW&quot;). (c) Each stimulus consists of two subvectors concatenated together into a single token. Each subvector belongs a particular class, and each class is characterized by a different centroid. The subvectors are sampled from a multivariate normal centered on that centroid. The subvectors have length 32 , but here we only show 4 values. (d) To evaluate generalization from weights, the model is instead trained directly on partial exposure data, and inductive biases are evaluated on the held-out combination. (The context consisted of random samplings of the stimulus classes, and were irrelevant to the query prediction.)</div>
+<h2 type="section" class="section-title preview-paragraph-152 preview-line 152" id="a.1-subvector-stimuli" data_line_start="152" data_line_end="152" data_line="152,153" count_line="1">
+<span class="section-number">7. </span>A.1 Subvector stimuli</h2>
+<div class="preview-paragraph-154 preview-line 154" data_line_start="154" data_line_end="154" data_line="154,155" count_line="1">Each subvector belongs a particular &quot;subvector class&quot;, and each subvector class is characterized by a different centroid. The subvectors are sampled from a multivariate normal centered on that centroid. A &quot;stimulus class&quot; is the concatenation of two subvector classes, and a stimulus is a sampling from a stimulus class. Example stimuli are shown in Fig 4 This design is a 64-dimensional generalization of the 2-D classification example from Dasgupta et al. [2022], and ensures that there is no a priori bias towards one feature or another.</div>
+<div class="preview-paragraph-156 preview-line 156" data_line_start="156" data_line_end="156" data_line="156,157" count_line="1">Number of features per stimulus: 2 | Feature length: 32 | Number of classes per feature: 10 | Number of values per class: 100 | Covariance scaling on the per-class normal distributions: <span class="math-inline "><mathml style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mn>0.1</mn>
+</math></mathml><mathmlword style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mn>0.1</mn>
+</math></mathmlword><asciimath style="display: none;">0.1</asciimath><latex style="display: none">0.1</latex><mjx-container class="MathJax" jax="SVG" role="presentation" style="position: relative"><svg style="vertical-align: -0.05ex" xmlns="http://www.w3.org/2000/svg" width="2.891ex" height="1.557ex" role="img" focusable="false" viewBox="0 -666 1278 688" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mn"><path data-c="30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path data-c="2E" d="M78 60Q78 84 95 102T138 120Q162 120 180 104T199 61Q199 36 182 18T139 0T96 17T78 60Z" transform="translate(500, 0)"></path><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z" transform="translate(778, 0)"></path></g></g></g></svg><mjx-assistive-mml role="presentation" unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>0.1</mn></math></mjx-assistive-mml></mjx-container></span></div>
+<h2 type="section" class="section-title preview-paragraph-158 preview-line 158" id="a.2-pretraining-for-few-shot-learning" data_line_start="158" data_line_end="158" data_line="158,159" count_line="1">
+<span class="section-number">8. </span>A.2 Pretraining for few-shot learning</h2>
+<div class="preview-paragraph-160 preview-line 160" data_line_start="160" data_line_end="160" data_line="160,161" count_line="1">To pretrain the model for in-context learning, we pretrained the model on few-shot (4-shot 3-way) sequences, i.e. sequences for which the context consisted of 3 different stimulus classes each repeated 4 times, and where the query class was one of those 3 classes. The classes and labels were randomly assigned for each sequence.</div>
+<h2 type="section" class="section-title preview-paragraph-162 preview-line 162" id="a.3-evaluating-inductive-biases" data_line_start="162" data_line_end="162" data_line="162,163" count_line="1">
+<span class="section-number">9. </span>A.3 Evaluating inductive biases</h2>
+<div class="preview-paragraph-164 preview-line 164" data_line_start="164" data_line_end="164" data_line="164,165" count_line="1">Models were trained and evaluated as shown in Figs <span class="math-inline "><mathml style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mn>4</mn>
+  <mrow>
+    <mtext> </mtext>
+    <mi mathvariant="normal">b</mi>
+  </mrow>
+</math></mathml><mathmlword style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mn>4</mn>
+  <mrow>
+    <mtext></mtext>
+    <mi mathvariant="normal">b</mi>
+  </mrow>
+</math></mathmlword><asciimath style="display: none;">4b</asciimath><latex style="display: none">4 \mathrm{~b}</latex><mjx-container class="MathJax" jax="SVG" role="presentation" style="position: relative"><svg style="vertical-align: -0.025ex" xmlns="http://www.w3.org/2000/svg" width="2.955ex" height="1.595ex" role="img" focusable="false" viewBox="0 -694 1306 705" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mn"><path data-c="34" d="M462 0Q444 3 333 3Q217 3 199 0H190V46H221Q241 46 248 46T265 48T279 53T286 61Q287 63 287 115V165H28V211L179 442Q332 674 334 675Q336 677 355 677H373L379 671V211H471V165H379V114Q379 73 379 66T385 54Q393 47 442 46H471V0H462ZM293 211V545L74 212L183 211H293Z"></path></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(500, 0)"><g data-mml-node="mtext"><path data-c="A0" d=""></path></g><g data-mml-node="mi" transform="translate(250, 0)"><path data-c="62" d="M307 -11Q234 -11 168 55L158 37Q156 34 153 28T147 17T143 10L138 1L118 0H98V298Q98 599 97 603Q94 622 83 628T38 637H20V660Q20 683 22 683L32 684Q42 685 61 686T98 688Q115 689 135 690T165 693T176 694H179V543Q179 391 180 391L183 394Q186 397 192 401T207 411T228 421T254 431T286 439T323 442Q401 442 461 379T522 216Q522 115 458 52T307 -11ZM182 98Q182 97 187 90T196 79T206 67T218 55T233 44T250 35T271 29T295 26Q330 26 363 46T412 113Q424 148 424 212Q424 287 412 323Q385 405 300 405Q270 405 239 390T188 347L182 339V98Z"></path></g></g></g></g></svg><mjx-assistive-mml role="presentation" unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>4</mn><mrow><mtext> </mtext><mi mathvariant="normal">b</mi></mrow></math></mjx-assistive-mml></mjx-container></span> and <span class="math-inline "><mathml style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mn>4</mn>
+  <mrow>
+    <mtext> </mtext>
+    <mi mathvariant="normal">d</mi>
+  </mrow>
+</math></mathml><mathmlword style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mn>4</mn>
+  <mrow>
+    <mtext></mtext>
+    <mi mathvariant="normal">d</mi>
+  </mrow>
+</math></mathmlword><asciimath style="display: none;">4d</asciimath><latex style="display: none">4 \mathrm{~d}</latex><mjx-container class="MathJax" jax="SVG" role="presentation" style="position: relative"><svg style="vertical-align: -0.025ex" xmlns="http://www.w3.org/2000/svg" width="2.955ex" height="1.595ex" role="img" focusable="false" viewBox="0 -694 1306 705" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mn"><path data-c="34" d="M462 0Q444 3 333 3Q217 3 199 0H190V46H221Q241 46 248 46T265 48T279 53T286 61Q287 63 287 115V165H28V211L179 442Q332 674 334 675Q336 677 355 677H373L379 671V211H471V165H379V114Q379 73 379 66T385 54Q393 47 442 46H471V0H462ZM293 211V545L74 212L183 211H293Z"></path></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(500, 0)"><g data-mml-node="mtext"><path data-c="A0" d=""></path></g><g data-mml-node="mi" transform="translate(250, 0)"><path data-c="64" d="M376 495Q376 511 376 535T377 568Q377 613 367 624T316 637H298V660Q298 683 300 683L310 684Q320 685 339 686T376 688Q393 689 413 690T443 693T454 694H457V390Q457 84 458 81Q461 61 472 55T517 46H535V0Q533 0 459 -5T380 -11H373V44L365 37Q307 -11 235 -11Q158 -11 96 50T34 215Q34 315 97 378T244 442Q319 442 376 393V495ZM373 342Q328 405 260 405Q211 405 173 369Q146 341 139 305T131 211Q131 155 138 120T173 59Q203 26 251 26Q322 26 373 103V342Z"></path></g></g></g></g></svg><mjx-assistive-mml role="presentation" unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>4</mn><mrow><mtext> </mtext><mi mathvariant="normal">d</mi></mrow></math></mjx-assistive-mml></mjx-container></span></div>
+<div class="preview-paragraph-166 preview-line 166" data_line_start="166" data_line_end="166" data_line="166,167" count_line="1">An additional label (&quot;2&quot;, in the example in Fig 4b) and corresponding examples were included in the partial exposure sequences, to ensure that if the model is equally likely to select the labels associated with &quot;A&quot; and &quot;B&quot;, it is because of those examples' similarity to the query stimulus, rather than because the model is selecting labels at chance. This was similarly done for training on partial exposure data in weights (not shown in Fig 4d).</div>
+<div class="preview-paragraph-168 preview-line 168" data_line_start="168" data_line_end="168" data_line="168,169" count_line="1">Note also that the BW stimulus was shown twice as often as other stimuli in the partial exposure data, as was done in Dasgupta et al. [2022], in order to ensure that there is no bias induced by having one label more frequent than another. We also ran experiments where BW was not repeated, and the pattern of results was the same.</div>
+<h2 type="section" class="section-title preview-paragraph-170 preview-line 170" id="a.4-pretraining-for-rule-based-generalization" data_line_start="170" data_line_end="170" data_line="170,171" count_line="1">
+<span class="section-number">10. </span>A.4 Pretraining for rule-based generalization</h2>
+<div class="preview-paragraph-172 preview-line 172" data_line_start="172" data_line_end="172" data_line="172,173" count_line="1">To pretrain the model for rule-based generalization, we used the partial exposure sequences shown in <span class="math-inline "><mathml style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mn>4</mn>
+  <mrow>
+    <mtext> </mtext>
+    <mi mathvariant="normal">b</mi>
+  </mrow>
+</math></mathml><mathmlword style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mn>4</mn>
+  <mrow>
+    <mtext></mtext>
+    <mi mathvariant="normal">b</mi>
+  </mrow>
+</math></mathmlword><asciimath style="display: none;">4b</asciimath><latex style="display: none">4 \mathrm{~b}</latex><mjx-container class="MathJax" jax="SVG" role="presentation" style="position: relative"><svg style="vertical-align: -0.025ex" xmlns="http://www.w3.org/2000/svg" width="2.955ex" height="1.595ex" role="img" focusable="false" viewBox="0 -694 1306 705" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mn"><path data-c="34" d="M462 0Q444 3 333 3Q217 3 199 0H190V46H221Q241 46 248 46T265 48T279 53T286 61Q287 63 287 115V165H28V211L179 442Q332 674 334 675Q336 677 355 677H373L379 671V211H471V165H379V114Q379 73 379 66T385 54Q393 47 442 46H471V0H462ZM293 211V545L74 212L183 211H293Z"></path></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(500, 0)"><g data-mml-node="mtext"><path data-c="A0" d=""></path></g><g data-mml-node="mi" transform="translate(250, 0)"><path data-c="62" d="M307 -11Q234 -11 168 55L158 37Q156 34 153 28T147 17T143 10L138 1L118 0H98V298Q98 599 97 603Q94 622 83 628T38 637H20V660Q20 683 22 683L32 684Q42 685 61 686T98 688Q115 689 135 690T165 693T176 694H179V543Q179 391 180 391L183 394Q186 397 192 401T207 411T228 421T254 431T286 439T323 442Q401 442 461 379T522 216Q522 115 458 52T307 -11ZM182 98Q182 97 187 90T196 79T206 67T218 55T233 44T250 35T271 29T295 26Q330 26 363 46T412 113Q424 148 424 212Q424 287 412 323Q385 405 300 405Q270 405 239 390T188 347L182 339V98Z"></path></g></g></g></g></svg><mjx-assistive-mml role="presentation" unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>4</mn><mrow><mtext> </mtext><mi mathvariant="normal">b</mi></mrow></math></mjx-assistive-mml></mjx-container></span>, but for training as well as for evaluation. In training, the label for the query <span class="math-inline "><mathml style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mrow>
+    <mi mathvariant="normal">B</mi>
+    <mi mathvariant="normal">X</mi>
+  </mrow>
+</math></mathml><mathmlword style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mrow>
+    <mi mathvariant="normal">B</mi>
+    <mi mathvariant="normal">X</mi>
+  </mrow>
+</math></mathmlword><asciimath style="display: none;">BX</asciimath><latex style="display: none">\mathrm{BX}</latex><mjx-container class="MathJax" jax="SVG" role="presentation" style="position: relative"><svg style="vertical-align: 0" xmlns="http://www.w3.org/2000/svg" width="3.299ex" height="1.545ex" role="img" focusable="false" viewBox="0 -683 1458 683" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="42" d="M131 622Q124 629 120 631T104 634T61 637H28V683H229H267H346Q423 683 459 678T531 651Q574 627 599 590T624 512Q624 461 583 419T476 360L466 357Q539 348 595 302T651 187Q651 119 600 67T469 3Q456 1 242 0H28V46H61Q103 47 112 49T131 61V622ZM511 513Q511 560 485 594T416 636Q415 636 403 636T371 636T333 637Q266 637 251 636T232 628Q229 624 229 499V374H312L396 375L406 377Q410 378 417 380T442 393T474 417T499 456T511 513ZM537 188Q537 239 509 282T430 336L329 337H229V200V116Q229 57 234 52Q240 47 334 47H383Q425 47 443 53Q486 67 511 104T537 188Z"></path></g><g data-mml-node="mi" transform="translate(708, 0)"><path data-c="58" d="M270 0Q252 3 141 3Q46 3 31 0H23V46H40Q129 50 161 88Q165 94 244 216T324 339Q324 341 235 480T143 622Q133 631 119 634T57 637H37V683H46Q64 680 172 680Q297 680 318 683H329V637H324Q307 637 286 632T263 621Q263 618 322 525T384 431Q385 431 437 511T489 593Q490 595 490 599Q490 611 477 622T436 637H428V683H437Q455 680 566 680Q661 680 676 683H684V637H667Q585 634 551 599Q548 596 478 491Q412 388 412 387Q412 385 514 225T620 62Q628 53 642 50T695 46H726V0H717Q699 3 591 3Q466 3 445 0H434V46H440Q454 46 476 51T499 64Q499 67 463 124T390 238L353 295L350 292Q348 290 343 283T331 265T312 236T286 195Q219 88 218 84Q218 70 234 59T272 46H280V0H270Z"></path></g></g></g></g></svg><mjx-assistive-mml role="presentation" unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi mathvariant="normal">B</mi><mi mathvariant="normal">X</mi></mrow></math></mjx-assistive-mml></mjx-container></span> was always the same as the label associated with BW in context (note that the stimuli and labels are randomly assigned, so that <span class="math-inline "><mathml style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mi>B</mi>
+  <mi>X</mi>
+</math></mathml><mathmlword style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mi>B</mi>
+  <mi>X</mi>
+</math></mathmlword><asciimath style="display: none;">BX</asciimath><latex style="display: none">B X</latex><mjx-container class="MathJax" jax="SVG" role="presentation" style="position: relative"><svg style="vertical-align: 0" xmlns="http://www.w3.org/2000/svg" width="3.645ex" height="1.545ex" role="img" focusable="false" viewBox="0 -683 1611 683" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="42" d="M231 637Q204 637 199 638T194 649Q194 676 205 682Q206 683 335 683Q594 683 608 681Q671 671 713 636T756 544Q756 480 698 429T565 360L555 357Q619 348 660 311T702 219Q702 146 630 78T453 1Q446 0 242 0Q42 0 39 2Q35 5 35 10Q35 17 37 24Q42 43 47 45Q51 46 62 46H68Q95 46 128 49Q142 52 147 61Q150 65 219 339T288 628Q288 635 231 637ZM649 544Q649 574 634 600T585 634Q578 636 493 637Q473 637 451 637T416 636H403Q388 635 384 626Q382 622 352 506Q352 503 351 500L320 374H401Q482 374 494 376Q554 386 601 434T649 544ZM595 229Q595 273 572 302T512 336Q506 337 429 337Q311 337 310 336Q310 334 293 263T258 122L240 52Q240 48 252 48T333 46Q422 46 429 47Q491 54 543 105T595 229Z"></path></g><g data-mml-node="mi" transform="translate(759, 0)"><path data-c="58" d="M42 0H40Q26 0 26 11Q26 15 29 27Q33 41 36 43T55 46Q141 49 190 98Q200 108 306 224T411 342Q302 620 297 625Q288 636 234 637H206Q200 643 200 645T202 664Q206 677 212 683H226Q260 681 347 681Q380 681 408 681T453 682T473 682Q490 682 490 671Q490 670 488 658Q484 643 481 640T465 637Q434 634 411 620L488 426L541 485Q646 598 646 610Q646 628 622 635Q617 635 609 637Q594 637 594 648Q594 650 596 664Q600 677 606 683H618Q619 683 643 683T697 681T738 680Q828 680 837 683H845Q852 676 852 672Q850 647 840 637H824Q790 636 763 628T722 611T698 593L687 584Q687 585 592 480L505 384Q505 383 536 304T601 142T638 56Q648 47 699 46Q734 46 734 37Q734 35 732 23Q728 7 725 4T711 1Q708 1 678 1T589 2Q528 2 496 2T461 1Q444 1 444 10Q444 11 446 25Q448 35 450 39T455 44T464 46T480 47T506 54Q523 62 523 64Q522 64 476 181L429 299Q241 95 236 84Q232 76 232 72Q232 53 261 47Q262 47 267 47T273 46Q276 46 277 46T280 45T283 42T284 35Q284 26 282 19Q279 6 276 4T261 1Q258 1 243 1T201 2T142 2Q64 2 42 0Z"></path></g></g></g></svg><mjx-assistive-mml role="presentation" unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>B</mi><mi>X</mi></math></mjx-assistive-mml></mjx-container></span> could be manifested as any of the stimulus classes, and the query label could be any of <span class="math-inline "><mathml style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mo stretchy="false">[</mo>
+  <mn>0</mn>
+  <mo>,</mo>
+  <mn>1</mn>
+  <mo>,</mo>
+  <mn>2</mn>
+  <mo stretchy="false">]</mo>
+</math></mathml><mathmlword style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mo stretchy="false">[</mo>
+  <mn>0</mn>
+  <mo>,</mo>
+  <mn>1</mn>
+  <mo>,</mo>
+  <mn>2</mn>
+  <mo stretchy="false">]</mo>
+</math></mathmlword><asciimath style="display: none;">[0,1,2]</asciimath><latex style="display: none">[0,1,2]</latex><mjx-container class="MathJax" jax="SVG" role="presentation" style="position: relative"><svg style="vertical-align: -0.566ex" xmlns="http://www.w3.org/2000/svg" width="6.664ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2945.3 1000" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="5B" d="M118 -250V750H255V710H158V-210H255V-250H118Z"></path></g><g data-mml-node="mn" transform="translate(278, 0)"><path data-c="30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path></g><g data-mml-node="mo" transform="translate(778, 0)"><path data-c="2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path></g><g data-mml-node="mn" transform="translate(1222.7, 0)"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></g><g data-mml-node="mo" transform="translate(1722.7, 0)"><path data-c="2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path></g><g data-mml-node="mn" transform="translate(2167.3, 0)"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></g><g data-mml-node="mo" transform="translate(2667.3, 0)"><path data-c="5D" d="M22 710V750H159V-250H22V-210H119V710H22Z"></path></g></g></g></svg><mjx-assistive-mml role="presentation" unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo stretchy="false">]</mo></math></mjx-assistive-mml></mjx-container></span>.)</div>
+<h2 type="section" class="section-title preview-paragraph-174 preview-line 174" id="a.5-architecture%2C-training%2C-and-evaluation-details" data_line_start="174" data_line_end="174" data_line="174,175" count_line="1">
+<span class="section-number">11. </span>A.5 Architecture, training, and evaluation details</h2>
+<div class="preview-paragraph-176 preview-line 176" data_line_start="176" data_line_end="176" data_line="176,177" count_line="1">Num layers: 12 | Embedding size: 64 | Optimizer: Adam I Batch size: 32 | Learning rate schedule: Linear warmup and square root decay, described as <span class="math-inline "><mathml style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mo data-mjx-texclass="OP" movablelimits="true">min</mo>
+  <mo stretchy="false">(</mo>
+  <mn>3</mn>
+  <mi>e</mi>
+  <mo>&#x2212;</mo>
+  <mn>4</mn>
+  <mrow>
+    <mo>/</mo>
+  </mrow>
+  <mn>4000</mn>
+  <mo>&#x2217;</mo>
+</math></mathml><mathmlword style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mo data-mjx-texclass="OP" movablelimits="true">min</mo>
+  <mo stretchy="false">(</mo>
+  <mn>3</mn>
+  <mi>e</mi>
+  <mo>−</mo>
+  <mn>4</mn>
+  <mrow>
+    <mo>/</mo>
+  </mrow>
+  <mn>4000</mn>
+  <mo>∗</mo>
+</math></mathmlword><asciimath style="display: none;">min(3e-4//4000**</asciimath><latex style="display: none">\min (3 e-4 / 4000 *</latex><mjx-container class="MathJax" jax="SVG" role="presentation" style="position: relative"><svg style="vertical-align: -0.566ex" xmlns="http://www.w3.org/2000/svg" width="17.521ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 7744.4 1000" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="6D" d="M41 46H55Q94 46 102 60V68Q102 77 102 91T102 122T103 161T103 203Q103 234 103 269T102 328V351Q99 370 88 376T43 385H25V408Q25 431 27 431L37 432Q47 433 65 434T102 436Q119 437 138 438T167 441T178 442H181V402Q181 364 182 364T187 369T199 384T218 402T247 421T285 437Q305 442 336 442Q351 442 364 440T387 434T406 426T421 417T432 406T441 395T448 384T452 374T455 366L457 361L460 365Q463 369 466 373T475 384T488 397T503 410T523 422T546 432T572 439T603 442Q729 442 740 329Q741 322 741 190V104Q741 66 743 59T754 49Q775 46 803 46H819V0H811L788 1Q764 2 737 2T699 3Q596 3 587 0H579V46H595Q656 46 656 62Q657 64 657 200Q656 335 655 343Q649 371 635 385T611 402T585 404Q540 404 506 370Q479 343 472 315T464 232V168V108Q464 78 465 68T468 55T477 49Q498 46 526 46H542V0H534L510 1Q487 2 460 2T422 3Q319 3 310 0H302V46H318Q379 46 379 62Q380 64 380 200Q379 335 378 343Q372 371 358 385T334 402T308 404Q263 404 229 370Q202 343 195 315T187 232V168V108Q187 78 188 68T191 55T200 49Q221 46 249 46H265V0H257L234 1Q210 2 183 2T145 3Q42 3 33 0H25V46H41Z"></path><path data-c="69" d="M69 609Q69 637 87 653T131 669Q154 667 171 652T188 609Q188 579 171 564T129 549Q104 549 87 564T69 609ZM247 0Q232 3 143 3Q132 3 106 3T56 1L34 0H26V46H42Q70 46 91 49Q100 53 102 60T104 102V205V293Q104 345 102 359T88 378Q74 385 41 385H30V408Q30 431 32 431L42 432Q52 433 70 434T106 436Q123 437 142 438T171 441T182 442H185V62Q190 52 197 50T232 46H255V0H247Z" transform="translate(833, 0)"></path><path data-c="6E" d="M41 46H55Q94 46 102 60V68Q102 77 102 91T102 122T103 161T103 203Q103 234 103 269T102 328V351Q99 370 88 376T43 385H25V408Q25 431 27 431L37 432Q47 433 65 434T102 436Q119 437 138 438T167 441T178 442H181V402Q181 364 182 364T187 369T199 384T218 402T247 421T285 437Q305 442 336 442Q450 438 463 329Q464 322 464 190V104Q464 66 466 59T477 49Q498 46 526 46H542V0H534L510 1Q487 2 460 2T422 3Q319 3 310 0H302V46H318Q379 46 379 62Q380 64 380 200Q379 335 378 343Q372 371 358 385T334 402T308 404Q263 404 229 370Q202 343 195 315T187 232V168V108Q187 78 188 68T191 55T200 49Q221 46 249 46H265V0H257L234 1Q210 2 183 2T145 3Q42 3 33 0H25V46H41Z" transform="translate(1111, 0)"></path></g><g data-mml-node="mo" transform="translate(1667, 0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mn" transform="translate(2056, 0)"><path data-c="33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"></path></g><g data-mml-node="mi" transform="translate(2556, 0)"><path data-c="65" d="M39 168Q39 225 58 272T107 350T174 402T244 433T307 442H310Q355 442 388 420T421 355Q421 265 310 237Q261 224 176 223Q139 223 138 221Q138 219 132 186T125 128Q125 81 146 54T209 26T302 45T394 111Q403 121 406 121Q410 121 419 112T429 98T420 82T390 55T344 24T281 -1T205 -11Q126 -11 83 42T39 168ZM373 353Q367 405 305 405Q272 405 244 391T199 357T170 316T154 280T149 261Q149 260 169 260Q282 260 327 284T373 353Z"></path></g><g data-mml-node="mo" transform="translate(3244.2, 0)"><path data-c="2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path></g><g data-mml-node="mn" transform="translate(4244.4, 0)"><path data-c="34" d="M462 0Q444 3 333 3Q217 3 199 0H190V46H221Q241 46 248 46T265 48T279 53T286 61Q287 63 287 115V165H28V211L179 442Q332 674 334 675Q336 677 355 677H373L379 671V211H471V165H379V114Q379 73 379 66T385 54Q393 47 442 46H471V0H462ZM293 211V545L74 212L183 211H293Z"></path></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(4744.4, 0)"><g data-mml-node="mo"><path data-c="2F" d="M423 750Q432 750 438 744T444 730Q444 725 271 248T92 -240Q85 -250 75 -250Q68 -250 62 -245T56 -231Q56 -221 230 257T407 740Q411 750 423 750Z"></path></g></g><g data-mml-node="mn" transform="translate(5244.4, 0)"><path data-c="34" d="M462 0Q444 3 333 3Q217 3 199 0H190V46H221Q241 46 248 46T265 48T279 53T286 61Q287 63 287 115V165H28V211L179 442Q332 674 334 675Q336 677 355 677H373L379 671V211H471V165H379V114Q379 73 379 66T385 54Q393 47 442 46H471V0H462ZM293 211V545L74 212L183 211H293Z"></path><path data-c="30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z" transform="translate(500, 0)"></path><path data-c="30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z" transform="translate(1000, 0)"></path><path data-c="30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z" transform="translate(1500, 0)"></path></g><g data-mml-node="mo" transform="translate(7244.4, 0)"><path data-c="2217" d="M229 286Q216 420 216 436Q216 454 240 464Q241 464 245 464T251 465Q263 464 273 456T283 436Q283 419 277 356T270 286L328 328Q384 369 389 372T399 375Q412 375 423 365T435 338Q435 325 425 315Q420 312 357 282T289 250L355 219L425 184Q434 175 434 161Q434 146 425 136T401 125Q393 125 383 131T328 171L270 213Q283 79 283 63Q283 53 276 44T250 35Q231 35 224 44T216 63Q216 80 222 143T229 213L171 171Q115 130 110 127Q106 124 100 124Q87 124 76 134T64 161Q64 166 64 169T67 175T72 181T81 188T94 195T113 204T138 215T170 230T210 250L74 315Q65 324 65 338Q65 353 74 363T98 374Q106 374 116 368T171 328L229 286Z"></path></g></g></g></svg><mjx-assistive-mml role="presentation" unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mo data-mjx-texclass="OP" movablelimits="true">min</mo><mo stretchy="false">(</mo><mn>3</mn><mi>e</mi><mo>−</mo><mn>4</mn><mrow><mo>/</mo></mrow><mn>4000</mn><mo>∗</mo></math></mjx-assistive-mml></mjx-container></span> global_step, power <span class="math-inline "><mathml style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mo stretchy="false">(</mo>
+  <mn>4000</mn>
+  <mo>,</mo>
+  <mn>0.5</mn>
+  <mo stretchy="false">)</mo>
+  <mo>&#x2217;</mo>
+  <mn>3</mn>
+  <mi>e</mi>
+  <mo>&#x2212;</mo>
+  <mn>4</mn>
+  <mo>&#x2217;</mo>
+</math></mathml><mathmlword style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mo stretchy="false">(</mo>
+  <mn>4000</mn>
+  <mo>,</mo>
+  <mn>0.5</mn>
+  <mo stretchy="false">)</mo>
+  <mo>∗</mo>
+  <mn>3</mn>
+  <mi>e</mi>
+  <mo>−</mo>
+  <mn>4</mn>
+  <mo>∗</mo>
+</math></mathmlword><asciimath style="display: none;">(4000,0.5)**3e-4**</asciimath><latex style="display: none">(4000,0.5) * 3 e-4 *</latex><mjx-container class="MathJax" jax="SVG" role="presentation" style="position: relative"><svg style="vertical-align: -0.566ex" xmlns="http://www.w3.org/2000/svg" width="19.533ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 8633.6 1000" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path></g><g data-mml-node="mn" transform="translate(389, 0)"><path data-c="34" d="M462 0Q444 3 333 3Q217 3 199 0H190V46H221Q241 46 248 46T265 48T279 53T286 61Q287 63 287 115V165H28V211L179 442Q332 674 334 675Q336 677 355 677H373L379 671V211H471V165H379V114Q379 73 379 66T385 54Q393 47 442 46H471V0H462ZM293 211V545L74 212L183 211H293Z"></path><path data-c="30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z" transform="translate(500, 0)"></path><path data-c="30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z" transform="translate(1000, 0)"></path><path data-c="30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z" transform="translate(1500, 0)"></path></g><g data-mml-node="mo" transform="translate(2389, 0)"><path data-c="2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path></g><g data-mml-node="mn" transform="translate(2833.7, 0)"><path data-c="30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path data-c="2E" d="M78 60Q78 84 95 102T138 120Q162 120 180 104T199 61Q199 36 182 18T139 0T96 17T78 60Z" transform="translate(500, 0)"></path><path data-c="35" d="M164 157Q164 133 148 117T109 101H102Q148 22 224 22Q294 22 326 82Q345 115 345 210Q345 313 318 349Q292 382 260 382H254Q176 382 136 314Q132 307 129 306T114 304Q97 304 95 310Q93 314 93 485V614Q93 664 98 664Q100 666 102 666Q103 666 123 658T178 642T253 634Q324 634 389 662Q397 666 402 666Q410 666 410 648V635Q328 538 205 538Q174 538 149 544L139 546V374Q158 388 169 396T205 412T256 420Q337 420 393 355T449 201Q449 109 385 44T229 -22Q148 -22 99 32T50 154Q50 178 61 192T84 210T107 214Q132 214 148 197T164 157Z" transform="translate(778, 0)"></path></g><g data-mml-node="mo" transform="translate(4111.7, 0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></g><g data-mml-node="mo" transform="translate(4722.9, 0)"><path data-c="2217" d="M229 286Q216 420 216 436Q216 454 240 464Q241 464 245 464T251 465Q263 464 273 456T283 436Q283 419 277 356T270 286L328 328Q384 369 389 372T399 375Q412 375 423 365T435 338Q435 325 425 315Q420 312 357 282T289 250L355 219L425 184Q434 175 434 161Q434 146 425 136T401 125Q393 125 383 131T328 171L270 213Q283 79 283 63Q283 53 276 44T250 35Q231 35 224 44T216 63Q216 80 222 143T229 213L171 171Q115 130 110 127Q106 124 100 124Q87 124 76 134T64 161Q64 166 64 169T67 175T72 181T81 188T94 195T113 204T138 215T170 230T210 250L74 315Q65 324 65 338Q65 353 74 363T98 374Q106 374 116 368T171 328L229 286Z"></path></g><g data-mml-node="mn" transform="translate(5445.1, 0)"><path data-c="33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"></path></g><g data-mml-node="mi" transform="translate(5945.1, 0)"><path data-c="65" d="M39 168Q39 225 58 272T107 350T174 402T244 433T307 442H310Q355 442 388 420T421 355Q421 265 310 237Q261 224 176 223Q139 223 138 221Q138 219 132 186T125 128Q125 81 146 54T209 26T302 45T394 111Q403 121 406 121Q410 121 419 112T429 98T420 82T390 55T344 24T281 -1T205 -11Q126 -11 83 42T39 168ZM373 353Q367 405 305 405Q272 405 244 391T199 357T170 316T154 280T149 261Q149 260 169 260Q282 260 327 284T373 353Z"></path></g><g data-mml-node="mo" transform="translate(6633.3, 0)"><path data-c="2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path></g><g data-mml-node="mn" transform="translate(7633.6, 0)"><path data-c="34" d="M462 0Q444 3 333 3Q217 3 199 0H190V46H221Q241 46 248 46T265 48T279 53T286 61Q287 63 287 115V165H28V211L179 442Q332 674 334 675Q336 677 355 677H373L379 671V211H471V165H379V114Q379 73 379 66T385 54Q393 47 442 46H471V0H462ZM293 211V545L74 212L183 211H293Z"></path></g><g data-mml-node="mo" transform="translate(8133.6, 0)"><path data-c="2217" d="M229 286Q216 420 216 436Q216 454 240 464Q241 464 245 464T251 465Q263 464 273 456T283 436Q283 419 277 356T270 286L328 328Q384 369 389 372T399 375Q412 375 423 365T435 338Q435 325 425 315Q420 312 357 282T289 250L355 219L425 184Q434 175 434 161Q434 146 425 136T401 125Q393 125 383 131T328 171L270 213Q283 79 283 63Q283 53 276 44T250 35Q231 35 224 44T216 63Q216 80 222 143T229 213L171 171Q115 130 110 127Q106 124 100 124Q87 124 76 134T64 161Q64 166 64 169T67 175T72 181T81 188T94 195T113 204T138 215T170 230T210 250L74 315Q65 324 65 338Q65 353 74 363T98 374Q106 374 116 368T171 328L229 286Z"></path></g></g></g></svg><mjx-assistive-mml role="presentation" unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mo stretchy="false">(</mo><mn>4000</mn><mo>,</mo><mn>0.5</mn><mo stretchy="false">)</mo><mo>∗</mo><mn>3</mn><mi>e</mi><mo>−</mo><mn>4</mn><mo>∗</mo></math></mjx-assistive-mml></mjx-container></span> power (global_step, -0.5))</div>
+<div class="preview-paragraph-178 preview-line 178" data_line_start="178" data_line_end="178" data_line="178,179" count_line="1">For each experiment, we ran 16 TPUv3 cores and 4 v100 GPU cores for 200,000 training steps.</div>
+<div class="preview-paragraph-180 preview-line 180" data_line_start="180" data_line_end="180" data_line="180,181" count_line="1">Models are evaluated on evaluation data throughout training, and bar plots in Fig 2 show evaluation outputs averaged over the last half of training (100k-200k steps). Error bars indicate <span class="math-inline "><mathml style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mn>1.96</mn>
+</math></mathml><mathmlword style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mn>1.96</mn>
+</math></mathmlword><asciimath style="display: none;">1.96</asciimath><latex style="display: none">1.96</latex><mjx-container class="MathJax" jax="SVG" role="presentation" style="position: relative"><svg style="vertical-align: -0.05ex" xmlns="http://www.w3.org/2000/svg" width="4.023ex" height="1.557ex" role="img" focusable="false" viewBox="0 -666 1778 688" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mn"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path data-c="2E" d="M78 60Q78 84 95 102T138 120Q162 120 180 104T199 61Q199 36 182 18T139 0T96 17T78 60Z" transform="translate(500, 0)"></path><path data-c="39" d="M352 287Q304 211 232 211Q154 211 104 270T44 396Q42 412 42 436V444Q42 537 111 606Q171 666 243 666Q245 666 249 666T257 665H261Q273 665 286 663T323 651T370 619T413 560Q456 472 456 334Q456 194 396 97Q361 41 312 10T208 -22Q147 -22 108 7T68 93T121 149Q143 149 158 135T173 96Q173 78 164 65T148 49T135 44L131 43Q131 41 138 37T164 27T206 22H212Q272 22 313 86Q352 142 352 280V287ZM244 248Q292 248 321 297T351 430Q351 508 343 542Q341 552 337 562T323 588T293 615T246 625Q208 625 181 598Q160 576 154 546T147 441Q147 358 152 329T172 282Q197 248 244 248Z" transform="translate(778, 0)"></path><path data-c="36" d="M42 313Q42 476 123 571T303 666Q372 666 402 630T432 550Q432 525 418 510T379 495Q356 495 341 509T326 548Q326 592 373 601Q351 623 311 626Q240 626 194 566Q147 500 147 364L148 360Q153 366 156 373Q197 433 263 433H267Q313 433 348 414Q372 400 396 374T435 317Q456 268 456 210V192Q456 169 451 149Q440 90 387 34T253 -22Q225 -22 199 -14T143 16T92 75T56 172T42 313ZM257 397Q227 397 205 380T171 335T154 278T148 216Q148 133 160 97T198 39Q222 21 251 21Q302 21 329 59Q342 77 347 104T352 209Q352 289 347 316T329 361Q302 397 257 397Z" transform="translate(1278, 0)"></path></g></g></g></svg><mjx-assistive-mml role="presentation" unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>1.96</mn></math></mjx-assistive-mml></mjx-container></span> standard errors across 10 training runs (there is zero variance for the results in Figs <span class="math-inline "><mathml style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mn>2</mn>
+  <mrow>
+    <mi mathvariant="normal">a</mi>
+  </mrow>
+</math></mathml><mathmlword style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mn>2</mn>
+  <mrow>
+    <mi mathvariant="normal">a</mi>
+  </mrow>
+</math></mathmlword><asciimath style="display: none;">2a</asciimath><latex style="display: none">2 \mathrm{a}</latex><mjx-container class="MathJax" jax="SVG" role="presentation" style="position: relative"><svg style="vertical-align: -0.025ex" xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="1.532ex" role="img" focusable="false" viewBox="0 -666 1000 677" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mn"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(500, 0)"><g data-mml-node="mi"><path data-c="61" d="M137 305T115 305T78 320T63 359Q63 394 97 421T218 448Q291 448 336 416T396 340Q401 326 401 309T402 194V124Q402 76 407 58T428 40Q443 40 448 56T453 109V145H493V106Q492 66 490 59Q481 29 455 12T400 -6T353 12T329 54V58L327 55Q325 52 322 49T314 40T302 29T287 17T269 6T247 -2T221 -8T190 -11Q130 -11 82 20T34 107Q34 128 41 147T68 188T116 225T194 253T304 268H318V290Q318 324 312 340Q290 411 215 411Q197 411 181 410T156 406T148 403Q170 388 170 359Q170 334 154 320ZM126 106Q126 75 150 51T209 26Q247 26 276 49T315 109Q317 116 318 175Q318 233 317 233Q309 233 296 232T251 223T193 203T147 166T126 106Z"></path></g></g></g></g></svg><mjx-assistive-mml role="presentation" unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>2</mn><mrow><mi mathvariant="normal">a</mi></mrow></math></mjx-assistive-mml></mjx-container></span> and <span class="math-inline "><mathml style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mn>2</mn>
+  <mrow>
+    <mi mathvariant="normal">c</mi>
+  </mrow>
+</math></mathml><mathmlword style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mn>2</mn>
+  <mrow>
+    <mi mathvariant="normal">c</mi>
+  </mrow>
+</math></mathmlword><asciimath style="display: none;">2c</asciimath><latex style="display: none">2 \mathrm{c}</latex><mjx-container class="MathJax" jax="SVG" role="presentation" style="position: relative"><svg style="vertical-align: -0.025ex" xmlns="http://www.w3.org/2000/svg" width="2.136ex" height="1.532ex" role="img" focusable="false" viewBox="0 -666 944 677" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mn"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(500, 0)"><g data-mml-node="mi"><path data-c="63" d="M370 305T349 305T313 320T297 358Q297 381 312 396Q317 401 317 402T307 404Q281 408 258 408Q209 408 178 376Q131 329 131 219Q131 137 162 90Q203 29 272 29Q313 29 338 55T374 117Q376 125 379 127T395 129H409Q415 123 415 120Q415 116 411 104T395 71T366 33T318 2T249 -11Q163 -11 99 53T34 214Q34 318 99 383T250 448T370 421T404 357Q404 334 387 320Z"></path></g></g></g></g></svg><mjx-assistive-mml role="presentation" unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>2</mn><mrow><mi mathvariant="normal">c</mi></mrow></math></mjx-assistive-mml></mjx-container></span>.</div>
+<h2 type="section" class="section-title preview-paragraph-182 preview-line 182" id="b-experiment-details%3A-large-language-model-experiments" data_line_start="182" data_line_end="182" data_line="182,183" count_line="1">
+<span class="section-number">12. </span>B Experiment details: Large language model experiments</h2>
+<div class="preview-paragraph-184 preview-line 184" data_line_start="184" data_line_end="184" data_line="184,185" count_line="1">See Fig 5 for example evaluation sequences.</div>
+<div class="preview-paragraph-186 preview-line 186" data_line_start="186" data_line_end="186" data_line="186,187" count_line="1">In order to account for potential low-level word-order effects, we evaluated on four different formats for the stimuli ('red circle', 'a circle that is red', 'an object that is circular and red', 'an object that is red and circular'). We found no significant differences in qualitative patterns across the different word orderings, so we report the average across all four formats in our results.</div>
+<div class="preview-paragraph-188 preview-line 188" data_line_start="188" data_line_end="188" data_line="188,189" count_line="1">We also include more detailed information about the experiments using different model sizes in Fig 6 These show the raw performances (including model-specific controls) on all model sizes and feature sets.</div>
+<h2 type="section" class="section-title preview-paragraph-190 preview-line 190" id="evaluation%3A-partial-exposure-(color-predictive)" data_line_start="190" data_line_end="190" data_line="190,191" count_line="1">
+<span class="section-number">13. </span>Evaluation: Partial exposure (color predictive)</h2>
+<div class="preview-paragraph-192 preview-line 192" data_line_start="192" data_line_end="192" data_line="192,193" count_line="1">a red triangle is hib, a blue square is fep, a red square is hib</div>
+<div class="preview-paragraph-194 preview-line 194" data_line_start="194" data_line_end="194" data_line="194,195" count_line="1">context (repeat <span class="math-inline "><mathml style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mn>6</mn>
+  <mi>x</mi>
+</math></mathml><mathmlword style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mn>6</mn>
+  <mi>x</mi>
+</math></mathmlword><asciimath style="display: none;">6x</asciimath><latex style="display: none">6 x</latex><mjx-container class="MathJax" jax="SVG" role="presentation" style="position: relative"><svg style="vertical-align: -0.05ex" xmlns="http://www.w3.org/2000/svg" width="2.425ex" height="1.557ex" role="img" focusable="false" viewBox="0 -666 1072 688" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mn"><path data-c="36" d="M42 313Q42 476 123 571T303 666Q372 666 402 630T432 550Q432 525 418 510T379 495Q356 495 341 509T326 548Q326 592 373 601Q351 623 311 626Q240 626 194 566Q147 500 147 364L148 360Q153 366 156 373Q197 433 263 433H267Q313 433 348 414Q372 400 396 374T435 317Q456 268 456 210V192Q456 169 451 149Q440 90 387 34T253 -22Q225 -22 199 -14T143 16T92 75T56 172T42 313ZM257 397Q227 397 205 380T171 335T154 278T148 216Q148 133 160 97T198 39Q222 21 251 21Q302 21 329 59Q342 77 347 104T352 209Q352 289 347 316T329 361Q302 397 257 397Z"></path></g><g data-mml-node="mi" transform="translate(500, 0)"><path data-c="78" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path></g></g></g></svg><mjx-assistive-mml role="presentation" unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>6</mn><mi>x</mi></math></mjx-assistive-mml></mjx-container></span> and shuffle) a blue triangle is ?</div>
+<div class="preview-paragraph-196 preview-line 196" data_line_start="196" data_line_end="196" data_line="196,197" count_line="1">query</div>
+<h2 type="section" class="section-title preview-paragraph-198 preview-line 198" id="evaluation%3A-partial-exposure-(shape-predictive)" data_line_start="198" data_line_end="198" data_line="198,199" count_line="1">
+<span class="section-number">14. </span>Evaluation: Partial exposure (shape predictive)</h2>
+<div class="preview-paragraph-200 preview-line 200" data_line_start="200" data_line_end="200" data_line="200,201" count_line="1">a red triangle is hib, a blue square is fep, a red square is fep</div>
+<div class="preview-paragraph-202 preview-line 202" data_line_start="202" data_line_end="202" data_line="202,203" count_line="1">context (repeat <span class="math-inline "><mathml style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mn>6</mn>
+  <mi>x</mi>
+</math></mathml><mathmlword style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mn>6</mn>
+  <mi>x</mi>
+</math></mathmlword><asciimath style="display: none;">6x</asciimath><latex style="display: none">6 x</latex><mjx-container class="MathJax" jax="SVG" role="presentation" style="position: relative"><svg style="vertical-align: -0.05ex" xmlns="http://www.w3.org/2000/svg" width="2.425ex" height="1.557ex" role="img" focusable="false" viewBox="0 -666 1072 688" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mn"><path data-c="36" d="M42 313Q42 476 123 571T303 666Q372 666 402 630T432 550Q432 525 418 510T379 495Q356 495 341 509T326 548Q326 592 373 601Q351 623 311 626Q240 626 194 566Q147 500 147 364L148 360Q153 366 156 373Q197 433 263 433H267Q313 433 348 414Q372 400 396 374T435 317Q456 268 456 210V192Q456 169 451 149Q440 90 387 34T253 -22Q225 -22 199 -14T143 16T92 75T56 172T42 313ZM257 397Q227 397 205 380T171 335T154 278T148 216Q148 133 160 97T198 39Q222 21 251 21Q302 21 329 59Q342 77 347 104T352 209Q352 289 347 316T329 361Q302 397 257 397Z"></path></g><g data-mml-node="mi" transform="translate(500, 0)"><path data-c="78" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path></g></g></g></svg><mjx-assistive-mml role="presentation" unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>6</mn><mi>x</mi></math></mjx-assistive-mml></mjx-container></span> and shuffle) a blue triangle is ?</div>
+<div class="preview-paragraph-204 preview-line 204" data_line_start="204" data_line_end="204" data_line="204,205" count_line="1">query</div>
+<h2 type="section" class="section-title preview-paragraph-206 preview-line 206" id="evaluation%3A-control" data_line_start="206" data_line_end="206" data_line="206,207" count_line="1">
+<span class="section-number">15. </span>Evaluation: Control</h2>
+<div class="preview-paragraph-208 preview-line 208" data_line_start="208" data_line_end="208" data_line="208,209" count_line="1">a red triangle is hib, a blue square is fep</div>
+<div class="preview-paragraph-210 preview-line 210" data_line_start="210" data_line_end="210" data_line="210,211" count_line="1">context (repeat <span class="math-inline "><mathml style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mn>6</mn>
+  <mi>x</mi>
+</math></mathml><mathmlword style="display: none"><math xmlns="http://www.w3.org/1998/Math/MathML">
+  <mn>6</mn>
+  <mi>x</mi>
+</math></mathmlword><asciimath style="display: none;">6x</asciimath><latex style="display: none">6 x</latex><mjx-container class="MathJax" jax="SVG" role="presentation" style="position: relative"><svg style="vertical-align: -0.05ex" xmlns="http://www.w3.org/2000/svg" width="2.425ex" height="1.557ex" role="img" focusable="false" viewBox="0 -666 1072 688" aria-hidden="true"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="mn"><path data-c="36" d="M42 313Q42 476 123 571T303 666Q372 666 402 630T432 550Q432 525 418 510T379 495Q356 495 341 509T326 548Q326 592 373 601Q351 623 311 626Q240 626 194 566Q147 500 147 364L148 360Q153 366 156 373Q197 433 263 433H267Q313 433 348 414Q372 400 396 374T435 317Q456 268 456 210V192Q456 169 451 149Q440 90 387 34T253 -22Q225 -22 199 -14T143 16T92 75T56 172T42 313ZM257 397Q227 397 205 380T171 335T154 278T148 216Q148 133 160 97T198 39Q222 21 251 21Q302 21 329 59Q342 77 347 104T352 209Q352 289 347 316T329 361Q302 397 257 397Z"></path></g><g data-mml-node="mi" transform="translate(500, 0)"><path data-c="78" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path></g></g></g></svg><mjx-assistive-mml role="presentation" unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>6</mn><mi>x</mi></math></mjx-assistive-mml></mjx-container></span> and shuffle) a blue triangle is ?</div>
+<div class="preview-paragraph-212 preview-line 212" data_line_start="212" data_line_end="212" data_line="212,213" count_line="1">query</div>
+<div class="preview-paragraph-214 preview-line 214" data_line_start="214" data_line_end="214" data_line="214,215" count_line="1">Figure 5: To evaluate generalization from context in a pretrained language model, the model is evaluated on partial exposure sequences where the features are instead text features (shape and color words). The control condition allows us to evaluate the model's baseline bias towards shape or color.</div>
+<div class="preview-paragraph-216 preview-line 216" data_line_start="216" data_line_end="216" data_line="216,217" count_line="1">(a) Control condition.</div>
+<div class="preview-paragraph-218 preview-line 218" data_line_start="218" data_line_end="218" data_line="218,219" count_line="1"><figure style="text-align: center"><img src="https://cdn.mathpix.com/cropped/2022_12_25_2a4e7d1ed70558495272g-8.jpg?height=242&amp;width=423&amp;top_left_y=1939&amp;top_left_x=363" alt="" data-align="center"></figure></div>
+<div class="preview-paragraph-220 preview-line 220" data_line_start="220" data_line_end="220" data_line="220,221" count_line="1">(b) Shape predictive.</div>
+<div class="preview-paragraph-222 preview-line 222" data_line_start="222" data_line_end="222" data_line="222,223" count_line="1"><figure style="text-align: center"><img src="https://cdn.mathpix.com/cropped/2022_12_25_2a4e7d1ed70558495272g-8.jpg?height=242&amp;width=423&amp;top_left_y=1939&amp;top_left_x=840" alt="" data-align="center"></figure></div>
+<div class="preview-paragraph-224 preview-line 224" data_line_start="224" data_line_end="224" data_line="224,225" count_line="1">(c) Color predictive.</div>
+<div class="preview-paragraph-226 preview-line 226" data_line_start="226" data_line_end="226" data_line="226,227" count_line="1"><figure style="text-align: center"><img src="https://cdn.mathpix.com/cropped/2022_12_25_2a4e7d1ed70558495272g-8.jpg?height=242&amp;width=420&amp;top_left_y=1939&amp;top_left_x=1319" alt="" data-align="center"></figure></div>
+<div class="preview-paragraph-228 preview-line 228" data_line_start="228" data_line_end="228" data_line="228,229" count_line="1">Figure 6: Results on the pretrained language models for different sizes.</div>
+
+    </div>
+  </div>
+</body>
+</html>
